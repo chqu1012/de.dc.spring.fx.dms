@@ -4,10 +4,18 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 
 public abstract class BaseDMSMainController {
 
+    @FXML
+    protected VBox homePanel;
+	
+    @FXML
+    protected AnchorPane addDocumentPanel;
+	
     @FXML
     protected Label titleLabel;
 

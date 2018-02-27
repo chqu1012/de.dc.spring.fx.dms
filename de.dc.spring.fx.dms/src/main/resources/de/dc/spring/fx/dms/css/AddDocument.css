@@ -1,0 +1,13 @@
+.main-content{
+	-fx-background-color: white;
+}
+
+.create-title-label{
+	-fx-background-color: #FFAC8A;
+	-fx-text-fill: white;
+	-fx-font-weight: bold;
+}
+
+.create-title-panel{
+	-fx-background-color: white;
+}

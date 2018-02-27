@@ -9,8 +9,7 @@ public class DMSMainController extends BaseDMSMainController {
 
 	@Override
 	protected void onSwitchToAddDocument(MouseEvent event) {
-		// TODO Auto-generated method stub
-
+		addDocumentPanel.toFront();
 	}
 
 	@Override
@@ -21,8 +20,7 @@ public class DMSMainController extends BaseDMSMainController {
 
 	@Override
 	protected void onSwitchToHome(MouseEvent event) {
-		// TODO Auto-generated method stub
-
+		homePanel.toFront();
 	}
 
 	@Override

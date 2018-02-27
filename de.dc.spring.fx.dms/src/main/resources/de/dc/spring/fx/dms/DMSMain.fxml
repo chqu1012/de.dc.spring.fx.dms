@@ -102,7 +102,7 @@
          </children></VBox>
    </left>
    <center>
-      <VBox BorderPane.alignment="CENTER">
+      <VBox fx:id="homePanel" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets />
          </BorderPane.margin>
@@ -126,9 +126,14 @@
                   </HBox>
                </children>
             </AnchorPane>
-            <StackPane fx:id="contentStackPane">
+            <StackPane fx:id="contentStackPane" style="-fx-background-color: white;">
                <children>
-                  <VBox>
+                  <AnchorPane fx:id="addDocumentPanel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: white;">
+                     <children>
+                        <fx:include source="AddDocument.fxml" />
+                     </children>
+                  </AnchorPane>
+                  <VBox fx:id="homePanel" style="-fx-background-color: white;">
                      <children>
                         <FlowPane hgap="20.0" vgap="20.0">
                            <children>
@@ -137,6 +142,9 @@
                               <fx:include source="HomeTile.fxml" />
                               <fx:include source="HomeTile.fxml" />
                            </children>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
                         </FlowPane>
                         <HBox prefHeight="250.0" prefWidth="990.0" spacing="20.0">
                            <children>
@@ -146,6 +154,9 @@
                            <padding>
                               <Insets top="40.0" />
                            </padding>
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" />
+                           </VBox.margin>
                         </HBox>
                      </children>
                   </VBox>
