@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" stylesheets="@css/DMSMain.css" xmlns="http://javafx.com/javafx/8.0.151" xmlns:fx="http://javafx.com/fxml/1">
+   <left>
+      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="700.0" prefWidth="210.0" spacing="20.0" styleClass="left-panel" BorderPane.alignment="CENTER">
+         <effect>
+            <DropShadow blurType="ONE_PASS_BOX" height="0.0" radius="4.0075" width="18.03" />
+         </effect>
+         <children>
+            <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="60.0" prefWidth="210.0" styleClass="left-title" text="FADM System" />
+            <HBox prefWidth="200.0" spacing="10.0" styleClass="left-panel-item">
+               <children>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/icons8_Home_64px.png" />
+                     </image>
+                  </ImageView>
+                  <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="left-panel-label" text="Home" />
+               </children>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </HBox>
+            <HBox prefWidth="200.0" spacing="10.0" styleClass="left-panel-item">
+               <children>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/icons8_Add_New_64px.png" />
+                     </image>
+                  </ImageView>
+                  <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="left-panel-label" text="Add Document" />
+               </children>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </HBox>
+            <HBox prefWidth="200.0" spacing="10.0" styleClass="left-panel-item">
+               <children>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/icons8_List_64px.png" />
+                     </image>
+                  </ImageView>
+                  <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="left-panel-label" text="View Documents" />
+               </children>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </HBox>
+            <HBox prefWidth="200.0" spacing="10.0" styleClass="left-panel-item">
+               <children>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/icons8_Settings_64px.png" />
+                     </image>
+                  </ImageView>
+                  <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="left-panel-label" text="Preferences" />
+               </children>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </HBox>
+            <HBox prefWidth="200.0" spacing="10.0" styleClass="left-panel-item">
+               <children>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/icons8_Login_50px.png" />
+                     </image>
+                  </ImageView>
+                  <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="left-panel-label" text="Log Out" />
+               </children>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </HBox>
+            <HBox prefWidth="200.0" spacing="10.0" styleClass="left-panel-item">
+               <children>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/icons8_Exit_Sign_50px.png" />
+                     </image>
+                  </ImageView>
+                  <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="left-panel-label" text="Exit" />
+               </children>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </HBox>
+         </children></VBox>
+   </left>
+   <center>
+      <VBox BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <children>
+            <AnchorPane maxWidth="1.7976931348623157E308" prefHeight="61.0" prefWidth="990.0" styleClass="main-title">
+               <children>
+                  <HBox layoutX="658.0" layoutY="9.0" prefWidth="300.0" spacing="10.0" AnchorPane.rightAnchor="5.0">
+                     <children>
+                        <TextField prefHeight="20.0" prefWidth="195.0" />
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/icons8_Alarm_50px_1.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/icons8_Female_Profile_50px.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+            <FlowPane hgap="20.0" vgap="20.0">
+               <children>
+                  <fx:include source="HomeTile.fxml" />
+                  <fx:include source="HomeTile.fxml" />
+                  <fx:include source="HomeTile.fxml" />
+                  <fx:include source="HomeTile.fxml" />
+               </children>
+               <VBox.margin>
+                  <Insets left="40.0" top="20.0" />
+               </VBox.margin>
+            </FlowPane>
+            <HBox prefHeight="250.0" prefWidth="990.0" spacing="20.0">
+               <children>
+                  <fx:include source="HomeProfil.fxml" />
+                  <fx:include source="HomeRecentHistory.fxml" />
+               </children>
+               <padding>
+                  <Insets left="40.0" top="40.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

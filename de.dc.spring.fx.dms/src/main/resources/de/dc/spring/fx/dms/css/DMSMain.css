@@ -1,0 +1,34 @@
+.main-title{
+	-fx-background-color: #62677E;
+	-fx-text-fill: white;
+	-fx-text-alignment: center;
+	-fx-font-size: 20;
+}
+
+.left-panel{
+	-fx-background-color: white;
+}
+
+.left-panel-item{
+	-fx-background-color: white;
+}
+
+.left-panel-item:hover{
+	-fx-background-color: #BEC6E8;
+	-fx-scale-y: 1.5;
+}
+
+.left-panel-item:pressed{
+	-fx-background-color: #00A0A3;
+}
+
+.left-panel-label{
+	-fx-font-size: 14;
+}
+
+.left-title{
+	-fx-background-color: #141C3E;
+	-fx-font-size: 18;
+	-fx-font-weight: bold;
+	-fx-text-fill: white;
+}

@@ -1,0 +1,20 @@
+.home-profil{
+	-fx-background-color: #009BD3;
+	-fx-border-radius: 3 3 0 0;
+  	-fx-background-radius: 3 3 0 0;
+}
+
+.home-profil-name{
+	-fx-font-size: 16;
+	-fx-font-weight: bold;
+	-fx-text-fill: white;
+}
+
+.home-profil-label{
+	-fx-font-size: 12;
+	-fx-text-fill: white;
+}
+
+.home-profil-content-panel{
+	-fx-background-color: white;
+}
