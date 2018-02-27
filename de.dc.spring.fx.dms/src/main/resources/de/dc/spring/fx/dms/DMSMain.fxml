@@ -12,14 +12,14 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" stylesheets="@css/DMSMain.css" xmlns="http://javafx.com/javafx/8.0.151" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:controller="de.dc.spring.fx.dms.controller.DMSMainController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1400.0" stylesheets="@css/DMSMain.css" xmlns="http://javafx.com/javafx/8.0.151" xmlns:fx="http://javafx.com/fxml/1">
    <left>
       <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="700.0" prefWidth="210.0" spacing="20.0" styleClass="left-panel" BorderPane.alignment="CENTER">
          <effect>
             <DropShadow blurType="ONE_PASS_BOX" height="0.0" radius="4.0075" width="18.03" />
          </effect>
          <children>
-            <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="60.0" prefWidth="210.0" styleClass="left-title" text="FADM System" />
+            <Label fx:id="titleLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="60.0" prefWidth="210.0" styleClass="left-title" text="FADM System" />
             <HBox prefWidth="200.0" spacing="10.0" styleClass="left-panel-item">
                <children>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
@@ -27,7 +27,7 @@
                         <Image url="@image/icons8_Home_64px.png" />
                      </image>
                   </ImageView>
-                  <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="left-panel-label" text="Home" />
+                  <Label fx:id="homeÖabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#onSwitchToHome" styleClass="left-panel-label" text="Home" HBox.hgrow="ALWAYS" />
                </children>
                <padding>
                   <Insets left="20.0" />
@@ -40,7 +40,7 @@
                         <Image url="@image/icons8_Add_New_64px.png" />
                      </image>
                   </ImageView>
-                  <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="left-panel-label" text="Add Document" />
+                  <Label fx:id="addDocumentLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#onSwitchToAddDocument" styleClass="left-panel-label" text="Add Document" HBox.hgrow="ALWAYS" />
                </children>
                <padding>
                   <Insets left="20.0" />
@@ -53,7 +53,7 @@
                         <Image url="@image/icons8_List_64px.png" />
                      </image>
                   </ImageView>
-                  <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="left-panel-label" text="View Documents" />
+                  <Label fx:id="viewDocumentLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#onSwitchToViewDocuments" styleClass="left-panel-label" text="View Documents" HBox.hgrow="ALWAYS" />
                </children>
                <padding>
                   <Insets left="20.0" />
@@ -66,7 +66,7 @@
                         <Image url="@image/icons8_Settings_64px.png" />
                      </image>
                   </ImageView>
-                  <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="left-panel-label" text="Preferences" />
+                  <Label fx:id="preferencesLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#onSwitchToPreferences" styleClass="left-panel-label" text="Preferences" HBox.hgrow="ALWAYS" />
                </children>
                <padding>
                   <Insets left="20.0" />
@@ -79,7 +79,7 @@
                         <Image url="@image/icons8_Login_50px.png" />
                      </image>
                   </ImageView>
-                  <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="left-panel-label" text="Log Out" />
+                  <Label fx:id="logOutLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#onSwitchToLogOut" styleClass="left-panel-label" text="Log Out" HBox.hgrow="ALWAYS" />
                </children>
                <padding>
                   <Insets left="20.0" />
@@ -92,7 +92,7 @@
                         <Image url="@image/icons8_Exit_Sign_50px.png" />
                      </image>
                   </ImageView>
-                  <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="left-panel-label" text="Exit" />
+                  <Label fx:id="exitLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#onSwitchToExit" styleClass="left-panel-label" text="Exit" HBox.hgrow="ALWAYS" />
                </children>
                <padding>
                   <Insets left="20.0" />
@@ -110,13 +110,13 @@
                <children>
                   <HBox layoutX="658.0" layoutY="9.0" prefWidth="300.0" spacing="10.0" AnchorPane.rightAnchor="5.0">
                      <children>
-                        <TextField prefHeight="20.0" prefWidth="195.0" />
+                        <TextField fx:id="searchText" prefHeight="20.0" prefWidth="195.0" />
                         <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@image/icons8_Alarm_50px_1.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="profilImage" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@image/icons8_Female_Profile_50px.png" />
                            </image>

@@ -7,7 +7,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -16,7 +16,7 @@ import javafx.stage.StageStyle;
 public class DocumentManagementApplication extends Application {
 
     private ConfigurableApplicationContext springContext;
-    private AnchorPane root;
+    private BorderPane root;
 	private FXMLLoader fxmlLoader;
 
     @Override
@@ -29,8 +29,8 @@ public class DocumentManagementApplication extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        primaryStage.setTitle("Phima Application");
-        Scene scene = new Scene(root, 1230, 800);
+        primaryStage.setTitle("DBS Application");
+        Scene scene = new Scene(root, 1400, 800);
         scene.setFill(Color.TRANSPARENT);
         primaryStage.initStyle(StageStyle.DECORATED);
         primaryStage.setScene(scene);
