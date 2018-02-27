@@ -37,8 +37,7 @@ public class DMSMainController extends BaseDMSMainController {
 
 	@Override
 	protected void onSwitchToViewDocuments(MouseEvent event) {
-		// TODO Auto-generated method stub
-
+		viewDocumentsPanel.toFront();
 	}
 
 }

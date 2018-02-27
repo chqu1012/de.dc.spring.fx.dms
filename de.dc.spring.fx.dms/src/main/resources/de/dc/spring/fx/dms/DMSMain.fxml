@@ -133,6 +133,11 @@
                         <fx:include source="AddDocument.fxml" />
                      </children>
                   </AnchorPane>
+                  <AnchorPane fx:id="viewDocumentsPanel" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;">
+                     <children>
+                        <fx:include source="ViewDocuments.fxml" />
+                     </children>
+                  </AnchorPane>
                   <VBox fx:id="homePanel" style="-fx-background-color: white;">
                      <children>
                         <FlowPane hgap="20.0" vgap="20.0">
