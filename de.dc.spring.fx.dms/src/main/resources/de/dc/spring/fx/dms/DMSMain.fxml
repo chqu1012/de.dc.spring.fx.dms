@@ -10,9 +10,10 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane fx:controller="de.dc.spring.fx.dms.controller.DMSMainController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1400.0" stylesheets="@css/DMSMain.css" xmlns="http://javafx.com/javafx/8.0.151" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1400.0" stylesheets="@css/DMSMain.css" xmlns="http://javafx.com/javafx/8.0.151" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.dc.spring.fx.dms.controller.DMSMainController">
    <left>
       <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="700.0" prefWidth="210.0" spacing="20.0" styleClass="left-panel" BorderPane.alignment="CENTER">
          <effect>
@@ -125,26 +126,34 @@
                   </HBox>
                </children>
             </AnchorPane>
-            <FlowPane hgap="20.0" vgap="20.0">
+            <StackPane fx:id="contentStackPane">
                <children>
-                  <fx:include source="HomeTile.fxml" />
-                  <fx:include source="HomeTile.fxml" />
-                  <fx:include source="HomeTile.fxml" />
-                  <fx:include source="HomeTile.fxml" />
-               </children>
-               <VBox.margin>
-                  <Insets left="40.0" top="20.0" />
-               </VBox.margin>
-            </FlowPane>
-            <HBox prefHeight="250.0" prefWidth="990.0" spacing="20.0">
-               <children>
-                  <fx:include source="HomeProfil.fxml" />
-                  <fx:include source="HomeRecentHistory.fxml" />
+                  <VBox>
+                     <children>
+                        <FlowPane hgap="20.0" vgap="20.0">
+                           <children>
+                              <fx:include source="HomeTile.fxml" />
+                              <fx:include source="HomeTile.fxml" />
+                              <fx:include source="HomeTile.fxml" />
+                              <fx:include source="HomeTile.fxml" />
+                           </children>
+                        </FlowPane>
+                        <HBox prefHeight="250.0" prefWidth="990.0" spacing="20.0">
+                           <children>
+                              <fx:include source="HomeProfil.fxml" />
+                              <fx:include source="HomeRecentHistory.fxml" />
+                           </children>
+                           <padding>
+                              <Insets top="40.0" />
+                           </padding>
+                        </HBox>
+                     </children>
+                  </VBox>
                </children>
                <padding>
                   <Insets left="40.0" top="40.0" />
                </padding>
-            </HBox>
+            </StackPane>
          </children>
       </VBox>
    </center>

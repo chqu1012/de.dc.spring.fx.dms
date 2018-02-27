@@ -4,6 +4,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.StackPane;
 
 public abstract class BaseDMSMainController {
 
@@ -34,6 +35,9 @@ public abstract class BaseDMSMainController {
     @FXML
     protected ImageView profilImage;
 
+    @FXML
+    protected StackPane contentStackPane;
+    
     @FXML
     protected abstract void onSwitchToAddDocument(MouseEvent event);
 
