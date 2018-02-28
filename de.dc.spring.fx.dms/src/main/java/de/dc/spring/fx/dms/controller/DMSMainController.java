@@ -2,7 +2,10 @@ package de.dc.spring.fx.dms.controller;
 
 import org.springframework.stereotype.Controller;
 
+import de.dc.fx.animation.other.AnimationType;
+import de.dc.fx.animation.other.AnimationUtils;
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
 import javafx.scene.input.MouseEvent;
 
 @Controller
@@ -20,16 +23,22 @@ public class DMSMainController extends BaseDMSMainController {
 	@FXML
 	HomeTileController receiptAnchorPaneController;
 	
+	Parent lastPanel;
+	
 	public void initialize() {
 		invoiceAnchorPaneController.setImageBackground("#0F62C6");
 		howtoAnchorPaneController.setImageBackground("#009AD2");
 		formularAnchorPaneController.setImageBackground("#00A0A3");
 		receiptAnchorPaneController.setImageBackground("#FF8350");
+		lastPanel=homePanel;
 	}
 	
 	@Override
 	protected void onSwitchToAddDocument(MouseEvent event) {
 		addDocumentPanel.toFront();
+		AnimationUtils.createTransition(lastPanel, AnimationType.FADE_OUT_DOWN).play();
+		lastPanel=addDocumentPanel;
+		AnimationUtils.createTransition(addDocumentPanel, AnimationType.FADE_IN_LEFT).play();
 	}
 
 	@Override
@@ -41,6 +50,9 @@ public class DMSMainController extends BaseDMSMainController {
 	@Override
 	protected void onSwitchToHome(MouseEvent event) {
 		homePanel.toFront();
+		AnimationUtils.createTransition(lastPanel, AnimationType.FADE_OUT_DOWN).play();
+		lastPanel=homePanel;
+		AnimationUtils.createTransition(homePanel, AnimationType.FADE_IN_LEFT).play();
 	}
 
 	@Override
@@ -58,6 +70,9 @@ public class DMSMainController extends BaseDMSMainController {
 	@Override
 	protected void onSwitchToViewDocuments(MouseEvent event) {
 		viewDocumentsPanel.toFront();
+		AnimationUtils.createTransition(lastPanel, AnimationType.FADE_OUT_DOWN).play();
+		lastPanel=viewDocumentsPanel;
+		AnimationUtils.createTransition(viewDocumentsPanel, AnimationType.FADE_IN_LEFT).play();
 	}
 
 }

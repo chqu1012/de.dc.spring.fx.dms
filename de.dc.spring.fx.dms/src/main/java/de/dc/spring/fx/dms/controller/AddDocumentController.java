@@ -9,14 +9,12 @@ public class AddDocumentController extends BaseAddDocumentController {
 
 	@Override
 	protected void onCancel(ActionEvent event) {
-		// TODO Auto-generated method stub
-		
+		root.getParent().toBack();
 	}
 
 	@Override
 	protected void onCreate(ActionEvent event) {
-		// TODO Auto-generated method stub
-		
+		root.getParent().toBack();
 	}
 
 }

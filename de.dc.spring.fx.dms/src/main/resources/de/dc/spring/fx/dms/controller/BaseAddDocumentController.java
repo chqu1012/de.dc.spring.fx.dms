@@ -6,9 +6,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 
 public abstract class BaseAddDocumentController {
 
+	@FXML 
+	protected AnchorPane root;
+	
     @FXML
     protected TextField nameText;
 

@@ -2,18 +2,6 @@
     -fx-table-color: rgba(82, 100, 174, 0.4);
     -fx-table-rippler-color: rgba(82, 100, 174, 0.6);
 }
-.table-view:focused {
-    -fx-background-color: -fx-table-color, -fx-box-border, -fx-control-inner-background;
-    -fx-background-radius: 1.4, 0, 0;
-    /*....*/
-    -fx-padding: 1; /* 0.083333em; */
-}
-
-.table-view:focused .table-row-cell:selected{
-    -fx-background-color: -fx-table-color;
-    -fx-table-cell-border-color: -fx-table-color;
-    -fx-text-fill: BLACK;
-}
 
 .table-view:focused .table-row-cell:selected .table-cell {
     -fx-text-fill: BLACK;
