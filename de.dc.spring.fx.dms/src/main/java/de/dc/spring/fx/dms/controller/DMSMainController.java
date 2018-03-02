@@ -1,5 +1,6 @@
 package de.dc.spring.fx.dms.controller;
 
+import org.controlsfx.control.textfield.TextFields;
 import org.springframework.stereotype.Controller;
 
 import de.dc.fx.animation.other.AnimationType;
@@ -31,6 +32,9 @@ public class DMSMainController extends BaseDMSMainController {
 		formularAnchorPaneController.setImageBackground("#00A0A3");
 		receiptAnchorPaneController.setImageBackground("#FF8350");
 		lastPanel=homePanel;
+		
+		// TODO: Fill with DB data
+		TextFields.bindAutoCompletion(searchText, "Hey", "Hello", "Hello World", "Apple", "Cool", "Costa", "Cola", "Coca Cola");
 	}
 	
 	@Override
@@ -73,6 +77,12 @@ public class DMSMainController extends BaseDMSMainController {
 		AnimationUtils.createTransition(lastPanel, AnimationType.FADE_OUT_DOWN).play();
 		lastPanel=viewDocumentsPanel;
 		AnimationUtils.createTransition(viewDocumentsPanel, AnimationType.FADE_IN_LEFT).play();
+	}
+
+	@Override
+	protected void onSwitchToCalendar(MouseEvent event) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.web.WebView?>
+
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.151" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <AnchorPane prefHeight="94.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="22.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+               <image>
+                  <Image url="@image/icons8_Microsoft_Project_96px.png" />
+               </image>
+            </ImageView>
+            <HBox layoutX="80.0" layoutY="-3.0" prefWidth="200.0" AnchorPane.leftAnchor="90.0" AnchorPane.topAnchor="20.0">
+               <children>
+                  <Hyperlink maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Projectname" />
+                  <Label maxHeight="1.7976931348623157E308" text="/" />
+                  <Hyperlink maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="PROJ-000212" />
+               </children>
+            </HBox>
+            <Label layoutX="90.0" layoutY="47.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Description for this project" AnchorPane.leftAnchor="90.0" AnchorPane.topAnchor="45.0">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </top>
+   <center>
+      <ScrollPane fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
+        <content>
+          <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" style="-fx-background-color: white;">
+               <children>
+                  <HBox maxWidth="1.7976931348623157E308" prefHeight="41.0" prefWidth="490.0" spacing="10.0">
+                     <children>
+                        <Button mnemonicParsing="false" prefWidth="70.0" text="Button" />
+                        <Button mnemonicParsing="false" prefWidth="70.0" text="Clipboard" />
+                        <Button mnemonicParsing="false" prefWidth="70.0" text="Files" />
+                        <Button mnemonicParsing="false" prefWidth="70.0" text="Button" />
+                        <Button mnemonicParsing="false" prefWidth="70.0" text="Explorer" />
+                        <Button mnemonicParsing="false" prefWidth="70.0" text="Export" />
+                     </children>
+                     <padding>
+                        <Insets left="20.0" top="15.0" />
+                     </padding>
+                  </HBox>
+                  <HBox layoutY="60.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="17.0" prefWidth="605.0" spacing="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="280.0" AnchorPane.topAnchor="60.0">
+                     <children>
+                        <Label maxHeight="1.7976931348623157E308" text="Details">
+                           <padding>
+                              <Insets left="20.0" />
+                           </padding>
+                        </Label>
+                        <Separator maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+                  <HBox layoutX="600.0" layoutY="60.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="17.0" prefWidth="265.0" spacing="10.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="60.0">
+                     <children>
+                        <Label maxHeight="1.7976931348623157E308" text="Dates">
+                           <padding>
+                              <Insets left="20.0" />
+                           </padding>
+                        </Label>
+                        <Separator maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="17.0" prefWidth="116.0" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+                  <TabPane layoutY="81.0" maxWidth="1.7976931348623157E308" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="400.0">
+                    <tabs>
+                      <Tab text="Generell">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                        </content>
+                      </Tab>
+                      <Tab text="History">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                        </content>
+                      </Tab>
+                        <Tab text="Status">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                           </content>
+                        </Tab>
+                        <Tab text="Files">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                           </content>
+                        </Tab>
+                    </tabs>
+                  </TabPane>
+                  <TextField layoutX="31.0" layoutY="92.0" prefHeight="173.0" prefWidth="541.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="315.0" AnchorPane.topAnchor="95.0" />
+                  <Button layoutX="574.0" layoutY="95.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="29.0" AnchorPane.rightAnchor="282.0" />
+                  <Button layoutX="574.0" layoutY="126.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="29.0" AnchorPane.rightAnchor="282.0" />
+                  <WebView layoutX="21.0" layoutY="82.0" prefHeight="208.0" prefWidth="593.0" AnchorPane.bottomAnchor="320.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="275.0" AnchorPane.topAnchor="80.0" />
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+   </center>
+</BorderPane>

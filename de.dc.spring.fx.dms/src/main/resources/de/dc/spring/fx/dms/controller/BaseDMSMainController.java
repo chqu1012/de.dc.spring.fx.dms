@@ -47,6 +47,9 @@ public abstract class BaseDMSMainController {
     protected Label preferencesLabel;
 
     @FXML
+    protected Label calendarLabel;
+
+    @FXML
     protected Label logOutLabel;
 
     @FXML
@@ -78,5 +81,8 @@ public abstract class BaseDMSMainController {
 
     @FXML
     protected abstract void onSwitchToViewDocuments(MouseEvent event);
+
+    @FXML
+    protected abstract void onSwitchToCalendar(MouseEvent event);
 
 }

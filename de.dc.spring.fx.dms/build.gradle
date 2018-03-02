@@ -38,6 +38,11 @@ dependencies {
 	compile group: 'org.fxmisc.richtext', name: 'richtextfx', version: '0.7-M5'
 	compile group: 'org.controlsfx', name: 'controlsfx', version: '8.40.13'
 	compile group: 'com.github.rjeschke', name: 'txtmark', version: '0.13'
+	compile group: 'com.calendarfx', name: 'calendar', version: '8.4.2', ext: 'pom'
+	compile group: 'com.calendarfx', name: 'view', version: '8.4.2'
+	compile group: 'com.calendarfx', name: 'recurrence', version: '8.4.2'
+	compile group: 'de.jensd', name: 'fontawesomefx-commons', version: '8.13'
+	compile group: 'de.jensd', name: 'fontawesomefx-fontawesome', version: '4.7.0-9.1.2'
 	runtime('com.h2database:h2')
 	
 	compile group: 'org.jfxtras', name: 'jfxtras-labs', version: '8.0-r5'
