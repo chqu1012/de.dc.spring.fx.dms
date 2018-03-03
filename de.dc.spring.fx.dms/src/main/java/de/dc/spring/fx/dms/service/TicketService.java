@@ -34,7 +34,10 @@ public class TicketService implements IService<Ticket>{
 		ticketRepository.delete(input);
 	}
 
+<<<<<<< HEAD
 	public String[] getAutocompletion(){
 		return ticketRepository.findAll().stream().map(e->e.getName()).toArray(String[]::new);
 	}
+=======
+>>>>>>> refs/remotes/origin/master
 }
