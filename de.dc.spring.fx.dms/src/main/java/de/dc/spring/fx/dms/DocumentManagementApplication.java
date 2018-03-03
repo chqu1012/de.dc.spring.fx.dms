@@ -18,7 +18,7 @@ public class DocumentManagementApplication extends Application {
     private ConfigurableApplicationContext springContext;
     private BorderPane root;
 	private FXMLLoader fxmlLoader;
-
+	
     @Override
     public void init() throws Exception {
         springContext = SpringApplication.run(DocumentManagementApplication.class);

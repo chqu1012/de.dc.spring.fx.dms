@@ -1,10 +1,15 @@
 package de.dc.spring.fx.dms.controller;
 
+import java.time.LocalDate;
+
 import org.controlsfx.control.textfield.TextFields;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import de.dc.fx.animation.other.AnimationType;
 import de.dc.fx.animation.other.AnimationUtils;
+import de.dc.spring.fx.dms.model.Ticket;
+import de.dc.spring.fx.dms.service.TicketService;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.input.MouseEvent;
@@ -26,6 +31,8 @@ public class DMSMainController extends BaseDMSMainController {
 	
 	Parent lastPanel;
 	
+	@Autowired TicketService ticketService;
+	
 	public void initialize() {
 		invoiceAnchorPaneController.setImageBackground("#0F62C6");
 		howtoAnchorPaneController.setImageBackground("#009AD2");
@@ -34,7 +41,20 @@ public class DMSMainController extends BaseDMSMainController {
 		lastPanel=homePanel;
 		
 		// TODO: Fill with DB data
-		TextFields.bindAutoCompletion(searchText, "Hey", "Hello", "Hello World", "Apple", "Cool", "Costa", "Cola", "Coca Cola");
+		TextFields.bindAutoCompletion(searchText, ticketService.getAutocompletion());
+		
+		boolean initTestData = false;
+		if (initTestData) {
+			for (int i = 0; i < 10; i++) {
+				String name="Ticket Number "+i;
+				String description="A small description "+i;
+				int categoryId=i;
+				int userId = i;
+				LocalDate createdOn=LocalDate.now();
+				Ticket ticket=new Ticket(name, description, categoryId, userId, createdOn);
+				ticketService.create(ticket);
+			}
+		}
 	}
 	
 	@Override
