@@ -1,5 +1,8 @@
 package de.dc.spring.fx.dms.controller;
 
+import com.jfoenix.controls.JFXDatePicker;
+
+import de.dc.spring.fx.dms.model.Category;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -17,7 +20,10 @@ public abstract class BaseAddDocumentController {
     protected TextField nameText;
 
     @FXML
-    protected ComboBox<?> categoryComboView;
+    protected JFXDatePicker createdOnDatePicker;
+    
+    @FXML
+    protected ComboBox<Category> categoryComboView;
 
     @FXML
     protected TextArea descriptionTextArea;
@@ -33,4 +39,8 @@ public abstract class BaseAddDocumentController {
 
     @FXML
     protected abstract void onCreate(ActionEvent event);
+    
+    @FXML
+    protected abstract void onAddButton(ActionEvent event);
+
 }
