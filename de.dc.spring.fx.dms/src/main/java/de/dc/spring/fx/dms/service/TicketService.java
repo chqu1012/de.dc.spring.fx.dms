@@ -2,6 +2,7 @@ package de.dc.spring.fx.dms.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,31 +15,44 @@ public class TicketService implements IService<Ticket>{
 
 	@Autowired TicketRepository ticketRepository;
 	
+	private List<Ticket> tickets;
+	
+	public List<Ticket> reload(){
+		tickets = ticketRepository.findAll();
+		return tickets;
+	}
+	
 	@Override
 	public List<Ticket> getAll() {
-		return ticketRepository.findAll();
+		if (tickets==null) {
+			reload();
+		}
+		return tickets;
 	}
 
 	@Override
 	public Optional<Ticket> findById(Long id) {
-		return ticketRepository.findById(id);
+		return tickets.stream().filter(e->e.getId()==id).findFirst();
 	}
 
 	@Override
 	public Ticket create(Ticket input) {
-		return ticketRepository.save(input);
+		Ticket ticket = ticketRepository.save(input);
+		tickets.add(ticket);
+		return ticket;
 	}
 
 	@Override
 	public void remove(Ticket input) {
+		tickets.remove(input);
 		ticketRepository.delete(input);
 	}
 
-	public String[] getAutocompletion(){
-		return ticketRepository.findAll().stream().map(e->e.getName()).toArray(String[]::new);
+	public List<Ticket> findTicketsByNameAndId(String name, long id) {
+		return ticketRepository.find(id, name);
 	}
-
+	
 	public List<Ticket> findByName(String name) {
-		return ticketRepository.findByName(name);
+		return tickets.stream().filter(e->e.getName().equals(name)).collect(Collectors.toList());
 	}
 }

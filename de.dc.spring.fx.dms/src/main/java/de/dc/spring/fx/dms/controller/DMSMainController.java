@@ -1,7 +1,6 @@
 package de.dc.spring.fx.dms.controller;
 
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Optional;
 
 import org.controlsfx.control.textfield.TextFields;
@@ -14,7 +13,6 @@ import de.dc.spring.fx.dms.model.Ticket;
 import de.dc.spring.fx.dms.service.TicketService;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
-import javafx.scene.control.ChoiceDialog;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -47,7 +45,7 @@ public class DMSMainController extends BaseDMSMainController {
 		lastPanel=homePanel;
 		
 		// TODO: Fill with DB data
-		TextFields.bindAutoCompletion(searchText, ticketService.getAutocompletion());
+		TextFields.bindAutoCompletion(searchText, ticketService.getAll());
 		
 		initTestData(false);
 	}
@@ -117,20 +115,11 @@ public class DMSMainController extends BaseDMSMainController {
 	@FXML 
 	public void onSearchTextKeyReleased(KeyEvent event) {
 		if (event.getCode().equals(KeyCode.ENTER)) {
-			List<Ticket> tickets = ticketService.findByName(searchText.getText());
-			
-			if (tickets.size()>1) {
-				ChoiceDialog<Ticket> dialog = new ChoiceDialog<Ticket>(tickets.get(0), tickets);
-				dialog.setTitle("Choice Ticket");
-				dialog.setHeaderText("Select your choice");
-				
-				Optional<Ticket> result = dialog.showAndWait();
-				if (result.isPresent()) {
-					showTicket(result.get());	
-				}
-			}else if (tickets.size()==1) {
-				showTicket(tickets.get(0));	
-			}
+			String[] searchFields = searchText.getText().split(":");
+			String splittedId = searchFields[0].split("-")[1];
+			long id = Long.valueOf(splittedId);
+			Optional<Ticket> tickets = ticketService.findById(id);			
+			showTicket(tickets.get());
 			searchText.setText("");
 		}
 	}
