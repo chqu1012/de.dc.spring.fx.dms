@@ -1,12 +1,25 @@
 package de.dc.spring.fx.dms.controller;
 
+import java.text.DecimalFormat;
+
 import org.springframework.stereotype.Controller;
 
+import de.dc.spring.fx.dms.model.Ticket;
 import javafx.event.ActionEvent;
 
 @Controller
 public class DMSDetailController extends BaseDMSDetailController {
 
+	public static final DecimalFormat format = new DecimalFormat("00000");
+	
+	public void setDetails(Ticket ticket) {
+		documentIdLabel.setText("DMS-"+format.format(ticket.getId()));
+		descriptionLabel.setText(ticket.getName());
+		descriptionText.setText(ticket.getDescription()==null?"":ticket.getDescription());
+		createdOnLabel.setText(ticket.getCreatedOn().toString());
+		lastUpdate÷abel.setText(ticket.getCreatedOn().toString());
+	}
+	
 	@Override
 	protected void onClipboardButton(ActionEvent event) {
 		// TODO Auto-generated method stub

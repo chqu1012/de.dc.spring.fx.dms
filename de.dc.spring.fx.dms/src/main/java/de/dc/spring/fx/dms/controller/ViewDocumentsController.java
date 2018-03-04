@@ -13,6 +13,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 public class ViewDocumentsController extends BaseViewDocumentsController {
 
 	@Autowired TicketRepository ticketRepository;
+	@Autowired DMSMainController dmsMainController;
 	
 	ObservableList<Ticket> ticketData = FXCollections.observableArrayList();
 	
@@ -25,5 +26,11 @@ public class ViewDocumentsController extends BaseViewDocumentsController {
 		
 		ticketData.addAll(ticketRepository.findAll());
 		ticketDocument.setItems(ticketData);
+		
+		ticketDocument.setOnMouseClicked(e->{
+			if (e.getClickCount()==2) {
+				dmsMainController.showTicket(ticketDocument.getSelectionModel().getSelectedItem());
+			}
+		});
 	}
 }

@@ -34,6 +34,7 @@ public class DMSMainController extends BaseDMSMainController {
 	Parent lastPanel;
 	
 	@Autowired TicketService ticketService;
+	@Autowired DMSDetailController dmsDetailController;
 	
 	public void initialize() {
 		invoiceAnchorPaneController.setImageBackground("#0F62C6");
@@ -115,6 +116,15 @@ public class DMSMainController extends BaseDMSMainController {
 		if (event.getCode().equals(KeyCode.ENTER)) {
 			searchText.setText("");
 		}
+	}
+	
+	public void showTicket(Ticket ticket) {
+		dmsDetailPane.toFront();
+		AnimationUtils.createTransition(lastPanel, AnimationType.FADE_OUT_DOWN).play();
+		lastPanel=dmsDetailPane;
+		dmsDetailController.setDetails(ticket);
+		AnimationUtils.createTransition(dmsDetailPane, AnimationType.FADE_IN_LEFT).play();
+		dmsDetailPane.toFront();
 	}
 
 }

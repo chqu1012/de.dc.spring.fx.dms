@@ -30,7 +30,7 @@ public class DocumentManagementApplication extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("DBS Application");
-        Scene scene = new Scene(root, 1400, 800);
+        Scene scene = new Scene(root, 1400, 820);
         scene.setFill(Color.TRANSPARENT);
         primaryStage.initStyle(StageStyle.DECORATED);
         primaryStage.setScene(scene);
