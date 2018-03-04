@@ -9,7 +9,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
 public abstract class BaseDMSMainController {
-	
+
 	@FXML
 	protected AnchorPane invoiceAnchorPane;
 	

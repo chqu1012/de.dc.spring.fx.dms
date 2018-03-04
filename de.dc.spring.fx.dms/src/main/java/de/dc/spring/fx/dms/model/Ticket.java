@@ -100,4 +100,9 @@ public class Ticket {
 	public void setUpdatedOn(LocalDate updatedOn) {
 		this.updatedOn = updatedOn;
 	}
+	
+	@Override
+	public String toString() {
+		return id+": "+name;
+	}
 }

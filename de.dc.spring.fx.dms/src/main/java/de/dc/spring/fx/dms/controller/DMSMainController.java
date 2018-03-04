@@ -12,6 +12,8 @@ import de.dc.spring.fx.dms.model.Ticket;
 import de.dc.spring.fx.dms.service.TicketService;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
 @Controller
@@ -43,7 +45,10 @@ public class DMSMainController extends BaseDMSMainController {
 		// TODO: Fill with DB data
 		TextFields.bindAutoCompletion(searchText, ticketService.getAutocompletion());
 		
-		boolean initTestData = false;
+		initTestData(false);
+	}
+
+	private void initTestData(boolean initTestData) {
 		if (initTestData) {
 			for (int i = 0; i < 10; i++) {
 				String name="Ticket Number "+i;
@@ -103,6 +108,13 @@ public class DMSMainController extends BaseDMSMainController {
 	protected void onSwitchToCalendar(MouseEvent event) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@FXML 
+	public void onSearchTextKeyReleased(KeyEvent event) {
+		if (event.getCode().equals(KeyCode.ENTER)) {
+			searchText.setText("");
+		}
 	}
 
 }
