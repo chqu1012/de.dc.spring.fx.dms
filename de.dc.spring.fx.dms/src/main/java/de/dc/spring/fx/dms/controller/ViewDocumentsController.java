@@ -15,7 +15,7 @@ public class ViewDocumentsController extends BaseViewDocumentsController {
 	@Autowired TicketRepository ticketRepository;
 	@Autowired DMSMainController dmsMainController;
 	
-	ObservableList<Ticket> ticketData = FXCollections.observableArrayList();
+	public ObservableList<Ticket> ticketData = FXCollections.observableArrayList();
 	
 	public void initialize() {
 		idColumn.setCellValueFactory(new PropertyValueFactory<Ticket, String>("id"));

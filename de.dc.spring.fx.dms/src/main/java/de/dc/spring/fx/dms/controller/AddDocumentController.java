@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import de.dc.spring.fx.dms.model.Category;
+import de.dc.spring.fx.dms.model.Ticket;
 import de.dc.spring.fx.dms.repository.CategoryRepository;
 import de.dc.spring.fx.dms.service.TicketService;
 import javafx.collections.FXCollections;
@@ -16,6 +17,9 @@ import javafx.scene.control.TextInputDialog;
 @Controller
 public class AddDocumentController extends BaseAddDocumentController {
 
+	@Autowired ViewDocumentsController viewDocumentController;
+	@Autowired DMSMainController dmsMainController;
+	
 	@Autowired CategoryRepository categoryRepository;
 	@Autowired TicketService ticketService;
 
@@ -35,7 +39,18 @@ public class AddDocumentController extends BaseAddDocumentController {
 
 	@Override
 	protected void onCreate(ActionEvent event) {
-		root.getParent().toBack();
+		Ticket ticket = new Ticket(nameText.getText(), descriptionTextArea.getText(), categoryComboView.getSelectionModel().getSelectedIndex(), 0, LocalDate.now());
+		ticketService.create(ticket);
+		viewDocumentController.ticketData.add(ticket);
+		dmsMainController.showTicket(ticket);
+		
+		clearFields();
+	}
+
+	private void clearFields() {
+		nameText.setText("");
+		descriptionTextArea.setText("");
+		createdOnDatePicker.setValue(LocalDate.now());
 	}
 
 	@Override
