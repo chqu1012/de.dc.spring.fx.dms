@@ -9,6 +9,7 @@ import de.dc.spring.fx.dms.model.Category;
 import de.dc.spring.fx.dms.model.Ticket;
 import de.dc.spring.fx.dms.repository.CategoryRepository;
 import de.dc.spring.fx.dms.service.TicketService;
+import de.dc.spring.fx.dms.util.FolderUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -22,7 +23,8 @@ public class AddDocumentController extends BaseAddDocumentController {
 	
 	@Autowired CategoryRepository categoryRepository;
 	@Autowired TicketService ticketService;
-
+	@Autowired FolderUtil folderUtil;
+	
 	ObservableList<Category> categoryData = FXCollections.observableArrayList();
 	
 	public void initialize() {
@@ -42,6 +44,9 @@ public class AddDocumentController extends BaseAddDocumentController {
 		Ticket ticket = new Ticket(nameText.getText(), descriptionTextArea.getText(), categoryComboView.getSelectionModel().getSelectedIndex(), 0, LocalDate.now());
 		ticketService.create(ticket);
 		viewDocumentController.ticketData.add(ticket);
+
+		folderUtil.createFolder(ticket);
+		
 		dmsMainController.showTicket(ticket);
 		
 		clearFields();

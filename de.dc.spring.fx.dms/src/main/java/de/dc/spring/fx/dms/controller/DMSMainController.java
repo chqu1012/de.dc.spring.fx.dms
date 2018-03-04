@@ -11,6 +11,7 @@ import de.dc.fx.animation.other.AnimationType;
 import de.dc.fx.animation.other.AnimationUtils;
 import de.dc.spring.fx.dms.model.Ticket;
 import de.dc.spring.fx.dms.service.TicketService;
+import de.dc.spring.fx.dms.util.FolderUtil;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.input.KeyCode;
@@ -36,6 +37,7 @@ public class DMSMainController extends BaseDMSMainController {
 	
 	@Autowired TicketService ticketService;
 	@Autowired DMSDetailController dmsDetailController;
+	@Autowired FolderUtil folderUtil;
 	
 	public void initialize() {
 		invoiceAnchorPaneController.setImageBackground("#0F62C6");
@@ -43,6 +45,8 @@ public class DMSMainController extends BaseDMSMainController {
 		formularAnchorPaneController.setImageBackground("#00A0A3");
 		receiptAnchorPaneController.setImageBackground("#FF8350");
 		lastPanel=homePanel;
+		
+		folderUtil.createIfNotExist();
 		
 		// TODO: Fill with DB data
 		TextFields.bindAutoCompletion(searchText, ticketService.getAll());
