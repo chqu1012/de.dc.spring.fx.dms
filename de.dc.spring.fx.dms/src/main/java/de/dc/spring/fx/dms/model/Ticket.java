@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import de.dc.spring.fx.dms.controller.DMSDetailController;
+
 @Entity
 public class Ticket {
 
@@ -103,6 +105,6 @@ public class Ticket {
 	
 	@Override
 	public String toString() {
-		return id+": "+name;
+		return "DMS-"+DMSDetailController.format.format(id)+": "+name;
 	}
 }

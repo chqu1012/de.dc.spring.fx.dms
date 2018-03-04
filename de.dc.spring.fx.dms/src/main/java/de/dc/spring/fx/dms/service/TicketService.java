@@ -37,4 +37,8 @@ public class TicketService implements IService<Ticket>{
 	public String[] getAutocompletion(){
 		return ticketRepository.findAll().stream().map(e->e.getName()).toArray(String[]::new);
 	}
+
+	public List<Ticket> findByName(String name) {
+		return ticketRepository.findByName(name);
+	}
 }

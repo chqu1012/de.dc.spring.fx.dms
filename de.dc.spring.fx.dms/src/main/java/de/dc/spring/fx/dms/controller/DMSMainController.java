@@ -1,6 +1,8 @@
 package de.dc.spring.fx.dms.controller;
 
 import java.time.LocalDate;
+import java.util.List;
+import java.util.Optional;
 
 import org.controlsfx.control.textfield.TextFields;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,7 @@ import de.dc.spring.fx.dms.model.Ticket;
 import de.dc.spring.fx.dms.service.TicketService;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
+import javafx.scene.control.ChoiceDialog;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -114,6 +117,20 @@ public class DMSMainController extends BaseDMSMainController {
 	@FXML 
 	public void onSearchTextKeyReleased(KeyEvent event) {
 		if (event.getCode().equals(KeyCode.ENTER)) {
+			List<Ticket> tickets = ticketService.findByName(searchText.getText());
+			
+			if (tickets.size()>1) {
+				ChoiceDialog<Ticket> dialog = new ChoiceDialog<Ticket>(tickets.get(0), tickets);
+				dialog.setTitle("Choice Ticket");
+				dialog.setHeaderText("Select your choice");
+				
+				Optional<Ticket> result = dialog.showAndWait();
+				if (result.isPresent()) {
+					showTicket(result.get());	
+				}
+			}else if (tickets.size()==1) {
+				showTicket(tickets.get(0));	
+			}
 			searchText.setText("");
 		}
 	}
