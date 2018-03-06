@@ -55,6 +55,14 @@ public abstract class BaseFileViewController {
     protected abstract void onOpenFile(ActionEvent event);
     
     @FXML
-    protected abstract void onImportFiles(ActionEvent event);
+	protected abstract void onImportFilesFromTree(ActionEvent event);
 
+    @FXML
+	protected abstract void onImportFilesFromTable(ActionEvent event);
+
+    @FXML
+    protected abstract void onDeleteFolder(ActionEvent event);
+
+    @FXML
+    protected abstract void onDeleteFromTable(ActionEvent event);
 }

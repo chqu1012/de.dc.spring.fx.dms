@@ -3,6 +3,7 @@ package de.dc.spring.fx.dms.control.controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 import org.apache.commons.io.FileUtils;
 
@@ -13,6 +14,9 @@ import javafx.application.HostServices;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -29,8 +33,11 @@ public class FileViewController extends BaseFileViewController {
 	public void initialize() {
 		fileTreeView.setCellFactory(new FileTreeCellFactory());
 		fileTreeView.setOnMouseClicked(e->{
-			fileData.clear();
-			fileData.addAll(fileTreeView.getSelectionModel().getSelectedItem().getValue().listFiles());
+			TreeItem<File> selectedItem = fileTreeView.getSelectionModel().getSelectedItem();
+			if (selectedItem!=null) {
+				fileData.clear();
+				fileData.addAll(selectedItem.getValue().listFiles());
+			}
 		});
 		fileTable.setItems(fileData);
 		fileTable.setOnMouseClicked(e->{
@@ -38,10 +45,12 @@ public class FileViewController extends BaseFileViewController {
 				onOpenFile(null);
 			}else {
 				File selectedItem = fileTable.getSelectionModel().getSelectedItem();
-				String name = selectedItem.getName();
-				if (name.endsWith(".png") ||name.endsWith(".bmp")||name.endsWith(".jpg")||name.endsWith(".jpeg")) {
-					imageViewScrollPane.toFront();
-					imageView.setImage(ImageHelper.getImage(selectedItem));
+				if (selectedItem!=null) {
+					String name = selectedItem.getName();
+					if (name.endsWith(".png") ||name.endsWith(".bmp")||name.endsWith(".jpg")||name.endsWith(".jpeg")) {
+						imageViewScrollPane.toFront();
+						imageView.setImage(ImageHelper.getImage(selectedItem));
+					}
 				}
 			}
 		});
@@ -119,11 +128,13 @@ public class FileViewController extends BaseFileViewController {
 	@Override
 	protected void onOpenFile(ActionEvent event) {
 		File selectedItem = fileTable.getSelectionModel().getSelectedItem();
-		if (selectedItem.isDirectory()) {
-			fileData.clear();
-			fileData.addAll(selectedItem.listFiles());
-		}else {
-			hostServices.showDocument(selectedItem.getAbsolutePath());
+		if (selectedItem!=null) {
+			if (selectedItem.isDirectory()) {
+				fileData.clear();
+				fileData.addAll(selectedItem.listFiles());
+			}else {
+				hostServices.showDocument(selectedItem.getAbsolutePath());
+			}
 		}
 	}
 
@@ -132,7 +143,17 @@ public class FileViewController extends BaseFileViewController {
 	}
 
 	@Override
-	protected void onImportFiles(ActionEvent event) {
+	protected void onImportFilesFromTree(ActionEvent event) {
+		onImportFiles(true);
+	}
+
+	@Override
+	protected void onImportFilesFromTable(ActionEvent event) {
+		onImportFiles(false);
+	}
+	
+	
+	protected void onImportFiles(boolean isTree) {
 		List<File> list = fc.showOpenMultipleDialog(new Stage());
 		if (list!=null) {
 			TreeItem<File> selectedItem = fileTreeView.getSelectionModel().getSelectedItem();
@@ -140,7 +161,10 @@ public class FileViewController extends BaseFileViewController {
 			if (selectedFolder.isDirectory()) {
 				list.forEach(file->{
 					try {
+						fileData.add(file);
 						FileUtils.copyFileToDirectory(file, selectedFolder);
+						fileTreeView.refresh();
+						fileTable.refresh();
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
@@ -149,6 +173,37 @@ public class FileViewController extends BaseFileViewController {
 				System.err.println("NOT FOLDER SELECTED!");
 			}
 		}
+	}
+
+	@Override
+	protected void onDeleteFolder(ActionEvent event) {
+		ObservableList<TreeItem<File>> items = fileTreeView.getSelectionModel().getSelectedItems();
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Confirmation Dialog");
+		alert.setHeaderText("Delete "+items.size()+" File / Folders");
+		alert.setContentText("Do you really want to delete?");
+
+		Optional<ButtonType> result = alert.showAndWait();
+		if (result.get() == ButtonType.OK){
+			items.forEach(file-> file.getValue().delete());
+		} 
+		fileTreeView.refresh();
+	}
+
+	@Override
+	protected void onDeleteFromTable(ActionEvent event) {
+		ObservableList<File> items = fileTable.getSelectionModel().getSelectedItems();
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Confirmation Dialog");
+		alert.setHeaderText("Delete "+items.size()+" File / Folders");
+		alert.setContentText("Do you really want to delete?");
+
+		Optional<ButtonType> result = alert.showAndWait();
+		if (result.get() == ButtonType.OK){
+			items.forEach(file-> file.delete());
+			fileTable.getItems().removeAll(items);
+		} 
+		fileTable.refresh();
 	}
 
 }
