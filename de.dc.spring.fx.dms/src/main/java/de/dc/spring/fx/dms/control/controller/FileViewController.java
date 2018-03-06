@@ -4,6 +4,7 @@ import java.io.File;
 
 import de.dc.spring.fx.dms.control.cell.FileSizeColumnFactory;
 import de.dc.spring.fx.dms.control.cell.FileTreeCellFactory;
+import de.dc.spring.fx.dms.util.ImageHelper;
 import javafx.application.HostServices;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -28,6 +29,13 @@ public class FileViewController extends BaseFileViewController {
 		fileTable.setOnMouseClicked(e->{
 			if (e.getClickCount()==2) {
 				onOpenFile(null);
+			}else {
+				File selectedItem = fileTable.getSelectionModel().getSelectedItem();
+				String name = selectedItem.getName();
+				if (name.endsWith(".png") ||name.endsWith(".bmp")||name.endsWith(".jpg")||name.endsWith(".jpeg")) {
+					imageViewScrollPane.toFront();
+					imageView.setImage(ImageHelper.getImage(selectedItem));
+				}
 			}
 		});
 		
