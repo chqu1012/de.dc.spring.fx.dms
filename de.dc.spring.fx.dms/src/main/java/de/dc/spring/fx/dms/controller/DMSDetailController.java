@@ -1,22 +1,16 @@
 package de.dc.spring.fx.dms.controller;
 
-import java.nio.file.Paths;
+import java.io.IOException;
 import java.text.DecimalFormat;
 
-import org.eclipse.fx.ui.controls.filesystem.DirectoryTreeView;
-import org.eclipse.fx.ui.controls.filesystem.DirectoryView;
-import org.eclipse.fx.ui.controls.filesystem.IconSize;
-import org.eclipse.fx.ui.controls.filesystem.ResourceItem;
-import org.eclipse.fx.ui.controls.filesystem.ResourcePreview;
-import org.eclipse.fx.ui.controls.filesystem.RootDirItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import de.dc.spring.fx.dms.control.controller.FileViewController;
 import de.dc.spring.fx.dms.model.Ticket;
 import de.dc.spring.fx.dms.util.FolderUtil;
-import javafx.beans.Observable;
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.SplitPane;
 import javafx.scene.layout.AnchorPane;
 
@@ -26,33 +20,37 @@ public class DMSDetailController extends BaseDMSDetailController {
 	@Autowired FolderUtil folderUtil;
 	
 	public static final DecimalFormat format = new DecimalFormat("00000");
-	private DirectoryTreeView directoryTreeView;
+//	private DirectoryTreeView directoryTreeView;
 
-	public void initialize() {
-		directoryTreeView = new DirectoryTreeView();
-		directoryTreeView.setIconSize(IconSize.SMALL);
-		DirectoryView v = new DirectoryView();
-		v.setIconSize(IconSize.SMALL);
-
-		directoryTreeView.getSelectedItems().addListener((Observable o) -> {
-			if (!directoryTreeView.getSelectedItems().isEmpty()) {
-				v.setDir(directoryTreeView.getSelectedItems().get(0));
-			} else {
-				v.setDir(null);
-			}
-		});
-
-		ResourcePreview prev = new ResourcePreview();
-		v.getSelectedItems().addListener((Observable o) -> {
-			if (v.getSelectedItems().size() == 1) {
-				prev.setItem(v.getSelectedItems().get(0));
-			} else {
-				prev.setItem(null);
-			}
-		});
-		
-		SplitPane p = new SplitPane(directoryTreeView,v, prev);
-	    p.setDividerPositions(0.2,0.5);
+	public void initialize() throws IOException {
+//		directoryTreeView = new DirectoryTreeView();
+//		directoryTreeView.setIconSize(IconSize.SMALL);
+//		
+//		DirectoryView v = new DirectoryView();
+//		v.setIconSize(IconSize.SMALL);
+//
+//		directoryTreeView.getSelectedItems().addListener((Observable o) -> {
+//			if (!directoryTreeView.getSelectedItems().isEmpty()) {
+//				v.setDir(directoryTreeView.getSelectedItems().get(0));
+//			} else {
+//				v.setDir(null);
+//			}
+//		});
+//
+//		ResourcePreview prev = new ResourcePreview();
+//		v.getSelectedItems().addListener((Observable o) -> {
+//			if (v.getSelectedItems().size() == 1) {
+//				prev.setItem(v.getSelectedItems().get(0));
+//			} else {
+//				prev.setItem(null);
+//			}
+//		});
+//		
+//		SplitPane p = new SplitPane(directoryTreeView,v, prev);
+//	    p.setDividerPositions(0.2,0.5);
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/de/dc/spring/fx/dms/control/FileView.fxml"));
+		SplitPane p = loader.load();
+		FileViewController controller = loader.getController();
 	    AnchorPane.setBottomAnchor(p, 0.0d);
 	    AnchorPane.setTopAnchor(p, 0.0d);
 	    AnchorPane.setLeftAnchor(p, 0.0d);
@@ -67,14 +65,14 @@ public class DMSDetailController extends BaseDMSDetailController {
 		createdOnLabel.setText(ticket.getCreatedOn().toString());
 		lastUpdate÷abel.setText(ticket.getCreatedOn().toString());
 
-		updateFileView(folderUtil.getFolderByTicket(ticket).getAbsolutePath());
+//		updateFileView(folderUtil.getFolderByTicket(ticket).getAbsolutePath());
 	}
 
-	private void updateFileView(String path) {
-		RootDirItem rootDirItem = ResourceItem.createObservedPath(Paths.get(path));
-		directoryTreeView.setRootDirectories(
-			      FXCollections.observableArrayList(rootDirItem));
-	}
+//	private void updateFileView(String path) {
+//		RootDirItem rootDirItem = ResourceItem.createObservedPath(Paths.get(path));
+//		directoryTreeView.setRootDirectories(
+//			      FXCollections.observableArrayList(rootDirItem));
+//	}
 
 	@Override
 	protected void onClipboardButton(ActionEvent event) {
