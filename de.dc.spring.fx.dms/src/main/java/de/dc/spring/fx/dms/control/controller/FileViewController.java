@@ -1,6 +1,10 @@
 package de.dc.spring.fx.dms.control.controller;
 
 import java.io.File;
+import java.io.IOException;
+import java.util.List;
+
+import org.apache.commons.io.FileUtils;
 
 import de.dc.spring.fx.dms.control.cell.FileSizeColumnFactory;
 import de.dc.spring.fx.dms.control.cell.FileTreeCellFactory;
@@ -12,12 +16,15 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 public class FileViewController extends BaseFileViewController {
 
 	ObservableList<File> fileData = FXCollections.observableArrayList();
 	private String ticketFolderPath;
 	private HostServices hostServices;
+	private FileChooser fc = new FileChooser();
 	
 	public void initialize() {
 		fileTreeView.setCellFactory(new FileTreeCellFactory());
@@ -41,6 +48,18 @@ public class FileViewController extends BaseFileViewController {
 		
 		nameColumn.setCellValueFactory(new PropertyValueFactory<File, String>("name"));
 		sizeColumn.setCellFactory(new FileSizeColumnFactory<File, String>());
+		
+		fc.getExtensionFilters().addAll(
+				new FileChooser.ExtensionFilter("All Files", "*.*"),
+				new FileChooser.ExtensionFilter("MS Excel", "*.xlsx"),
+				new FileChooser.ExtensionFilter("MS Word", "*.docx"),
+				new FileChooser.ExtensionFilter("TEXT", "*.txt"),
+				new FileChooser.ExtensionFilter("PDF", "*.pdf"),
+				new FileChooser.ExtensionFilter("GIF", "*.gif"),
+				new FileChooser.ExtensionFilter("JEPG", "*.jpeg"),
+				new FileChooser.ExtensionFilter("JPG", "*.jpg"),
+				new FileChooser.ExtensionFilter("PNG", "*.png")
+		);
 	}
 
 	public void setInput(String ticketFolderPath) {
@@ -110,6 +129,26 @@ public class FileViewController extends BaseFileViewController {
 
 	public void setHostServices(HostServices hostServices) {
 		this.hostServices = hostServices;
+	}
+
+	@Override
+	protected void onImportFiles(ActionEvent event) {
+		List<File> list = fc.showOpenMultipleDialog(new Stage());
+		if (list!=null) {
+			TreeItem<File> selectedItem = fileTreeView.getSelectionModel().getSelectedItem();
+			File selectedFolder = selectedItem.getValue();
+			if (selectedFolder.isDirectory()) {
+				list.forEach(file->{
+					try {
+						FileUtils.copyFileToDirectory(file, selectedFolder);
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				});
+			}else {
+				System.err.println("NOT FOLDER SELECTED!");
+			}
+		}
 	}
 
 }

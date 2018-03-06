@@ -53,5 +53,8 @@ public abstract class BaseFileViewController {
 
     @FXML
     protected abstract void onOpenFile(ActionEvent event);
+    
+    @FXML
+    protected abstract void onImportFiles(ActionEvent event);
 
 }

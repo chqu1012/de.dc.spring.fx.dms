@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
@@ -15,8 +17,6 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.ContextMenu?>
-<?import javafx.scene.control.MenuItem?>
 
 
 <SplitPane fx:controller="de.dc.spring.fx.dms.control.controller.FileViewController" dividerPositions="0.2, 0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.151" xmlns:fx="http://javafx.com/fxml/1">
@@ -29,6 +29,7 @@
                     <items>
                       <MenuItem mnemonicParsing="false" onAction="#onNewFolder" text="New Folder" />
                         <MenuItem mnemonicParsing="false" onAction="#onOpenDirectory" text="Open" />
+                        <MenuItem mnemonicParsing="false" onAction="#onImportFiles" text="Import Files" />
                     </items>
                   </ContextMenu>
                </contextMenu>
@@ -39,13 +40,14 @@
          <children>
             <TableView fx:id="fileTable" layoutX="33.0" prefHeight="398.0" prefWidth="233.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <columns>
-                <TableColumn fx:id="nameColumn" prefWidth="240.0" text="Name" />
+                <TableColumn fx:id="nameColumn" prefWidth="210.0" text="Name" />
                 <TableColumn fx:id="sizeColumn" prefWidth="88.0" text="Size" />
               </columns>
-                 <contextMenu>
+               <contextMenu>
                   <ContextMenu>
                      <items>
                         <MenuItem mnemonicParsing="false" onAction="#onOpenFile" text="Open" />
+                        <MenuItem mnemonicParsing="false" onAction="#onImportFiles" text="Import Files" />
                      </items>
                   </ContextMenu>
                </contextMenu>
@@ -56,7 +58,7 @@
          <children>
             <VBox layoutX="232.0" layoutY="31.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="324.0">
+                  <StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="324.0" VBox.vgrow="ALWAYS">
                      <children>
                         <ScrollPane fx:id="imageViewScrollPane" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                           <content>
@@ -72,7 +74,7 @@
                         </ScrollPane>
                         <ScrollPane fx:id="textfieldScrollPane" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                           <content>
-                            <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="320.0" prefWidth="394.0">
+                            <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="329.0" prefWidth="381.0">
                                  <children>
                                     <TextArea maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                  </children>

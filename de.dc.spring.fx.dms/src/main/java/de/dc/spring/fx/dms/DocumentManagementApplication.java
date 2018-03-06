@@ -4,6 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 
 import javafx.application.Application;
 import javafx.application.HostServices;
@@ -15,6 +16,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 @SpringBootApplication
+@ComponentScan(basePackages="de.dc.spring.fx.dms")
 public class DocumentManagementApplication extends Application {
 
     private ConfigurableApplicationContext springContext;
