@@ -19,7 +19,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8.0.151" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.dc.spring.fx.dms.controller.DMSDetailController">
+<BorderPane fx:id="root" minHeight="-Infinity" minWidth="-Infinity" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8.0.151" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.dc.spring.fx.dms.controller.DMSDetailController">
    <top>
       <AnchorPane prefHeight="94.0" prefWidth="600.0" style="-fx-background-color: #F0F0F0;" BorderPane.alignment="CENTER">
          <children>
@@ -48,7 +48,7 @@
         <content>
           <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" style="-fx-background-color: white;">
                <children>
-                  <HBox maxWidth="1.7976931348623157E308" prefHeight="41.0" prefWidth="877.0" spacing="5.0">
+                  <HBox maxWidth="1.7976931348623157E308" prefHeight="41.0" prefWidth="973.0" spacing="5.0">
                      <children>
                         <Button mnemonicParsing="false" onAction="#onSaveButton" prefWidth="100.0" text="Save">
                            <graphic>
@@ -116,6 +116,15 @@
                                  </image>
                               </ImageView>
                            </graphic></Button>
+                        <Button mnemonicParsing="false" onAction="#onCloseButton" prefWidth="100.0" text="Close">
+                           <graphic>
+                              <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/icons8_Export_100px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
                      </children>
                      <padding>
                         <Insets left="20.0" top="15.0" />

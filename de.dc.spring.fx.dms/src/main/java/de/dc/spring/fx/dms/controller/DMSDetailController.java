@@ -20,6 +20,7 @@ public class DMSDetailController extends BaseDMSDetailController {
 
 	@Autowired FolderUtil folderUtil;
 	@Autowired HostServices hostServices;
+	@Autowired DMSMainController dmsMainController;
 	
 	public static final DecimalFormat format = new DecimalFormat("00000");
 
@@ -94,6 +95,11 @@ public class DMSDetailController extends BaseDMSDetailController {
 	protected void onSaveButton(ActionEvent event) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	protected void onCloseButton(ActionEvent event) {
+		dmsMainController.onSwitchToViewDocuments(null);
 	}
 
 }

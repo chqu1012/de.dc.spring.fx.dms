@@ -45,8 +45,15 @@ public class FileViewController extends BaseFileViewController {
 
 	public void setInput(String ticketFolderPath) {
 		this.ticketFolderPath = ticketFolderPath;
+		File folder = new File(ticketFolderPath);
+		if (!folder.exists()) {
+			folder.mkdirs();
+		}
 		TreeItem<File> items = getItems(ticketFolderPath);
 		fileTreeView.setRoot(items);
+		fileData.clear();
+		imageView.setImage(null);
+		
 	}
 	
 	public TreeItem<File> getItems(String path) {
@@ -58,12 +65,14 @@ public class FileViewController extends BaseFileViewController {
 
 	public void createTree(TreeItem<File> rootItem) {
 		File[] files = rootItem.getValue().listFiles();
-		for (File file : files) {
-			if (file.isDirectory()) {
-				TreeItem<File> newItem = new TreeItem<File>(file);
-				newItem.setExpanded(true);
-				rootItem.getChildren().add(newItem);
-				createTree(newItem);
+		if (files !=null) {
+			for (File file : files) {
+				if (file.isDirectory()) {
+					TreeItem<File> newItem = new TreeItem<File>(file);
+					newItem.setExpanded(true);
+					rootItem.getChildren().add(newItem);
+					createTree(newItem);
+				}
 			}
 		}
 	}

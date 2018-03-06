@@ -151,6 +151,11 @@
                         <fx:include source="ViewDocuments.fxml" />
                      </children>
                   </AnchorPane>
+                  <AnchorPane fx:id="dmsDetailPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: white;">
+                     <children>
+                        <fx:include fx:id="dmsDetail" source="DMSDetail.fxml" />
+                     </children>
+                  </AnchorPane>
                   <VBox fx:id="homePanel" style="-fx-background-color: white;">
                      <children>
                         <FlowPane hgap="20.0" vgap="20.0">
@@ -178,11 +183,6 @@
                         </HBox>
                      </children>
                   </VBox>
-                  <AnchorPane fx:id="dmsDetailPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: white;">
-                     <children>
-                        <fx:include fx:id="dmsDetail" source="DMSDetail.fxml" />
-                     </children>
-                  </AnchorPane>
                </children>
                <padding>
                   <Insets left="40.0" top="40.0" />
