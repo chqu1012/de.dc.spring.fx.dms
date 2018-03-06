@@ -3,8 +3,10 @@ package de.dc.spring.fx.dms;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.Bean;
 
 import javafx.application.Application;
+import javafx.application.HostServices;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
@@ -42,6 +44,11 @@ public class DocumentManagementApplication extends Application {
         springContext.stop();
     }
 
+    @Bean
+    public HostServices getHostService() {
+    	return getHostServices();
+    }
+    
 
     public static void main(String[] args) {
         launch(DocumentManagementApplication.class);

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import de.dc.spring.fx.dms.control.controller.FileViewController;
 import de.dc.spring.fx.dms.model.Ticket;
 import de.dc.spring.fx.dms.util.FolderUtil;
+import javafx.application.HostServices;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.SplitPane;
@@ -18,41 +19,18 @@ import javafx.scene.layout.AnchorPane;
 public class DMSDetailController extends BaseDMSDetailController {
 
 	@Autowired FolderUtil folderUtil;
+	@Autowired HostServices hostServices;
 	
 	public static final DecimalFormat format = new DecimalFormat("00000");
 
 	private FileViewController fileViewController;
-//	private DirectoryTreeView directoryTreeView;
 
 	public void initialize() throws IOException {
-//		directoryTreeView = new DirectoryTreeView();
-//		directoryTreeView.setIconSize(IconSize.SMALL);
-//		
-//		DirectoryView v = new DirectoryView();
-//		v.setIconSize(IconSize.SMALL);
-//
-//		directoryTreeView.getSelectedItems().addListener((Observable o) -> {
-//			if (!directoryTreeView.getSelectedItems().isEmpty()) {
-//				v.setDir(directoryTreeView.getSelectedItems().get(0));
-//			} else {
-//				v.setDir(null);
-//			}
-//		});
-//
-//		ResourcePreview prev = new ResourcePreview();
-//		v.getSelectedItems().addListener((Observable o) -> {
-//			if (v.getSelectedItems().size() == 1) {
-//				prev.setItem(v.getSelectedItems().get(0));
-//			} else {
-//				prev.setItem(null);
-//			}
-//		});
-//		
-//		SplitPane p = new SplitPane(directoryTreeView,v, prev);
-//	    p.setDividerPositions(0.2,0.5);
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/de/dc/spring/fx/dms/control/FileView.fxml"));
 		SplitPane p = loader.load();
 		fileViewController = loader.getController();
+		fileViewController.setHostServices(hostServices);
+		
 	    AnchorPane.setBottomAnchor(p, 0.0d);
 	    AnchorPane.setTopAnchor(p, 0.0d);
 	    AnchorPane.setLeftAnchor(p, 0.0d);
@@ -69,12 +47,6 @@ public class DMSDetailController extends BaseDMSDetailController {
 
 		fileViewController.setInput(folderUtil.getFolderByTicket(ticket).getAbsolutePath());
 	}
-
-//	private void updateFileView(String path) {
-//		RootDirItem rootDirItem = ResourceItem.createObservedPath(Paths.get(path));
-//		directoryTreeView.setRootDirectories(
-//			      FXCollections.observableArrayList(rootDirItem));
-//	}
 
 	@Override
 	protected void onClipboardButton(ActionEvent event) {
