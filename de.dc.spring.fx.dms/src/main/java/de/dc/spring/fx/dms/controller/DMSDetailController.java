@@ -20,6 +20,8 @@ public class DMSDetailController extends BaseDMSDetailController {
 	@Autowired FolderUtil folderUtil;
 	
 	public static final DecimalFormat format = new DecimalFormat("00000");
+
+	private FileViewController fileViewController;
 //	private DirectoryTreeView directoryTreeView;
 
 	public void initialize() throws IOException {
@@ -50,7 +52,7 @@ public class DMSDetailController extends BaseDMSDetailController {
 //	    p.setDividerPositions(0.2,0.5);
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/de/dc/spring/fx/dms/control/FileView.fxml"));
 		SplitPane p = loader.load();
-		FileViewController controller = loader.getController();
+		fileViewController = loader.getController();
 	    AnchorPane.setBottomAnchor(p, 0.0d);
 	    AnchorPane.setTopAnchor(p, 0.0d);
 	    AnchorPane.setLeftAnchor(p, 0.0d);
@@ -65,7 +67,7 @@ public class DMSDetailController extends BaseDMSDetailController {
 		createdOnLabel.setText(ticket.getCreatedOn().toString());
 		lastUpdate÷abel.setText(ticket.getCreatedOn().toString());
 
-//		updateFileView(folderUtil.getFolderByTicket(ticket).getAbsolutePath());
+		fileViewController.setInput(folderUtil.getFolderByTicket(ticket).getAbsolutePath());
 	}
 
 //	private void updateFileView(String path) {

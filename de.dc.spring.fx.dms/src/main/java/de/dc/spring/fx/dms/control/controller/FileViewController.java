@@ -12,14 +12,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 public class FileViewController extends BaseFileViewController {
 
-	private static final String ROOT_FOLDER = "C:\\Users\\Dim\\Desktop\\Jira";
 //	private static final ImageView FOLDER_ICO = new ImageView(new Image(FileViewController.class.getResourceAsStream("/de/dc/spring/fx/dms/image/icons8_Folder_96px.png")));
 	
 	ObservableList<File> fileData = FXCollections.observableArrayList();
 	
 	public void initialize() {
-		TreeItem<File> items = getItems();
-		fileTreeView.setRoot(items);
 		fileTreeView.setCellFactory(new FileTreeCellFactory());
 		fileTreeView.setOnMouseClicked(e->{
 			fileData.clear();
@@ -31,8 +28,13 @@ public class FileViewController extends BaseFileViewController {
 		sizeColumn.setCellFactory(new FileSizeColumnFactory<File, String>());
 	}
 
-	public TreeItem<File> getItems() {
-		TreeItem<File> treeItem = new TreeItem<File>(new File(ROOT_FOLDER));
+	public void setInput(String ticketFolderPath) {
+		TreeItem<File> items = getItems(ticketFolderPath);
+		fileTreeView.setRoot(items);
+	}
+	
+	public TreeItem<File> getItems(String path) {
+		TreeItem<File> treeItem = new TreeItem<File>(new File(path));
 		treeItem.setExpanded(true);
 
 		// create tree structure
