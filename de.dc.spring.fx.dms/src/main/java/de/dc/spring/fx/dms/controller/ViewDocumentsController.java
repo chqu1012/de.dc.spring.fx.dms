@@ -16,7 +16,6 @@ public class ViewDocumentsController extends BaseViewDocumentsController {
 	@Autowired DMSMainController dmsMainController;
 	
 	public ObservableList<Ticket> ticketData = FXCollections.observableArrayList();
-	
 	public void initialize() {
 		idColumn.setCellValueFactory(new PropertyValueFactory<Ticket, String>("id"));
 		nameColumn.setCellValueFactory(new PropertyValueFactory<Ticket, String>("name"));
@@ -32,5 +31,7 @@ public class ViewDocumentsController extends BaseViewDocumentsController {
 				dmsMainController.showTicket(ticketDocument.getSelectionModel().getSelectedItem());
 			}
 		});
+		
+		
 	}
 }

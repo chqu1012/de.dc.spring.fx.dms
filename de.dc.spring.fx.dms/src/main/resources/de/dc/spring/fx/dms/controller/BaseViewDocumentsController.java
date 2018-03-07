@@ -4,6 +4,7 @@ import de.dc.spring.fx.dms.model.Ticket;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.layout.AnchorPane;
 
 public abstract class BaseViewDocumentsController {
 
@@ -24,5 +25,8 @@ public abstract class BaseViewDocumentsController {
 
 	@FXML
 	protected TableColumn<Ticket, String> createdOnColumn;
+
+	@FXML
+	protected AnchorPane root;
 
 }

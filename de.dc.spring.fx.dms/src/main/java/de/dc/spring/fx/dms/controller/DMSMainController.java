@@ -112,8 +112,10 @@ public class DMSMainController extends BaseDMSMainController {
 
 	@Override
 	protected void onSwitchToCalendar(MouseEvent event) {
-		// TODO Auto-generated method stub
-		
+		calendarPane.toFront();
+		AnimationUtils.createTransition(lastPanel, AnimationType.FADE_OUT_DOWN).play();
+		lastPanel=calendarPane;
+		AnimationUtils.createTransition(calendarPane, AnimationType.FADE_IN_LEFT).play();		
 	}
 
 	@FXML 

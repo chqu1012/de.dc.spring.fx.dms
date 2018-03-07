@@ -11,6 +11,9 @@ import javafx.scene.layout.VBox;
 public abstract class BaseDMSMainController {
 
 	@FXML 
+	protected AnchorPane calendarPane;
+	
+	@FXML 
 	protected AnchorPane dmsDetailPane;
 	
 	@FXML

@@ -13,7 +13,6 @@ import javafx.application.HostServices;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.SplitPane;
-import javafx.scene.layout.AnchorPane;
 
 @Controller
 public class DMSDetailController extends BaseDMSDetailController {
@@ -32,10 +31,7 @@ public class DMSDetailController extends BaseDMSDetailController {
 		fileViewController = loader.getController();
 		fileViewController.setHostServices(hostServices);
 		
-	    AnchorPane.setBottomAnchor(p, 0.0d);
-	    AnchorPane.setTopAnchor(p, 0.0d);
-	    AnchorPane.setLeftAnchor(p, 0.0d);
-	    AnchorPane.setRightAnchor(p, 0.0d);
+		fullAnchor(p);
 	    splitPaneRoot.getChildren().add(p);
 	}
 	
