@@ -6,9 +6,13 @@ import javafx.scene.layout.AnchorPane;
 public abstract class AbstractLayoutController {
 
 	protected void fullAnchor(Node pane) {
-		AnchorPane.setBottomAnchor(pane, 0d);
-		AnchorPane.setTopAnchor(pane, 0d);
-		AnchorPane.setLeftAnchor(pane, 0d);
-		AnchorPane.setRightAnchor(pane, 0d);
+		fullAnchor(pane,0d,0d,0d,0d);
+	}
+
+	protected void fullAnchor(Node pane, double top, double bottom, double right, double left) {
+		AnchorPane.setBottomAnchor(pane, bottom);
+		AnchorPane.setTopAnchor(pane, top);
+		AnchorPane.setLeftAnchor(pane, left);
+		AnchorPane.setRightAnchor(pane, right);
 	}
 }

@@ -120,7 +120,7 @@
             <Insets />
          </BorderPane.margin>
          <children>
-            <AnchorPane maxWidth="1.7976931348623157E308" prefHeight="61.0" prefWidth="990.0" styleClass="main-title">
+            <AnchorPane maxWidth="1.7976931348623157E308" prefHeight="61.0" styleClass="main-title">
                <children>
                   <HBox layoutX="658.0" layoutY="9.0" prefHeight="44.0" prefWidth="299.0" spacing="10.0" AnchorPane.rightAnchor="5.0">
                      <children>

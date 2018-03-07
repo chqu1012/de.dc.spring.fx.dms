@@ -32,6 +32,6 @@ public class ViewDocumentsController extends BaseViewDocumentsController {
 			}
 		});
 		
-		
+		fullAnchor(root);
 	}
 }

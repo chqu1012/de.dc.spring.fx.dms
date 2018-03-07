@@ -6,7 +6,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 
-public abstract class BaseViewDocumentsController {
+public abstract class BaseViewDocumentsController extends AbstractLayoutController{
 
 	@FXML
 	protected TableView<Ticket> ticketDocument;

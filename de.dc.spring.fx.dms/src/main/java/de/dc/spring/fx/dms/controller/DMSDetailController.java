@@ -31,6 +31,7 @@ public class DMSDetailController extends BaseDMSDetailController {
 		fileViewController = loader.getController();
 		fileViewController.setHostServices(hostServices);
 		
+		fullAnchor(root);
 		fullAnchor(p);
 	    splitPaneRoot.getChildren().add(p);
 	}
