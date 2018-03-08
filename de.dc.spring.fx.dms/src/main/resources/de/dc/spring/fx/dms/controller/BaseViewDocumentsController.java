@@ -1,6 +1,7 @@
 package de.dc.spring.fx.dms.controller;
 
 import de.dc.spring.fx.dms.model.Ticket;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -28,5 +29,14 @@ public abstract class BaseViewDocumentsController extends AbstractLayoutControll
 
 	@FXML
 	protected AnchorPane root;
+	
+    @FXML
+    protected abstract void onDeleteButton(ActionEvent event);
+
+    @FXML
+    protected abstract void onNewButton(ActionEvent event);
+
+    @FXML
+    protected abstract void onOpenButton(ActionEvent event);
 
 }

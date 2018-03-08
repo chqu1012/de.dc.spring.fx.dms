@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -14,6 +16,15 @@
             <TableColumn fx:id="categoryColumn" prefWidth="149.0" text="Category" />
             <TableColumn fx:id="createdOnColumn" prefWidth="149.0" text="Created On" />
         </columns>
+         <contextMenu>
+            <ContextMenu>
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#onNewButton" text="New" />
+                  <MenuItem mnemonicParsing="false" onAction="#onOpenButton" text="Open" />
+                  <MenuItem mnemonicParsing="false" onAction="#onDeleteButton" text="Delete" />
+              </items>
+            </ContextMenu>
+         </contextMenu>
       </TableView>
    </children>
 </AnchorPane>
