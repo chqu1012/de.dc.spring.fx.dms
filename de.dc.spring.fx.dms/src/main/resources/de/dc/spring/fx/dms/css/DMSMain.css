@@ -15,7 +15,6 @@
 
 .left-panel-item:hover{
 	-fx-background-color: #BEC6E8;
-	-fx-scale-y: 1.5;
 }
 
 .left-panel-item:pressed{
@@ -29,7 +28,7 @@
 
 .left-title{
 	-fx-background-color: #141C3E;
-	-fx-font-size: 18;
+	-fx-font-size: 14;
 	-fx-font-weight: bold;
 	-fx-text-fill: white;
 }
