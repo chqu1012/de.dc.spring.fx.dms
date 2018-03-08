@@ -20,7 +20,7 @@
             <DropShadow blurType="ONE_PASS_BOX" height="0.0" radius="4.0075" width="18.03" />
          </effect>
          <children>
-            <Label fx:id="titleLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="48.0" prefWidth="124.0" styleClass="left-title" text="FADM System" />
+            <Label fx:id="titleLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="58.0" prefWidth="124.0" styleClass="left-title" text="FADM System" />
             <VBox styleClass="left-panel-item">
                <children>
                   <ImageView fitHeight="60.0" fitWidth="60.0" onMouseClicked="#onSwitchToHome" pickOnBounds="true" preserveRatio="true">
