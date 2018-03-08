@@ -15,7 +15,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1400.0" stylesheets="@css/DMSMain.css" xmlns="http://javafx.com/javafx/8.0.151" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.dc.spring.fx.dms.controller.DMSMainController">
    <left>
-      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="700.0" prefWidth="210.0" spacing="20.0" styleClass="left-panel" BorderPane.alignment="CENTER">
+      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="700.0" prefWidth="210.0" spacing="20.0" styleClass="main-title" BorderPane.alignment="CENTER">
          <effect>
             <DropShadow blurType="ONE_PASS_BOX" height="0.0" radius="4.0075" width="18.03" />
          </effect>
@@ -25,39 +25,39 @@
                <children>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@image/icons8_Home_64px.png" />
+                        <Image url="@image/icons8_Home_96px.png" />
                      </image>
                   </ImageView>
                   <Label fx:id="homeÖabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#onSwitchToHome" styleClass="left-panel-label" text="Home" HBox.hgrow="ALWAYS" />
                </children>
                <padding>
-                  <Insets left="20.0" />
+                  <Insets left="30.0" top="20.0" />
                </padding>
             </HBox>
             <HBox prefWidth="200.0" spacing="10.0" styleClass="left-panel-item">
                <children>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@image/icons8_Add_New_64px.png" />
+                        <Image url="@image/icons8_Add_File_96px.png" />
                      </image>
                   </ImageView>
                   <Label fx:id="addDocumentLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#onSwitchToAddDocument" styleClass="left-panel-label" text="Add Document" HBox.hgrow="ALWAYS" />
                </children>
                <padding>
-                  <Insets left="20.0" />
+                  <Insets left="30.0" />
                </padding>
             </HBox>
             <HBox prefWidth="200.0" spacing="10.0" styleClass="left-panel-item">
                <children>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@image/icons8_List_64px.png" />
+                        <Image url="@image/icons8_Database_View_96px.png" />
                      </image>
                   </ImageView>
                   <Label fx:id="viewDocumentLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#onSwitchToViewDocuments" styleClass="left-panel-label" text="View Documents" HBox.hgrow="ALWAYS" />
                </children>
                <padding>
-                  <Insets left="20.0" />
+                  <Insets left="30.0" />
                </padding>
             </HBox>
             <HBox prefWidth="200.0" spacing="10.0" styleClass="left-panel-item">
@@ -70,46 +70,46 @@
                   <Label fx:id="calendarLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#onSwitchToCalendar" styleClass="left-panel-label" text="Calendar" HBox.hgrow="ALWAYS" />
                </children>
                <padding>
-                  <Insets left="20.0" />
+                  <Insets left="30.0" />
                </padding>
             </HBox>
             <HBox prefWidth="200.0" spacing="10.0" styleClass="left-panel-item">
                <children>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@image/icons8_Settings_64px.png" />
+                        <Image url="@image/icons8_Services_96px.png" />
                      </image>
                   </ImageView>
                   <Label fx:id="preferencesLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#onSwitchToPreferences" styleClass="left-panel-label" text="Preferences" HBox.hgrow="ALWAYS" />
                </children>
                <padding>
-                  <Insets left="20.0" />
+                  <Insets left="30.0" />
                </padding>
             </HBox>
             <HBox prefWidth="200.0" spacing="10.0" styleClass="left-panel-item">
                <children>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@image/icons8_Login_50px.png" />
+                        <Image url="@image/icons8_Login_96px.png" />
                      </image>
                   </ImageView>
                   <Label fx:id="logOutLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#onSwitchToLogOut" styleClass="left-panel-label" text="Log Out" HBox.hgrow="ALWAYS" />
                </children>
                <padding>
-                  <Insets left="20.0" />
+                  <Insets left="30.0" />
                </padding>
             </HBox>
             <HBox prefWidth="200.0" spacing="10.0" styleClass="left-panel-item">
                <children>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@image/icons8_Exit_Sign_50px.png" />
+                        <Image url="@image/icons8_Exit_Sign_96px.png" />
                      </image>
                   </ImageView>
                   <Label fx:id="exitLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#onSwitchToExit" styleClass="left-panel-label" text="Exit" HBox.hgrow="ALWAYS" />
                </children>
                <padding>
-                  <Insets left="20.0" />
+                  <Insets left="30.0" />
                </padding>
             </HBox>
          </children></VBox>

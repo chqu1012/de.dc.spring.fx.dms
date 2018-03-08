@@ -10,7 +10,7 @@
 }
 
 .left-panel-item{
-	-fx-background-color: white;
+	-fx-background-color: #62677E;
 }
 
 .left-panel-item:hover{
@@ -24,6 +24,7 @@
 
 .left-panel-label{
 	-fx-font-size: 14;
+	-fx-text-fill: white;
 }
 
 .left-title{

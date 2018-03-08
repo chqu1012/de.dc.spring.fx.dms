@@ -22,7 +22,7 @@
             </ImageView>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Label styleClass="home-profil-name" text="Peter Walzer" />
+                  <Label styleClass="home-profil-name" text="Max Muster" />
                   <Label styleClass="home-profil-label" text="Logged User" />
                </children>
                <HBox.margin>
@@ -50,7 +50,7 @@
                         <Image url="@image/icons8_User_48px.png" />
                      </image>
                   </ImageView>
-                  <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Peter Walzer" />
+                  <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Max Muster" />
                </children>
             </HBox>
             <HBox maxHeight="1.7976931348623157E308" prefWidth="200.0" spacing="10.0">
@@ -60,7 +60,7 @@
                         <Image url="@image/icons8_Envelope_48px.png" />
                      </image>
                   </ImageView>
-                  <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="peter.walzer@gmail.com" />
+                  <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="max.muster@gmail.com" />
                </children>
             </HBox>
             <HBox maxHeight="1.7976931348623157E308" prefWidth="200.0" spacing="10.0">
