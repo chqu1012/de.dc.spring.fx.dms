@@ -6,10 +6,17 @@ An application for managing documents and files. It saves all your data in a dat
 
 ## Features
 
-- History of imported files
-- Overview of all documents
-- Search for documents
-- Tracking documents adding
+- [x] History of imported files
+- [x] Overview of all documents
+- [x] Search for documents
+- [x] Tracking documents adding
+- [ ] Internationalization (German, Vietnamese, French)
+- [ ] Import / Export Backup
+- [ ] Calendar overview
+- [ ] Authentification
+- [ ] Multiple User
+- [ ] Communication with Android Client
+- [ ] Batch creation of tickets
 
 ![SwtFormDesigner screenshot](https://github.com/chqu1012/de.dc.spring.fx.dms/blob/master/de.dc.spring.fx.dms.res/images/01%20Dashboard.PNG "SwtFormDesigner")
 
