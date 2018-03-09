@@ -41,6 +41,9 @@ public abstract class BaseDMSMainController {
     protected Label titleLabel;
 
     @FXML
+    protected Label currentPaneLabel;
+
+    @FXML
     protected Label home÷abel;
 
     @FXML
@@ -90,5 +93,11 @@ public abstract class BaseDMSMainController {
 
     @FXML
     protected abstract void onSwitchToCalendar(MouseEvent event);
+    
+    @FXML
+    protected abstract void onSwitchToHelp(MouseEvent event);
+
+    @FXML
+    protected abstract void onSwitchToReport(MouseEvent event);
 
 }

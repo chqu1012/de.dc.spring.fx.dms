@@ -31,7 +31,7 @@
                         <Insets left="30.0" top="10.0" />
                      </VBox.margin>
                   </ImageView>
-                  <Label fx:id="homeÖabel" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#onSwitchToHome" styleClass="left-panel-label" text="Home" />
+                  <Label fx:id="homeÖabel" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#onSwitchToHome" styleClass="left-panel-label" text="Dashboard" />
                </children>
             </VBox>
             <VBox styleClass="left-panel-item">
@@ -75,15 +75,15 @@
             </VBox>
             <VBox styleClass="left-panel-item">
                <children>
-                  <ImageView fitHeight="80.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="80.0" fitWidth="60.0" onMouseClicked="#onSwitchToReport" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@image/icons8_Services_96px.png" />
+                        <Image url="@image/icons8_Bar_Chart_96px.png" />
                      </image>
                      <VBox.margin>
                         <Insets left="30.0" />
                      </VBox.margin>
                   </ImageView>
-                  <Label fx:id="preferencesLabel" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#onSwitchToPreferences" styleClass="left-panel-label" text="Preferences" />
+                  <Label fx:id="preferencesLabel" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#onSwitchToReport" styleClass="left-panel-label" text="Report" />
                </children>
             </VBox>
             <VBox styleClass="left-panel-item">
@@ -99,42 +99,41 @@
                   <Label fx:id="logOutLabel" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#onSwitchToLogOut" styleClass="left-panel-label" text="Log Out" />
                </children>
             </VBox>
-            <VBox styleClass="left-panel-item">
-               <children>
-                  <ImageView fitHeight="80.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@image/icons8_Exit_Sign_96px.png" />
-                     </image>
-                     <VBox.margin>
-                        <Insets left="30.0" />
-                     </VBox.margin>
-                  </ImageView>
-                  <Label fx:id="exitLabel" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#onSwitchToExit" styleClass="left-panel-label" text="Exit" />
-               </children>
-            </VBox>
             <VBox VBox.vgrow="ALWAYS" />
             <AnchorPane prefHeight="2.0" prefWidth="190.0" style="-fx-background-color: white;">
                <VBox.margin>
                   <Insets left="10.0" right="10.0" />
                </VBox.margin>
             </AnchorPane>
-            <HBox prefHeight="58.0" prefWidth="210.0" spacing="10.0" VBox.vgrow="NEVER">
+            <HBox prefHeight="25.0" prefWidth="124.0" spacing="10.0" VBox.vgrow="NEVER">
                <children>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" styleClass="left-panel-item">
-                     <image>
-                        <Image url="@image/icons8_Help_96px.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" styleClass="left-panel-item">
-                     <image>
-                        <Image url="@image/icons8_Services_96px.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" styleClass="left-panel-item">
-                     <image>
-                        <Image url="@image/icons8_Exit_Sign_96px.png" />
-                     </image>
-                  </ImageView>
+                  <VBox styleClass="left-panel-item">
+                     <children>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#onSwitchToHelp" pickOnBounds="true" preserveRatio="true" styleClass="left-panel-item">
+                           <image>
+                              <Image url="@image/icons8_Help_96px.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </VBox>
+                  <AnchorPane styleClass="left-panel-item">
+                     <children>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#onSwitchToPreferences" pickOnBounds="true" preserveRatio="true" styleClass="left-panel-item">
+                           <image>
+                              <Image url="@image/icons8_Services_96px.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane styleClass="left-panel-item">
+                     <children>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#onSwitchToExit" pickOnBounds="true" preserveRatio="true" styleClass="left-panel-item">
+                           <image>
+                              <Image url="@image/icons8_Exit_Sign_96px.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
                </children>
                <VBox.margin>
                   <Insets />
@@ -168,6 +167,8 @@
                         </ImageView>
                      </children>
                   </HBox>
+                  <Label layoutX="14.0" layoutY="16.0" prefHeight="30.0" prefWidth="80.0" text="home /" textFill="WHITE" />
+                  <Label fx:id="currentPaneLabel" layoutX="80.0" layoutY="16.0" text="Dashboard" textFill="WHITE" />
                </children>
             </AnchorPane>
             <StackPane fx:id="contentStackPane" style="-fx-background-color: white;">

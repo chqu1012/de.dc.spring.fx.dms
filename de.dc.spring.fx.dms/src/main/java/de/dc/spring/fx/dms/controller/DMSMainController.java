@@ -70,6 +70,7 @@ public class DMSMainController extends BaseDMSMainController {
 	
 	@Override
 	protected void onSwitchToAddDocument(MouseEvent event) {
+		currentPaneLabel.setText("New Document");
 		addDocumentPanel.toFront();
 		AnimationUtils.createTransition(lastPanel, AnimationType.FADE_OUT_DOWN).play();
 		lastPanel=addDocumentPanel;
@@ -78,12 +79,12 @@ public class DMSMainController extends BaseDMSMainController {
 
 	@Override
 	protected void onSwitchToExit(MouseEvent event) {
-		// TODO Auto-generated method stub
-
+		currentPaneLabel.setText("Exit");
 	}
 
 	@Override
 	protected void onSwitchToHome(MouseEvent event) {
+		currentPaneLabel.setText("Dashboard");
 		homePanel.toFront();
 		AnimationUtils.createTransition(lastPanel, AnimationType.FADE_OUT_DOWN).play();
 		lastPanel=homePanel;
@@ -92,18 +93,17 @@ public class DMSMainController extends BaseDMSMainController {
 
 	@Override
 	protected void onSwitchToLogOut(MouseEvent event) {
-		// TODO Auto-generated method stub
-
+		currentPaneLabel.setText("Log Out");
 	}
 
 	@Override
 	protected void onSwitchToPreferences(MouseEvent event) {
-		// TODO Auto-generated method stub
-
+		currentPaneLabel.setText("Preferences");
 	}
 
 	@Override
 	protected void onSwitchToViewDocuments(MouseEvent event) {
+		currentPaneLabel.setText("Documents View");
 		viewDocumentsPanel.toFront();
 		AnimationUtils.createTransition(lastPanel, AnimationType.FADE_OUT_DOWN).play();
 		lastPanel=viewDocumentsPanel;
@@ -112,6 +112,7 @@ public class DMSMainController extends BaseDMSMainController {
 
 	@Override
 	protected void onSwitchToCalendar(MouseEvent event) {
+		currentPaneLabel.setText("Calendar");
 		calendarPane.toFront();
 		AnimationUtils.createTransition(lastPanel, AnimationType.FADE_OUT_DOWN).play();
 		lastPanel=calendarPane;
@@ -131,12 +132,23 @@ public class DMSMainController extends BaseDMSMainController {
 	}
 	
 	public void showTicket(Ticket ticket) {
+		currentPaneLabel.setText("Document Details");
 		dmsDetailPane.toFront();
 		AnimationUtils.createTransition(lastPanel, AnimationType.FADE_OUT_DOWN).play();
 		lastPanel=dmsDetailPane;
 		dmsDetailController.setDetails(ticket);
 		AnimationUtils.createTransition(dmsDetailPane, AnimationType.FADE_IN_LEFT).play();
 		dmsDetailPane.toFront();
+	}
+
+	@Override
+	protected void onSwitchToHelp(MouseEvent event) {
+		currentPaneLabel.setText("Help");		
+	}
+
+	@Override
+	protected void onSwitchToReport(MouseEvent event) {
+		currentPaneLabel.setText("Report");		
 	}
 
 }
