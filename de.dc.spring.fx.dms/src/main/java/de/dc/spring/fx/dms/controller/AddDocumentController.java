@@ -41,7 +41,8 @@ public class AddDocumentController extends BaseAddDocumentController {
 
 	@Override
 	protected void onCreate(ActionEvent event) {
-		Ticket ticket = new Ticket(nameText.getText(), descriptionTextArea.getText(), categoryComboView.getSelectionModel().getSelectedIndex(), 0, LocalDate.now());
+		Ticket ticket = new Ticket(nameText.getText(), descriptionTextArea.getText(), categoryComboView.getSelectionModel().getSelectedIndex(), 0, createdOnDatePicker.getValue());
+		ticket.setUpdatedOn(LocalDate.now());
 		ticketService.create(ticket);
 		viewDocumentController.ticketData.add(ticket);
 
