@@ -1,10 +1,16 @@
 package de.dc.spring.fx.dms.controller;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import de.dc.spring.fx.dms.model.Ticket;
 import de.dc.spring.fx.dms.repository.TicketRepository;
+import de.dc.spring.fx.dms.util.FolderUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -14,11 +20,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 @Controller
 public class ViewDocumentsController extends BaseViewDocumentsController {
 
-	@Autowired
-	TicketRepository ticketRepository;
-	@Autowired
-	DMSMainController dmsMainController;
-
+	@Autowired TicketRepository ticketRepository;
+	@Autowired DMSMainController dmsMainController;
+	@Autowired FolderUtil folderUtil;
+	
 	public ObservableList<Ticket> ticketData = FXCollections.observableArrayList();
 
 	public void initialize() {
@@ -50,10 +55,22 @@ public class ViewDocumentsController extends BaseViewDocumentsController {
 		ticketDocument.setItems(filteredData);
 
 		ticketDocument.setOnMouseClicked(e -> {
+			Ticket ticket = ticketDocument.getSelectionModel().getSelectedItem();
 			if (e.getClickCount() == 2) {
-				dmsMainController.showTicket(ticketDocument.getSelectionModel().getSelectedItem());
+				dmsMainController.showTicket(ticket);
+			}
+			descriptionText.setText(ticket.getDescription());
+			countOfTicketsLabel.setText(ticketData.size()+"");
+			Path path = Paths.get(folderUtil.getFolderByTicket(ticket).getAbsolutePath());
+			long countOfFiles;
+			try {
+				countOfFiles = Files.walk(path).parallel().filter(p -> !p.toFile().isDirectory()).count();
+				countOfAttachmentsLabel.setText(countOfFiles+"");
+			} catch (IOException e1) {
+				e1.printStackTrace();
 			}
 		});
+
 
 		fullAnchor(root);
 	}

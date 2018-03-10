@@ -15,7 +15,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1400.0" stylesheets="@css/DMSMain.css" xmlns="http://javafx.com/javafx/8.0.151" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.dc.spring.fx.dms.controller.DMSMainController">
    <left>
-      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="800.0" prefWidth="124.0" spacing="10.0" styleClass="main-title" BorderPane.alignment="CENTER">
+      <VBox maxHeight="1.7976931348623157E308" maxWidth="125.0" prefHeight="800.0" prefWidth="125.0" spacing="10.0" styleClass="main-title" BorderPane.alignment="CENTER">
          <effect>
             <DropShadow blurType="ONE_PASS_BOX" height="0.0" radius="4.0075" width="18.03" />
          </effect>
@@ -176,8 +176,14 @@
                         </ImageView>
                      </children>
                   </HBox>
-                  <Label layoutX="14.0" layoutY="16.0" prefHeight="30.0" prefWidth="80.0" text="home /" textFill="WHITE" />
-                  <Label fx:id="currentPaneLabel" layoutX="80.0" layoutY="16.0" text="Dashboard" textFill="WHITE" />
+                  <Label layoutX="14.0" layoutY="16.0" prefHeight="30.0" prefWidth="80.0" text="home /" textFill="WHITE">
+                     <padding>
+                        <Insets bottom="5.0" top="5.0" />
+                     </padding></Label>
+                  <Label fx:id="currentPaneLabel" layoutX="80.0" layoutY="16.0" text="Dashboard" textFill="WHITE">
+                     <padding>
+                        <Insets bottom="5.0" top="5.0" />
+                     </padding></Label>
                </children>
             </AnchorPane>
             <StackPane fx:id="contentStackPane" style="-fx-background-color: white;">
