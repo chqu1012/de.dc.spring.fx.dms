@@ -35,7 +35,7 @@ import static de.dc.fx.animation.other.AnimationType.*
 		receiptAnchorPaneController.imageBackground = "#FF8350"
 		lastPanel = homePanel
 		folderUtil.createIfNotExist
-		// TODO: Fill with DB data
+
 		TextFields.bindAutoCompletion(searchText, ticketService.all)
 	}
 

@@ -20,7 +20,7 @@ public class TicketService implements IService<Ticket> {
   private List<Ticket> tickets;
   
   public List<Ticket> reload() {
-    return this.ticketRepository.findAll();
+    return this.tickets = this.ticketRepository.findAll();
   }
   
   @Override

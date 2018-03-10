@@ -14,7 +14,7 @@ class TicketService implements IService<Ticket> {
 	List<Ticket> tickets
 
 	def reload() {
-		ticketRepository.findAll
+		tickets = ticketRepository.findAll
 	}
 
 	override getAll() {
