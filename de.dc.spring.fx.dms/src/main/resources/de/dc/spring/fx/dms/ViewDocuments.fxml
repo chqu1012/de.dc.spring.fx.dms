@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.151" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.dc.spring.fx.dms.controller.ViewDocumentsController">
+<AnchorPane fx:id="root" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" stylesheets="@css/ViewDocuments.css" xmlns="http://javafx.com/javafx/8.0.151" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.dc.spring.fx.dms.controller.ViewDocumentsController">
    <children>
-      <TableView fx:id="ticketDocument" layoutX="33.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@css/Table.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <TableView fx:id="ticketDocument" layoutX="33.0" layoutY="57.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="643.0" prefWidth="418.0" stylesheets="@css/Table.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="57.0">
         <columns>
           <TableColumn fx:id="idColumn" prefWidth="75.0" text="#ID" />
-          <TableColumn fx:id="nameColumn" prefWidth="149.0" text="Name" />
-            <TableColumn fx:id="descriptionColumn" prefWidth="149.0" text="Description" />
-            <TableColumn fx:id="categoryColumn" prefWidth="149.0" text="Category" />
-            <TableColumn fx:id="createdOnColumn" prefWidth="149.0" text="Created On" />
+          <TableColumn fx:id="nameColumn" prefWidth="251.0" text="Name" />
+            <TableColumn fx:id="createdOnColumn" prefWidth="87.0" text="Created On" />
         </columns>
          <contextMenu>
             <ContextMenu>
@@ -26,5 +30,61 @@
             </ContextMenu>
          </contextMenu>
       </TableView>
+      <JFXTextField fx:id="searchText" labelFloat="true" layoutX="14.0" layoutY="14.0" prefWidth="400.0" promptText="Search by id, name or description content" />
+      <VBox layoutX="428.0" layoutY="57.0" spacing="10.0">
+         <children>
+            <JFXButton maxHeight="50.0" maxWidth="95.0" prefHeight="50.0" prefWidth="95.0" styleClass="default-node" text="Add" VBox.vgrow="NEVER">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="PLUS" size="40" wrappingWidth="39.14285659790039" />
+               </graphic>
+            </JFXButton>
+            <JFXButton maxHeight="50.0" maxWidth="95.0" prefHeight="50.0" prefWidth="95.0" styleClass="default-node" text="Delete" VBox.vgrow="NEVER">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="TRASH" size="40" wrappingWidth="39.14285659790039" />
+               </graphic>
+            </JFXButton>
+            <JFXButton maxHeight="50.0" maxWidth="95.0" prefHeight="50.0" prefWidth="95.0" styleClass="default-node" text="Details" VBox.vgrow="NEVER">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="INFO" size="40" />
+               </graphic>
+            </JFXButton>
+         </children>
+      </VBox>
+      <VBox layoutX="544.0" layoutY="52.0" spacing="20.0">
+         <children>
+            <VBox prefHeight="93.0" prefWidth="313.0" style="-fx-background-color: white;">
+               <children>
+                  <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="39.0" prefWidth="313.0" styleClass="default-node" text="Category" VBox.vgrow="NEVER" />
+               </children>
+               <effect>
+                  <DropShadow blurType="TWO_PASS_BOX" height="13.86" radius="5.6875" width="10.89" />
+               </effect>
+            </VBox>
+            <VBox prefHeight="205.0" prefWidth="313.0" style="-fx-background-color: white;">
+               <children>
+                  <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="39.0" prefWidth="313.0" styleClass="default-node" text="Description" VBox.vgrow="NEVER" />
+               </children>
+               <effect>
+                  <DropShadow blurType="TWO_PASS_BOX" height="13.86" radius="5.6875" width="10.89" />
+               </effect>
+            </VBox>
+            <VBox prefHeight="167.0" prefWidth="313.0" style="-fx-background-color: white;">
+               <children>
+                  <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="39.0" prefWidth="313.0" styleClass="default-node" text="Attachments" VBox.vgrow="NEVER" />
+               </children>
+               <effect>
+                  <DropShadow blurType="TWO_PASS_BOX" height="13.86" radius="5.6875" width="10.89" />
+               </effect>
+            </VBox>
+            <VBox prefHeight="109.0" prefWidth="313.0" style="-fx-background-color: white;">
+               <children>
+                  <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="39.0" prefWidth="313.0" styleClass="default-node" text="Links" VBox.vgrow="NEVER" />
+               </children>
+               <effect>
+                  <DropShadow blurType="TWO_PASS_BOX" height="13.86" radius="5.6875" width="10.89" />
+               </effect>
+            </VBox>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

@@ -17,6 +17,10 @@ import javafx.application.Platform;
 public class CalendarPaneController extends BaseCalendarPaneController {
 
 	public void initialize() {
+		Platform.runLater(() ->buildContent());
+	}
+
+	private void buildContent() {
 		CalendarView calendarView = new CalendarView();
 
 		Calendar birthdays = new Calendar("Birthdays");

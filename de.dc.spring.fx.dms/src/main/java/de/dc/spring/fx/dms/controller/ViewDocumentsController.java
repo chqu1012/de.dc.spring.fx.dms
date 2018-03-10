@@ -20,8 +20,6 @@ public class ViewDocumentsController extends BaseViewDocumentsController {
 	public void initialize() {
 		idColumn.setCellValueFactory(new PropertyValueFactory<Ticket, String>("id"));
 		nameColumn.setCellValueFactory(new PropertyValueFactory<Ticket, String>("name"));
-		descriptionColumn.setCellValueFactory(new PropertyValueFactory<Ticket, String>("description"));
-		categoryColumn.setCellValueFactory(new PropertyValueFactory<Ticket, String>("categoryId"));
 		createdOnColumn.setCellValueFactory(new PropertyValueFactory<Ticket, String>("createdOn"));
 		
 		ticketData.addAll(ticketRepository.findAll());

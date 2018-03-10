@@ -19,12 +19,6 @@ public abstract class BaseViewDocumentsController extends AbstractLayoutControll
 	protected TableColumn<Ticket, String> nameColumn;
 
 	@FXML
-	protected TableColumn<Ticket, String> descriptionColumn;
-
-	@FXML
-	protected TableColumn<Ticket, String> categoryColumn;
-
-	@FXML
 	protected TableColumn<Ticket, String> createdOnColumn;
 
 	@FXML
