@@ -20,7 +20,7 @@
             <DropShadow blurType="ONE_PASS_BOX" height="0.0" radius="4.0075" width="18.03" />
          </effect>
          <children>
-            <Label fx:id="titleLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="58.0" prefWidth="124.0" styleClass="left-title" text="FADM System" />
+            <Label fx:id="titleLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="124.0" styleClass="left-title" text="FADM System" />
             <VBox styleClass="left-panel-item">
                <children>
                   <ImageView fitHeight="60.0" fitWidth="60.0" onMouseClicked="#onSwitchToHome" pickOnBounds="true" preserveRatio="true">
@@ -150,20 +150,29 @@
             <Insets />
          </BorderPane.margin>
          <children>
-            <AnchorPane maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="77.0" prefWidth="1190.0" styleClass="main-title">
+            <AnchorPane maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefWidth="1276.0" styleClass="main-title" VBox.vgrow="NEVER">
                <children>
                   <HBox layoutX="658.0" layoutY="9.0" prefHeight="44.0" prefWidth="299.0" spacing="10.0" AnchorPane.rightAnchor="5.0">
                      <children>
-                        <TextField fx:id="searchText" onKeyReleased="#onSearchTextKeyReleased" prefHeight="20.0" prefWidth="195.0" />
+                        <TextField fx:id="searchText" onKeyReleased="#onSearchTextKeyReleased" prefHeight="20.0" prefWidth="195.0">
+                           <HBox.margin>
+                              <Insets bottom="5.0" top="5.0" />
+                           </HBox.margin></TextField>
                         <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@image/icons8_Alarm_50px_1.png" />
                            </image>
+                           <HBox.margin>
+                              <Insets bottom="5.0" top="5.0" />
+                           </HBox.margin>
                         </ImageView>
                         <ImageView fx:id="profilImage" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@image/icons8_Female_Profile_50px.png" />
                            </image>
+                           <HBox.margin>
+                              <Insets bottom="5.0" top="5.0" />
+                           </HBox.margin>
                         </ImageView>
                      </children>
                   </HBox>
@@ -218,11 +227,11 @@
                            </VBox.margin>
                         </HBox>
                      </children>
+                     <StackPane.margin>
+                        <Insets left="40.0" top="40.0" />
+                     </StackPane.margin>
                   </VBox>
                </children>
-               <padding>
-                  <Insets bottom="20.0" left="40.0" right="40.0" top="40.0" />
-               </padding>
             </StackPane>
          </children>
       </VBox>

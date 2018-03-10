@@ -1,5 +1,7 @@
 package de.dc.spring.fx.dms.controller;
 
+import com.jfoenix.controls.JFXTextField;
+
 import de.dc.spring.fx.dms.model.Ticket;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,6 +11,9 @@ import javafx.scene.layout.AnchorPane;
 
 public abstract class BaseViewDocumentsController extends AbstractLayoutController{
 
+	@FXML
+	protected JFXTextField searchText;
+	
 	@FXML
 	protected TableView<Ticket> ticketDocument;
 

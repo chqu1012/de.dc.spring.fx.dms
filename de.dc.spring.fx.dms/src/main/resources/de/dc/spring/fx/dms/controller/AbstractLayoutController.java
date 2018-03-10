@@ -6,6 +6,10 @@ import javafx.scene.layout.AnchorPane;
 public abstract class AbstractLayoutController {
 
 	protected void fullAnchor(Node pane) {
+		fullAnchor(pane,40d,40d,40d,40d);
+	}
+
+	protected void fullAnchorWithoutMargin(Node pane) {
 		fullAnchor(pane,0d,0d,0d,0d);
 	}
 
