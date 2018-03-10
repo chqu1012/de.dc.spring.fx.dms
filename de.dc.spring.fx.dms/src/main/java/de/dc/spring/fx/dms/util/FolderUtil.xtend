@@ -41,4 +41,9 @@ import org.springframework.stereotype.Component
 	def copyFileTo(File sourceFile, File destinationFile) {
 		FileUtils.copyFile(sourceFile, destinationFile)
 	}
+	
+	def deleteFolderWithContent(Ticket ticket) {
+		FileUtils.deleteDirectory(ticket.getFolderByTicket)
+	}
+	
 }

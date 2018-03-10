@@ -12,6 +12,9 @@ import javafx.event.ActionEvent
 import javafx.scene.control.cell.PropertyValueFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
+import javafx.scene.control.Alert.AlertType
+import javafx.scene.control.Alert
+import javafx.scene.control.ButtonType
 
 @Controller 
 class ViewDocumentsController extends BaseViewDocumentsController {
@@ -57,9 +60,18 @@ class ViewDocumentsController extends BaseViewDocumentsController {
 	}
 
 	override onDeleteButton(ActionEvent event) {
-		var selectedItem = ticketDocument.selectionModel.selectedItem
-		ticketData-=selectedItem
-		ticketRepository.delete(selectedItem)
+		val alert = new Alert(AlertType.CONFIRMATION)=>[
+			title="Confirmation Dialog"
+			headerText="Do you really want to delete this ticket"
+			contentText="Delete?"
+		]
+		val result = alert.showAndWait
+		if(result.get==ButtonType::OK){
+			var selectedItem = ticketDocument.selectionModel.selectedItem
+			ticketData-=selectedItem
+			ticketRepository.delete(selectedItem)
+			folderUtil.deleteFolderWithContent(selectedItem)
+		}
 	}
 
 	override onNewButton(ActionEvent event) {

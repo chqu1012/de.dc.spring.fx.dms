@@ -74,4 +74,12 @@ public class FolderUtil {
       throw Exceptions.sneakyThrow(_e);
     }
   }
+  
+  public void deleteFolderWithContent(final Ticket ticket) {
+    try {
+      FileUtils.deleteDirectory(this.getFolderByTicket(ticket));
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
 }

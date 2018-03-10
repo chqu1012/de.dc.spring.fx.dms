@@ -1,5 +1,6 @@
 package de.dc.spring.fx.dms.controller;
 
+import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import de.dc.spring.fx.dms.controller.BaseViewDocumentsController;
 import de.dc.spring.fx.dms.controller.DMSMainController;
@@ -10,6 +11,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Predicate;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -18,10 +20,14 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.ObjectExtensions;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -113,9 +119,22 @@ public class ViewDocumentsController extends BaseViewDocumentsController {
   
   @Override
   public void onDeleteButton(final ActionEvent event) {
-    Ticket selectedItem = this.ticketDocument.getSelectionModel().getSelectedItem();
-    this.ticketData.remove(selectedItem);
-    this.ticketRepository.delete(selectedItem);
+    Alert _alert = new Alert(Alert.AlertType.CONFIRMATION);
+    final Procedure1<Alert> _function = (Alert it) -> {
+      it.setTitle("Confirmation Dialog");
+      it.setHeaderText("Do you really want to delete this ticket");
+      it.setContentText("Delete?");
+    };
+    final Alert alert = ObjectExtensions.<Alert>operator_doubleArrow(_alert, _function);
+    final Optional<ButtonType> result = alert.showAndWait();
+    ButtonType _get = result.get();
+    boolean _equals = Objects.equal(_get, ButtonType.OK);
+    if (_equals) {
+      Ticket selectedItem = this.ticketDocument.getSelectionModel().getSelectedItem();
+      this.ticketData.remove(selectedItem);
+      this.ticketRepository.delete(selectedItem);
+      this.folderUtil.deleteFolderWithContent(selectedItem);
+    }
   }
   
   @Override
