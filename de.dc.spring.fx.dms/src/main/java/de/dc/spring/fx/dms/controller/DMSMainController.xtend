@@ -1,6 +1,5 @@
 package de.dc.spring.fx.dms.controller
 
-import de.dc.fx.animation.other.AnimationType
 import de.dc.fx.animation.other.AnimationUtils
 import de.dc.spring.fx.dms.model.Ticket
 import de.dc.spring.fx.dms.service.TicketService
@@ -13,6 +12,8 @@ import javafx.scene.input.MouseEvent
 import org.controlsfx.control.textfield.TextFields
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
+
+import static de.dc.fx.animation.other.AnimationType.*
 
 @Controller class DMSMainController extends BaseDMSMainController {
 	
@@ -41,9 +42,9 @@ import org.springframework.stereotype.Controller
 	override onSwitchToAddDocument(MouseEvent event) {
 		currentPaneLabel.text = "New Document"
 		addDocumentPanel.toFront
-		AnimationUtils.createTransition(lastPanel, AnimationType.FADE_OUT_DOWN).play
+		AnimationUtils.createTransition(lastPanel, FADE_OUT_DOWN).play
 		lastPanel = addDocumentPanel
-		AnimationUtils.createTransition(addDocumentPanel, AnimationType.FADE_IN_LEFT).play
+		AnimationUtils.createTransition(addDocumentPanel, FADE_IN_LEFT).play
 	}
 
 	override onSwitchToExit(MouseEvent event) {
@@ -53,9 +54,9 @@ import org.springframework.stereotype.Controller
 	override onSwitchToHome(MouseEvent event) {
 		currentPaneLabel.text = "Dashboard"
 		homePanel.toFront
-		AnimationUtils.createTransition(lastPanel, AnimationType.FADE_OUT_DOWN).play
+		AnimationUtils.createTransition(lastPanel, FADE_OUT_DOWN).play
 		lastPanel = homePanel
-		AnimationUtils.createTransition(homePanel, AnimationType.FADE_IN_LEFT).play
+		AnimationUtils.createTransition(homePanel, FADE_IN_LEFT).play
 	}
 
 	override onSwitchToLogOut(MouseEvent event) {
@@ -69,21 +70,21 @@ import org.springframework.stereotype.Controller
 	override onSwitchToViewDocuments(MouseEvent event) {
 		currentPaneLabel.text = "Documents View"
 		viewDocumentsPanel.toFront
-		AnimationUtils.createTransition(lastPanel, AnimationType.FADE_OUT_DOWN).play
+		AnimationUtils.createTransition(lastPanel, FADE_OUT_DOWN).play
 		lastPanel = viewDocumentsPanel
-		AnimationUtils.createTransition(viewDocumentsPanel, AnimationType.FADE_IN_LEFT).play
+		AnimationUtils.createTransition(viewDocumentsPanel, FADE_IN_LEFT).play
 	}
 
 	override onSwitchToCalendar(MouseEvent event) {
 		currentPaneLabel.text = "Calendar"
 		calendarPane.toFront
-		AnimationUtils.createTransition(lastPanel, AnimationType.FADE_OUT_DOWN).play
+		AnimationUtils.createTransition(lastPanel, FADE_OUT_DOWN).play
 		lastPanel = calendarPane
-		AnimationUtils.createTransition(calendarPane, AnimationType.FADE_IN_LEFT).play
+		AnimationUtils.createTransition(calendarPane, FADE_IN_LEFT).play
 	}
 
 	@FXML def onSearchTextKeyReleased(KeyEvent event) {
-		if (event.getCode.equals(KeyCode.ENTER)) {
+		if (event.code.equals(KeyCode.ENTER)) {
 			var searchFields = searchText.text.split(":")
 			var splittedId = searchFields.get(0).split("-").get(1)
 			var id = Long.valueOf(splittedId)
@@ -96,10 +97,10 @@ import org.springframework.stereotype.Controller
 	def showTicket(Ticket ticket) {
 		currentPaneLabel.text = "Document Details"
 		dmsDetailPane.toFront
-		AnimationUtils.createTransition(lastPanel, AnimationType.FADE_OUT_DOWN).play
+		AnimationUtils.createTransition(lastPanel, FADE_OUT_DOWN).play
 		lastPanel = dmsDetailPane
-		dmsDetailController.setDetails(ticket)
-		AnimationUtils.createTransition(dmsDetailPane, AnimationType.FADE_IN_LEFT).play
+		dmsDetailController.details = ticket
+		AnimationUtils.createTransition(dmsDetailPane, FADE_IN_LEFT).play
 		dmsDetailPane.toFront
 	}
 
