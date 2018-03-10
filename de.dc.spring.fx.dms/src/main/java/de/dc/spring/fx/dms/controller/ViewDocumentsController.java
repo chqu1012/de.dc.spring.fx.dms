@@ -56,10 +56,7 @@ public class ViewDocumentsController extends BaseViewDocumentsController {
 
 		ticketDocument.setOnMouseClicked(e -> {
 			Ticket ticket = ticketDocument.getSelectionModel().getSelectedItem();
-			if (e.getClickCount() == 2) {
-				dmsMainController.showTicket(ticket);
-			}
-			descriptionText.setText(ticket.getDescription());
+			descriptionText.setText(ticket.getDescription()==null?"":ticket.getDescription());
 			countOfTicketsLabel.setText(ticketData.size()+"");
 			Path path = Paths.get(folderUtil.getFolderByTicket(ticket).getAbsolutePath());
 			long countOfFiles;
@@ -79,7 +76,7 @@ public class ViewDocumentsController extends BaseViewDocumentsController {
 	protected void onDeleteButton(ActionEvent event) {
 		Ticket selectedItem = ticketDocument.getSelectionModel().getSelectedItem();
 		ticketData.remove(selectedItem);
-		ticketRepository.save(selectedItem);
+		ticketRepository.delete(selectedItem);
 	}
 
 	@Override
@@ -90,5 +87,20 @@ public class ViewDocumentsController extends BaseViewDocumentsController {
 	@Override
 	protected void onOpenButton(ActionEvent event) {
 		dmsMainController.showTicket(ticketDocument.getSelectionModel().getSelectedItem());
+	}
+
+	@Override
+	protected void onAddTicketButton(ActionEvent event) {
+		onNewButton(event);
+	}
+
+	@Override
+	protected void onDeleteTicketButton(ActionEvent event) {
+		onDeleteButton(event);
+	}
+
+	@Override
+	protected void onOpenTicketButton(ActionEvent event) {
+		onOpenButton(event);
 	}
 }

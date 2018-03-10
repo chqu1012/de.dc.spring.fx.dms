@@ -39,17 +39,17 @@
             </TableView>
             <VBox spacing="10.0">
                <children>
-                  <JFXButton maxHeight="50.0" maxWidth="125.0" prefHeight="50.0" prefWidth="125.0" styleClass="default-node" text="Add" VBox.vgrow="NEVER">
+                  <JFXButton maxHeight="50.0" maxWidth="125.0" onAction="#onAddTicketButton" prefHeight="50.0" prefWidth="125.0" styleClass="default-node" text="Add" VBox.vgrow="NEVER">
                      <graphic>
                         <FontAwesomeIconView fill="WHITE" glyphName="PLUS" size="40" wrappingWidth="39.14285659790039" />
                      </graphic>
                   </JFXButton>
-                  <JFXButton maxHeight="50.0" maxWidth="123.0" prefHeight="50.0" prefWidth="123.0" styleClass="default-node" text="Delete" VBox.vgrow="NEVER">
+                  <JFXButton maxHeight="50.0" maxWidth="123.0" onAction="#onDeleteTicketButton" prefHeight="50.0" prefWidth="123.0" styleClass="default-node" text="Delete" VBox.vgrow="NEVER">
                      <graphic>
                         <FontAwesomeIconView fill="WHITE" glyphName="TRASH" size="40" wrappingWidth="39.14285659790039" />
                      </graphic>
                   </JFXButton>
-                  <JFXButton maxHeight="50.0" maxWidth="125.0" prefHeight="50.0" prefWidth="125.0" styleClass="default-node" text="Details" VBox.vgrow="NEVER">
+                  <JFXButton maxHeight="50.0" maxWidth="125.0" onAction="#onOpenTicketButton" prefHeight="50.0" prefWidth="125.0" styleClass="default-node" text="Details" VBox.vgrow="NEVER">
                      <graphic>
                         <FontAwesomeIconView fill="WHITE" glyphName="INFO" size="40" />
                      </graphic>

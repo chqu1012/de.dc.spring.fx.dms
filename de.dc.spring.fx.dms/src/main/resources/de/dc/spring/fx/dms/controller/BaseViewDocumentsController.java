@@ -47,12 +47,22 @@ public abstract class BaseViewDocumentsController extends AbstractLayoutControll
 	@FXML
 	protected Label countOfAttachmentsLabel;
 
-	@FXML
-	protected abstract void onDeleteButton(ActionEvent event);
 
-	@FXML
-	protected abstract void onNewButton(ActionEvent event);
+    @FXML
+    protected abstract void onAddTicketButton(ActionEvent event);
 
-	@FXML
-	protected abstract void onOpenButton(ActionEvent event);
+    @FXML
+    protected abstract void onDeleteButton(ActionEvent event);
+
+    @FXML
+    protected abstract void onDeleteTicketButton(ActionEvent event);
+
+    @FXML
+    protected abstract void onNewButton(ActionEvent event);
+
+    @FXML
+    protected abstract void onOpenButton(ActionEvent event);
+
+    @FXML
+    protected abstract void onOpenTicketButton(ActionEvent event);
 }
