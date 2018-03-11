@@ -10,6 +10,8 @@ import javafx.scene.layout.StackPane
 import javafx.scene.layout.VBox
 
 abstract class BaseDMSMainController {
+	
+	@FXML protected AnchorPane aboutPane
 	@FXML protected AnchorPane calendarPane
 	@FXML protected AnchorPane dmsDetailPane
 	@FXML protected AnchorPane invoiceAnchorPane
@@ -33,21 +35,14 @@ abstract class BaseDMSMainController {
 	@FXML protected StackPane contentStackPane
 
 	@FXML def protected abstract void onSwitchToAddDocument(MouseEvent event)
-
 	@FXML def protected abstract void onSwitchToExit(MouseEvent event)
-
 	@FXML def protected abstract void onSwitchToHome(MouseEvent event)
-
 	@FXML def protected abstract void onSwitchToLogOut(MouseEvent event)
-
 	@FXML def protected abstract void onSwitchToPreferences(MouseEvent event)
-
 	@FXML def protected abstract void onSwitchToViewDocuments(MouseEvent event)
-
 	@FXML def protected abstract void onSwitchToCalendar(MouseEvent event)
-
 	@FXML def protected abstract void onSwitchToHelp(MouseEvent event)
-
 	@FXML def protected abstract void onSwitchToReport(MouseEvent event)
+	@FXML def protected abstract void onSwitchToAbout(MouseEvent event)
 
 }

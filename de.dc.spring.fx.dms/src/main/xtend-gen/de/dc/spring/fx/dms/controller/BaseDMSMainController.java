@@ -12,6 +12,9 @@ import javafx.scene.layout.VBox;
 @SuppressWarnings("all")
 public abstract class BaseDMSMainController {
   @FXML
+  protected AnchorPane aboutPane;
+  
+  @FXML
   protected AnchorPane calendarPane;
   
   @FXML
@@ -100,4 +103,7 @@ public abstract class BaseDMSMainController {
   
   @FXML
   protected abstract void onSwitchToReport(final MouseEvent event);
+  
+  @FXML
+  protected abstract void onSwitchToAbout(final MouseEvent event);
 }

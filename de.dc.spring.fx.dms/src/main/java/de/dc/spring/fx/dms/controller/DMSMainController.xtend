@@ -9,13 +9,15 @@ import javafx.scene.Parent
 import javafx.scene.input.KeyCode
 import javafx.scene.input.KeyEvent
 import javafx.scene.input.MouseEvent
+import javafx.scene.layout.Pane
 import org.controlsfx.control.textfield.TextFields
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
 
 import static de.dc.fx.animation.other.AnimationType.*
 
-@Controller class DMSMainController extends BaseDMSMainController {
+@Controller 
+class DMSMainController extends BaseDMSMainController {
 	
 	@FXML HomeTileController invoiceAnchorPaneController
 	@FXML HomeTileController howtoAnchorPaneController
@@ -52,11 +54,12 @@ import static de.dc.fx.animation.other.AnimationType.*
 	}
 
 	override onSwitchToHome(MouseEvent event) {
-		currentPaneLabel.text = "Dashboard"
-		homePanel.toFront
-		AnimationUtils.createTransition(lastPanel, FADE_OUT_DOWN).play
-		lastPanel = homePanel
-		AnimationUtils.createTransition(homePanel, FADE_IN_LEFT).play
+//		currentPaneLabel.text = "Dashboard"
+//		homePanel.toFront
+//		AnimationUtils.createTransition(lastPanel, FADE_OUT_DOWN).play
+//		lastPanel = homePanel
+//		AnimationUtils.createTransition(homePanel, FADE_IN_LEFT).play
+		changePanel("Dashboard", homePanel)
 	}
 
 	override onSwitchToLogOut(MouseEvent event) {
@@ -111,4 +114,17 @@ import static de.dc.fx.animation.other.AnimationType.*
 	override onSwitchToReport(MouseEvent event) {
 		currentPaneLabel.text = "Report"
 	}
+	
+	override protected onSwitchToAbout(MouseEvent event) {
+		changePanel("About", aboutPane)
+	}
+	
+	def changePanel(String text, Pane parent){
+		currentPaneLabel.text = text
+		parent.toFront
+		AnimationUtils.createTransition(lastPanel, FADE_OUT_DOWN).play
+		lastPanel = parent
+		AnimationUtils.createTransition(parent, FADE_IN_LEFT).play
+	}
+	
 }

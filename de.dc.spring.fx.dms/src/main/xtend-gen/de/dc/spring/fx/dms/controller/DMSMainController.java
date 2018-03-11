@@ -14,6 +14,7 @@ import javafx.scene.Parent;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import org.controlsfx.control.textfield.AutoCompletionBinding;
 import org.controlsfx.control.textfield.TextFields;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,11 +76,7 @@ public class DMSMainController extends BaseDMSMainController {
   
   @Override
   public void onSwitchToHome(final MouseEvent event) {
-    this.currentPaneLabel.setText("Dashboard");
-    this.homePanel.toFront();
-    AnimationUtils.createTransition(this.lastPanel, AnimationType.FADE_OUT_DOWN).play();
-    this.lastPanel = this.homePanel;
-    AnimationUtils.createTransition(this.homePanel, AnimationType.FADE_IN_LEFT).play();
+    this.changePanel("Dashboard", this.homePanel);
   }
   
   @Override
@@ -141,5 +138,18 @@ public class DMSMainController extends BaseDMSMainController {
   @Override
   public void onSwitchToReport(final MouseEvent event) {
     this.currentPaneLabel.setText("Report");
+  }
+  
+  @Override
+  protected void onSwitchToAbout(final MouseEvent event) {
+    this.changePanel("About", this.aboutPane);
+  }
+  
+  public void changePanel(final String text, final Pane parent) {
+    this.currentPaneLabel.setText(text);
+    parent.toFront();
+    AnimationUtils.createTransition(this.lastPanel, AnimationType.FADE_OUT_DOWN).play();
+    this.lastPanel = parent;
+    AnimationUtils.createTransition(parent, AnimationType.FADE_IN_LEFT).play();
   }
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -97,6 +98,12 @@
                      </VBox.margin>
                   </ImageView>
                   <Label fx:id="logOutLabel" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#onSwitchToLogOut" styleClass="left-panel-label" text="Log Out" />
+               </children>
+            </VBox>
+            <VBox styleClass="left-panel-item">
+               <children>
+                  <FontAwesomeIconView fill="WHITE" onMouseClicked="#onSwitchToAbout" size="50" textAlignment="CENTER" wrappingWidth="123.0" />
+                  <Label fx:id="logOutLabel1" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#onSwitchToAbout" styleClass="left-panel-label" text="About" />
                </children>
             </VBox>
             <VBox VBox.vgrow="ALWAYS" />
@@ -207,6 +214,11 @@
                      <children>
                         <fx:include source="Calendar.fxml" />
                      </children></AnchorPane>
+                  <AnchorPane fx:id="aboutPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;">
+                     <children>
+                        <fx:include source="About.fxml" />
+                     </children>
+                  </AnchorPane>
                   <VBox fx:id="homePanel" style="-fx-background-color: white;">
                      <children>
                         <FlowPane hgap="20.0" vgap="20.0">
