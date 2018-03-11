@@ -1,19 +1,21 @@
 package de.dc.spring.fx.dms.controller
 
-import java.time.LocalDate
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.stereotype.Controller
+import com.jfoenix.validation.RequiredFieldValidator
 import de.dc.spring.fx.dms.model.Category
 import de.dc.spring.fx.dms.model.Ticket
 import de.dc.spring.fx.dms.repository.CategoryRepository
 import de.dc.spring.fx.dms.service.TicketService
 import de.dc.spring.fx.dms.util.FolderUtil
+import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.LocalTime
 import javafx.collections.FXCollections
 import javafx.collections.ObservableList
 import javafx.event.ActionEvent
 import javafx.scene.control.TextInputDialog
-import java.time.LocalTime
-import java.time.LocalDateTime
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.stereotype.Controller
+import java.io.File
 
 @Controller 
 class AddDocumentController extends BaseAddDocumentController {
@@ -23,8 +25,12 @@ class AddDocumentController extends BaseAddDocumentController {
 	@Autowired CategoryRepository categoryRepository
 	@Autowired TicketService ticketService
 	@Autowired FolderUtil folderUtil
-	ObservableList<Category> categoryData = FXCollections.observableArrayList
 
+	ObservableList<Category> categoryData = FXCollections.observableArrayList
+	ObservableList<String> folderTemplates = FXCollections.observableArrayList(#['Attachments', 'Images', 'Documents', 'Pdfs', 'Templates'])
+	ObservableList<File> createdFolders = FXCollections.observableArrayList
+	ObservableList<File> importedFiles = FXCollections.observableArrayList
+	
 	def initialize() {
 		categoryData+=categoryRepository.findAll
 		categoryComboView.items=categoryData
@@ -32,6 +38,18 @@ class AddDocumentController extends BaseAddDocumentController {
 		
 		createdOnDatePicker.value = LocalDate.now
 		createdTimePicker.value = LocalTime.now
+		
+		val validator = new RequiredFieldValidator
+		validator.setMessage("Name is Required")
+		nameText.validators+=validator
+		nameText.focusedProperty.addListener[o,oldVal,newVal|
+			 if(!newVal) nameText.validate
+		]
+		nameText.validate
+		
+		folderComboView.items = folderTemplates
+		folderListView.items = createdFolders
+		filesListView.items = importedFiles
 	}
 
 	override onCancel(ActionEvent event) {
@@ -68,4 +86,11 @@ class AddDocumentController extends BaseAddDocumentController {
 			categoryComboView.selectionModel.select(c)
 		]
 	}
+	
+	override protected onImportFiles(ActionEvent event) {
+	}
+	
+	override protected onNewFolder(ActionEvent event) {
+	}
+	
 }

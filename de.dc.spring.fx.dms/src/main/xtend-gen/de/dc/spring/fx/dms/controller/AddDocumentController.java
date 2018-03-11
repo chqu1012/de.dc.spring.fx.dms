@@ -1,6 +1,8 @@
 package de.dc.spring.fx.dms.controller;
 
 import com.google.common.collect.Iterables;
+import com.jfoenix.validation.RequiredFieldValidator;
+import com.jfoenix.validation.base.ValidatorBase;
 import de.dc.spring.fx.dms.controller.BaseAddDocumentController;
 import de.dc.spring.fx.dms.controller.DMSMainController;
 import de.dc.spring.fx.dms.controller.ViewDocumentsController;
@@ -9,11 +11,14 @@ import de.dc.spring.fx.dms.model.Ticket;
 import de.dc.spring.fx.dms.repository.CategoryRepository;
 import de.dc.spring.fx.dms.service.TicketService;
 import de.dc.spring.fx.dms.util.FolderUtil;
+import java.io.File;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 import java.util.function.Consumer;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -43,6 +48,12 @@ public class AddDocumentController extends BaseAddDocumentController {
   
   private ObservableList<Category> categoryData = FXCollections.<Category>observableArrayList();
   
+  private ObservableList<String> folderTemplates = FXCollections.<String>observableArrayList(new String[] { "Attachments", "Images", "Documents", "Pdfs", "Templates" });
+  
+  private ObservableList<File> createdFolders = FXCollections.<File>observableArrayList();
+  
+  private ObservableList<File> importedFiles = FXCollections.<File>observableArrayList();
+  
   public void initialize() {
     List<Category> _findAll = this.categoryRepository.findAll();
     Iterables.<Category>addAll(this.categoryData, _findAll);
@@ -50,6 +61,20 @@ public class AddDocumentController extends BaseAddDocumentController {
     this.categoryComboView.getSelectionModel().select(0);
     this.createdOnDatePicker.setValue(LocalDate.now());
     this.createdTimePicker.setValue(LocalTime.now());
+    final RequiredFieldValidator validator = new RequiredFieldValidator();
+    validator.setMessage("Name is Required");
+    ObservableList<ValidatorBase> _validators = this.nameText.getValidators();
+    _validators.add(validator);
+    final ChangeListener<Boolean> _function = (ObservableValue<? extends Boolean> o, Boolean oldVal, Boolean newVal) -> {
+      if ((!(newVal).booleanValue())) {
+        this.nameText.validate();
+      }
+    };
+    this.nameText.focusedProperty().addListener(_function);
+    this.nameText.validate();
+    this.folderComboView.setItems(this.folderTemplates);
+    this.folderListView.setItems(this.createdFolders);
+    this.filesListView.setItems(this.importedFiles);
   }
   
   @Override
@@ -95,5 +120,13 @@ public class AddDocumentController extends BaseAddDocumentController {
       this.categoryComboView.getSelectionModel().select(c);
     };
     dialog.showAndWait().ifPresent(_function_1);
+  }
+  
+  @Override
+  protected void onImportFiles(final ActionEvent event) {
+  }
+  
+  @Override
+  protected void onNewFolder(final ActionEvent event) {
   }
 }
