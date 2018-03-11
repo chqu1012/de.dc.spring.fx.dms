@@ -19,7 +19,11 @@ import org.springframework.stereotype.Component
 	}
 
 	def getFolderByTicket(Ticket ticket) {
-		new File('''«contentFolder.absoluteFile»/«getNameByTicket(ticket)»''')
+		val folder = new File('''«contentFolder.absoluteFile»/«getNameByTicket(ticket)»''')
+		if(!folder.exists){
+			folder.mkdirs
+		}
+		folder
 	}
 
 	def getNameByTicket(Ticket ticket) {

@@ -21,7 +21,7 @@
 
 <BorderPane fx:id="root" maxHeight="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8.0.151" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.dc.spring.fx.dms.controller.DMSDetailController">
    <top>
-      <AnchorPane prefHeight="94.0" prefWidth="600.0" style="-fx-background-color: #F0F0F0;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="94.0" prefWidth="600.0" style="-fx-background-color: #544C4B;" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="22.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
                <image>
@@ -35,7 +35,7 @@
                   <Hyperlink fx:id="documentIdLabel" alignment="CENTER_RIGHT" text="DMS-00000" />
                </children>
             </HBox>
-            <Label fx:id="descriptionLabel" layoutX="90.0" layoutY="47.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Description for this project" AnchorPane.leftAnchor="90.0" AnchorPane.topAnchor="45.0">
+            <Label fx:id="descriptionLabel" layoutX="90.0" layoutY="47.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Description for this project" textFill="WHITE" AnchorPane.leftAnchor="90.0" AnchorPane.topAnchor="45.0">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
@@ -50,7 +50,7 @@
                <children>
                   <HBox maxWidth="1.7976931348623157E308" prefHeight="41.0" prefWidth="973.0" spacing="5.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#onSaveButton" prefWidth="100.0" text="Save">
+                        <Button maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#onSaveButton" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #62677E; -fx-text-fill: white;" text="Save">
                            <graphic>
                               <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -59,7 +59,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#onCommentButton" prefHeight="25.0" prefWidth="100.0" text="Comment">
+                        <Button maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#onCommentButton" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #62677E; -fx-text-fill: white;" text="Comment">
                            <graphic>
                               <ImageView fitHeight="16.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -67,7 +67,7 @@
                                  </image>
                               </ImageView>
                            </graphic></Button>
-                        <Button mnemonicParsing="false" onAction="#onCloneButton" prefWidth="100.0" text="Clone">
+                        <Button maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#onCloneButton" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #62677E; -fx-text-fill: white;" text="Clone">
                            <graphic>
                               <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -76,7 +76,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#onFilesButton" prefWidth="100.0" text="Files">
+                        <Button maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#onFilesButton" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #62677E; -fx-text-fill: white;" text="Files">
                            <graphic>
                               <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -84,7 +84,7 @@
                                  </image>
                               </ImageView>
                            </graphic></Button>
-                        <Button mnemonicParsing="false" onAction="#onClipboardButton" prefWidth="100.0" text="Clipboard">
+                        <Button maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#onClipboardButton" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #62677E; -fx-text-fill: white;" text="Clipboard">
                            <graphic>
                               <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -92,7 +92,7 @@
                                  </image>
                               </ImageView>
                            </graphic></Button>
-                        <Button mnemonicParsing="false" onAction="#onLinkButton" prefWidth="100.0" text="Link">
+                        <Button maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#onLinkButton" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #62677E; -fx-text-fill: white;" text="Link">
                            <graphic>
                               <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -100,7 +100,7 @@
                                  </image>
                               </ImageView>
                            </graphic></Button>
-                        <Button mnemonicParsing="false" onAction="#onExplorerButton" prefWidth="100.0" text="Explorer">
+                        <Button maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#onExplorerButton" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #62677E; -fx-text-fill: white;" text="Explorer">
                            <graphic>
                               <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -108,7 +108,7 @@
                                  </image>
                               </ImageView>
                            </graphic></Button>
-                        <Button mnemonicParsing="false" onAction="#onExportButton" prefWidth="100.0" text="Export">
+                        <Button maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#onExportButton" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #62677E; -fx-text-fill: white;" text="Export">
                            <graphic>
                               <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -116,7 +116,7 @@
                                  </image>
                               </ImageView>
                            </graphic></Button>
-                        <Button mnemonicParsing="false" onAction="#onCloseButton" prefWidth="100.0" text="Close">
+                        <Button maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#onCloseButton" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #62677E; -fx-text-fill: white;" text="Close">
                            <graphic>
                               <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -127,7 +127,7 @@
                         </Button>
                      </children>
                      <padding>
-                        <Insets left="20.0" top="15.0" />
+                        <Insets left="20.0" top="5.0" />
                      </padding>
                   </HBox>
                   <HBox layoutY="60.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="17.0" prefWidth="605.0" spacing="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="280.0" AnchorPane.topAnchor="60.0">
@@ -150,7 +150,7 @@
                         <Separator maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="17.0" prefWidth="116.0" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
-                  <TabPane layoutY="308.0" maxWidth="1.7976931348623157E308" prefHeight="600.0" prefWidth="885.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="308.0">
+                  <TabPane layoutY="308.0" maxWidth="1.7976931348623157E308" prefHeight="600.0" prefWidth="885.0" stylesheets="@css/TabPane.css" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="308.0">
                     <tabs>
                       <Tab text="Generell">
                         <content>

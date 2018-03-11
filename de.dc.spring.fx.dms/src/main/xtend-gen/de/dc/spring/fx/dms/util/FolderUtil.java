@@ -24,13 +24,23 @@ public class FolderUtil {
   }
   
   public File getFolderByTicket(final Ticket ticket) {
-    StringConcatenation _builder = new StringConcatenation();
-    File _absoluteFile = FolderUtil.contentFolder.getAbsoluteFile();
-    _builder.append(_absoluteFile);
-    _builder.append("/");
-    CharSequence _nameByTicket = this.getNameByTicket(ticket);
-    _builder.append(_nameByTicket);
-    return new File(_builder.toString());
+    File _xblockexpression = null;
+    {
+      StringConcatenation _builder = new StringConcatenation();
+      File _absoluteFile = FolderUtil.contentFolder.getAbsoluteFile();
+      _builder.append(_absoluteFile);
+      _builder.append("/");
+      CharSequence _nameByTicket = this.getNameByTicket(ticket);
+      _builder.append(_nameByTicket);
+      final File folder = new File(_builder.toString());
+      boolean _exists = folder.exists();
+      boolean _not = (!_exists);
+      if (_not) {
+        folder.mkdirs();
+      }
+      _xblockexpression = folder;
+    }
+    return _xblockexpression;
   }
   
   public CharSequence getNameByTicket(final Ticket ticket) {
