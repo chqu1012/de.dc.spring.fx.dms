@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<SplitPane dividerPositions="0.2, 0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.151" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.dc.spring.fx.dms.control.controller.FileViewController">
+<SplitPane fx:id="root" dividerPositions="0.2, 0.5" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.151" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.dc.spring.fx.dms.control.controller.FileViewController">
    <items>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
@@ -59,7 +59,7 @@
          <children>
             <VBox layoutX="232.0" layoutY="31.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="324.0" VBox.vgrow="ALWAYS">
+                  <StackPane maxHeight="324.0" maxWidth="1.7976931348623157E308" prefHeight="324.0" VBox.vgrow="ALWAYS">
                      <children>
                         <ScrollPane fx:id="imageViewScrollPane" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                           <content>

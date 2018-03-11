@@ -5,7 +5,6 @@ import de.dc.spring.fx.dms.controller.BaseDMSDetailController;
 import de.dc.spring.fx.dms.controller.DMSMainController;
 import de.dc.spring.fx.dms.model.Ticket;
 import de.dc.spring.fx.dms.util.FolderUtil;
-import java.io.IOException;
 import java.net.URL;
 import java.text.DecimalFormat;
 import javafx.application.HostServices;
@@ -14,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -33,20 +33,24 @@ public class DMSDetailController extends BaseDMSDetailController {
   
   private FileViewController fileViewController;
   
-  public boolean initialize() throws IOException {
-    boolean _xblockexpression = false;
-    {
-      URL _resource = this.getClass().getResource("/de/dc/spring/fx/dms/control/FileView.fxml");
-      FXMLLoader loader = new FXMLLoader(_resource);
-      Node p = loader.<Node>load();
-      this.fileViewController = loader.<FileViewController>getController();
-      this.fileViewController.setHostServices(this.hostServices);
-      this.fullAnchor(this.root);
-      this.fullAnchor(p);
-      ObservableList<Node> _children = this.splitPaneRoot.getChildren();
-      _xblockexpression = _children.add(p);
+  public boolean initialize() {
+    try {
+      boolean _xblockexpression = false;
+      {
+        URL _resource = this.getClass().getResource("/de/dc/spring/fx/dms/control/FileView.fxml");
+        FXMLLoader loader = new FXMLLoader(_resource);
+        Node fileView = loader.<Node>load();
+        this.fileViewController = loader.<FileViewController>getController();
+        this.fileViewController.setHostServices(this.hostServices);
+        this.fullAnchor(this.root, 0, 0, 0, 0);
+        this.fullAnchor(fileView, 0, 0, 0, 0);
+        ObservableList<Node> _children = this.splitPaneRoot.getChildren();
+        _xblockexpression = _children.add(fileView);
+      }
+      return _xblockexpression;
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
     }
-    return _xblockexpression;
   }
   
   public void setDetails(final Ticket ticket) {

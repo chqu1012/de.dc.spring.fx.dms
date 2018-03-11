@@ -41,56 +41,53 @@ public class FileViewController extends BaseFileViewController {
   
   private FileChooser fc = new FileChooser();
   
-  public boolean initialize() {
-    boolean _xblockexpression = false;
-    {
-      FileTreeCellFactory _fileTreeCellFactory = new FileTreeCellFactory();
-      this.fileTreeView.setCellFactory(_fileTreeCellFactory);
-      final EventHandler<MouseEvent> _function = (MouseEvent it) -> {
-        TreeItem<File> selectedItem = this.fileTreeView.getSelectionModel().getSelectedItem();
+  public void initialize() {
+    FileTreeCellFactory _fileTreeCellFactory = new FileTreeCellFactory();
+    this.fileTreeView.setCellFactory(_fileTreeCellFactory);
+    final EventHandler<MouseEvent> _function = (MouseEvent it) -> {
+      TreeItem<File> selectedItem = this.fileTreeView.getSelectionModel().getSelectedItem();
+      if ((selectedItem != null)) {
+        this.fileData.clear();
+        File[] _listFiles = selectedItem.getValue().listFiles();
+        Iterables.<File>addAll(this.fileData, ((Iterable<? extends File>)Conversions.doWrapArray(_listFiles)));
+      }
+    };
+    this.fileTreeView.setOnMouseClicked(_function);
+    this.fileTable.setItems(this.fileData);
+    final EventHandler<MouseEvent> _function_1 = (MouseEvent e) -> {
+      int _clickCount = e.getClickCount();
+      boolean _tripleEquals = (_clickCount == 2);
+      if (_tripleEquals) {
+        this.onOpenFile(null);
+      } else {
+        File selectedItem = this.fileTable.getSelectionModel().getSelectedItem();
         if ((selectedItem != null)) {
-          this.fileData.clear();
-          File[] _listFiles = selectedItem.getValue().listFiles();
-          Iterables.<File>addAll(this.fileData, ((Iterable<? extends File>)Conversions.doWrapArray(_listFiles)));
-        }
-      };
-      this.fileTreeView.setOnMouseClicked(_function);
-      this.fileTable.setItems(this.fileData);
-      final EventHandler<MouseEvent> _function_1 = (MouseEvent e) -> {
-        int _clickCount = e.getClickCount();
-        boolean _tripleEquals = (_clickCount == 2);
-        if (_tripleEquals) {
-          this.onOpenFile(null);
-        } else {
-          File selectedItem = this.fileTable.getSelectionModel().getSelectedItem();
-          if ((selectedItem != null)) {
-            String name = selectedItem.getName();
-            if ((((name.endsWith(".png") || name.endsWith(".bmp")) || name.endsWith(".jpg")) || 
-              name.endsWith(".jpeg"))) {
-              this.imageViewScrollPane.toFront();
-              this.imageView.setImage(ImageHelper.getImage(selectedItem));
-            }
+          String name = selectedItem.getName();
+          if ((((name.endsWith(".png") || name.endsWith(".bmp")) || name.endsWith(".jpg")) || 
+            name.endsWith(".jpeg"))) {
+            this.imageViewScrollPane.toFront();
+            this.imageView.setImage(ImageHelper.getImage(selectedItem));
           }
         }
-      };
-      this.fileTable.setOnMouseClicked(_function_1);
-      PropertyValueFactory<File, String> _propertyValueFactory = new PropertyValueFactory<File, String>("name");
-      this.nameColumn.setCellValueFactory(_propertyValueFactory);
-      FileSizeColumnFactory<File, String> _fileSizeColumnFactory = new FileSizeColumnFactory<File, String>();
-      this.sizeColumn.setCellFactory(_fileSizeColumnFactory);
-      ObservableList<FileChooser.ExtensionFilter> _extensionFilters = this.fc.getExtensionFilters();
-      FileChooser.ExtensionFilter _extensionFilter = new FileChooser.ExtensionFilter("All Files", "*.*");
-      FileChooser.ExtensionFilter _extensionFilter_1 = new FileChooser.ExtensionFilter("MS Excel", "*.xlsx");
-      FileChooser.ExtensionFilter _extensionFilter_2 = new FileChooser.ExtensionFilter("MS Word", "*.docx");
-      FileChooser.ExtensionFilter _extensionFilter_3 = new FileChooser.ExtensionFilter("TEXT", "*.txt");
-      FileChooser.ExtensionFilter _extensionFilter_4 = new FileChooser.ExtensionFilter("PDF", "*.pdf");
-      FileChooser.ExtensionFilter _extensionFilter_5 = new FileChooser.ExtensionFilter("GIF", "*.gif");
-      FileChooser.ExtensionFilter _extensionFilter_6 = new FileChooser.ExtensionFilter("JEPG", "*.jpeg");
-      FileChooser.ExtensionFilter _extensionFilter_7 = new FileChooser.ExtensionFilter("JPG", "*.jpg");
-      FileChooser.ExtensionFilter _extensionFilter_8 = new FileChooser.ExtensionFilter("PNG", "*.png");
-      _xblockexpression = Iterables.<FileChooser.ExtensionFilter>addAll(_extensionFilters, Collections.<FileChooser.ExtensionFilter>unmodifiableList(CollectionLiterals.<FileChooser.ExtensionFilter>newArrayList(_extensionFilter, _extensionFilter_1, _extensionFilter_2, _extensionFilter_3, _extensionFilter_4, _extensionFilter_5, _extensionFilter_6, _extensionFilter_7, _extensionFilter_8)));
-    }
-    return _xblockexpression;
+      }
+    };
+    this.fileTable.setOnMouseClicked(_function_1);
+    PropertyValueFactory<File, String> _propertyValueFactory = new PropertyValueFactory<File, String>("name");
+    this.nameColumn.setCellValueFactory(_propertyValueFactory);
+    FileSizeColumnFactory<File, String> _fileSizeColumnFactory = new FileSizeColumnFactory<File, String>();
+    this.sizeColumn.setCellFactory(_fileSizeColumnFactory);
+    ObservableList<FileChooser.ExtensionFilter> _extensionFilters = this.fc.getExtensionFilters();
+    FileChooser.ExtensionFilter _extensionFilter = new FileChooser.ExtensionFilter("All Files", "*.*");
+    FileChooser.ExtensionFilter _extensionFilter_1 = new FileChooser.ExtensionFilter("MS Excel", "*.xlsx");
+    FileChooser.ExtensionFilter _extensionFilter_2 = new FileChooser.ExtensionFilter("MS Word", "*.docx");
+    FileChooser.ExtensionFilter _extensionFilter_3 = new FileChooser.ExtensionFilter("TEXT", "*.txt");
+    FileChooser.ExtensionFilter _extensionFilter_4 = new FileChooser.ExtensionFilter("PDF", "*.pdf");
+    FileChooser.ExtensionFilter _extensionFilter_5 = new FileChooser.ExtensionFilter("GIF", "*.gif");
+    FileChooser.ExtensionFilter _extensionFilter_6 = new FileChooser.ExtensionFilter("JEPG", "*.jpeg");
+    FileChooser.ExtensionFilter _extensionFilter_7 = new FileChooser.ExtensionFilter("JPG", "*.jpg");
+    FileChooser.ExtensionFilter _extensionFilter_8 = new FileChooser.ExtensionFilter("PNG", "*.png");
+    Iterables.<FileChooser.ExtensionFilter>addAll(_extensionFilters, Collections.<FileChooser.ExtensionFilter>unmodifiableList(CollectionLiterals.<FileChooser.ExtensionFilter>newArrayList(_extensionFilter, _extensionFilter_1, _extensionFilter_2, _extensionFilter_3, _extensionFilter_4, _extensionFilter_5, _extensionFilter_6, _extensionFilter_7, _extensionFilter_8)));
+    this.fullAnchor(this.root, 0, 0, 0, 0);
   }
   
   public void setInput(final String ticketFolderPath) {

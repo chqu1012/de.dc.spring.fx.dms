@@ -1,17 +1,19 @@
 package de.dc.spring.fx.dms.control.controller;
 
+import de.dc.spring.fx.dms.controller.AbstractLayoutController;
 import java.io.File;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.SplitPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TreeView;
 import javafx.scene.image.ImageView;
 
 @SuppressWarnings("all")
-public abstract class BaseFileViewController {
+public abstract class BaseFileViewController extends AbstractLayoutController {
   @FXML
   protected TreeView<File> fileTreeView;
   
@@ -44,6 +46,9 @@ public abstract class BaseFileViewController {
   
   @FXML
   protected Label lastUpdateLabel;
+  
+  @FXML
+  protected SplitPane root;
   
   @FXML
   protected abstract void onNewFolder(final ActionEvent event);
