@@ -9,9 +9,12 @@ import javafx.scene.control.ComboBox
 import javafx.scene.control.TextArea
 import javafx.scene.control.TextField
 import javafx.scene.layout.AnchorPane
+import com.jfoenix.controls.JFXTimePicker
 
 abstract class BaseAddDocumentController {
+	
 	@FXML protected AnchorPane root
+	@FXML protected JFXTimePicker createdTimePicker
 	@FXML protected TextField nameText
 	@FXML protected JFXDatePicker createdOnDatePicker
 	@FXML protected ComboBox<Category> categoryComboView

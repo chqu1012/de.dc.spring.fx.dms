@@ -12,6 +12,8 @@ import javafx.collections.FXCollections
 import javafx.collections.ObservableList
 import javafx.event.ActionEvent
 import javafx.scene.control.TextInputDialog
+import java.time.LocalTime
+import java.time.LocalDateTime
 
 @Controller 
 class AddDocumentController extends BaseAddDocumentController {
@@ -27,7 +29,9 @@ class AddDocumentController extends BaseAddDocumentController {
 		categoryData+=categoryRepository.findAll
 		categoryComboView.items=categoryData
 		categoryComboView.selectionModel.select(0)
+		
 		createdOnDatePicker.value = LocalDate.now
+		createdTimePicker.value = LocalTime.now
 	}
 
 	override onCancel(ActionEvent event) {
@@ -35,9 +39,10 @@ class AddDocumentController extends BaseAddDocumentController {
 	}
 
 	override onCreate(ActionEvent event) {
+		var currentDateTime = LocalDateTime.of(createdOnDatePicker.value, createdTimePicker.value)
 		var ticket = new Ticket(nameText.text, descriptionTextArea.text,
-			categoryComboView.selectionModel.selectedIndex, 0, createdOnDatePicker.value)
-		ticket.updatedOn = LocalDate.now
+			categoryComboView.selectionModel.selectedIndex, 0, currentDateTime)
+		ticket.updatedOn = currentDateTime
 		ticketService.create = ticket
 		viewDocumentController.ticketData+=ticket
 		folderUtil.createFolder=ticket

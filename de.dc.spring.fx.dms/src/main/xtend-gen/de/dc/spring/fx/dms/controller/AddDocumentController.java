@@ -10,6 +10,8 @@ import de.dc.spring.fx.dms.repository.CategoryRepository;
 import de.dc.spring.fx.dms.service.TicketService;
 import de.dc.spring.fx.dms.util.FolderUtil;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.function.Consumer;
 import javafx.collections.FXCollections;
@@ -47,6 +49,7 @@ public class AddDocumentController extends BaseAddDocumentController {
     this.categoryComboView.setItems(this.categoryData);
     this.categoryComboView.getSelectionModel().select(0);
     this.createdOnDatePicker.setValue(LocalDate.now());
+    this.createdTimePicker.setValue(LocalTime.now());
   }
   
   @Override
@@ -56,12 +59,12 @@ public class AddDocumentController extends BaseAddDocumentController {
   
   @Override
   public void onCreate(final ActionEvent event) {
+    LocalDateTime currentDateTime = LocalDateTime.of(this.createdOnDatePicker.getValue(), this.createdTimePicker.getValue());
     String _text = this.nameText.getText();
     String _text_1 = this.descriptionTextArea.getText();
     int _selectedIndex = this.categoryComboView.getSelectionModel().getSelectedIndex();
-    LocalDate _value = this.createdOnDatePicker.getValue();
-    Ticket ticket = new Ticket(_text, _text_1, _selectedIndex, 0, _value);
-    ticket.setUpdatedOn(LocalDate.now());
+    Ticket ticket = new Ticket(_text, _text_1, _selectedIndex, 0, currentDateTime);
+    ticket.setUpdatedOn(currentDateTime);
     this.ticketService.create(ticket);
     this.viewDocumentController.ticketData.add(ticket);
     this.folderUtil.createFolder(ticket);

@@ -1,6 +1,6 @@
 package de.dc.spring.fx.dms.model;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -31,15 +31,15 @@ public class Ticket {
 	private int userId;
 
 	@Column(nullable = false)
-	private LocalDate createdOn;
+	private LocalDateTime createdOn;
 
 	@Column(nullable = true)
-	private LocalDate updatedOn;
+	private LocalDateTime updatedOn;
 
 	public Ticket() {
 	}
 	
-	public Ticket(String name, String description, int categoryId, int userId, LocalDate createdOn) {
+	public Ticket(String name, String description, int categoryId, int userId, LocalDateTime createdOn) {
 		this.name = name;
 		this.description = description;
 		this.categoryId = categoryId;
@@ -87,19 +87,19 @@ public class Ticket {
 		this.userId = userId;
 	}
 
-	public LocalDate getCreatedOn() {
+	public LocalDateTime getCreatedOn() {
 		return createdOn;
 	}
 
-	public void setCreatedOn(LocalDate createdOn) {
+	public void setCreatedOn(LocalDateTime createdOn) {
 		this.createdOn = createdOn;
 	}
 
-	public LocalDate getUpdatedOn() {
+	public LocalDateTime getUpdatedOn() {
 		return updatedOn;
 	}
 
-	public void setUpdatedOn(LocalDate updatedOn) {
+	public void setUpdatedOn(LocalDateTime updatedOn) {
 		this.updatedOn = updatedOn;
 	}
 	

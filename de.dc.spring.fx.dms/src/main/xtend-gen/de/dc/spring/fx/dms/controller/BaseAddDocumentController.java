@@ -1,6 +1,7 @@
 package de.dc.spring.fx.dms.controller;
 
 import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXTimePicker;
 import de.dc.spring.fx.dms.model.Category;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,6 +15,9 @@ import javafx.scene.layout.AnchorPane;
 public abstract class BaseAddDocumentController {
   @FXML
   protected AnchorPane root;
+  
+  @FXML
+  protected JFXTimePicker createdTimePicker;
   
   @FXML
   protected TextField nameText;
