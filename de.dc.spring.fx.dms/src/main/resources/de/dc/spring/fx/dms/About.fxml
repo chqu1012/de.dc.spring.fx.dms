@@ -8,8 +8,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="518.0" prefWidth="618.0" xmlns="http://javafx.com/javafx/8.0.151" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="root" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="541.0" prefWidth="743.0" xmlns="http://javafx.com/javafx/8.0.151" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.dc.spring.fx.dms.controller.AboutController">
    <children>
       <HBox layoutX="45.0" layoutY="83.0">
          <children>
@@ -25,40 +24,40 @@
             </Label>
          </children>
       </HBox>
-      <Separator layoutX="274.0" layoutY="10.0" orientation="VERTICAL" prefHeight="495.0" prefWidth="14.0" />
+      <Separator layoutX="343.0" layoutY="12.0" orientation="VERTICAL" prefHeight="495.0" prefWidth="14.0" />
       <AnchorPane layoutX="52.0" layoutY="178.0" prefHeight="5.0" prefWidth="198.0" style="-fx-background-color: black;" />
       <AnchorPane layoutX="51.0" layoutY="110.0" prefHeight="5.0" prefWidth="198.0" style="-fx-background-color: black;" />
-      <JFXButton layoutX="327.0" layoutY="30.0" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #62677E;">
+      <JFXButton layoutX="451.0" layoutY="38.0" onAction="#onFacebookButton" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #62677E;">
          <graphic>
             <FontAwesomeIconView fill="WHITE" glyphName="FACEBOOK" size="60" />
          </graphic>
       </JFXButton>
-      <JFXButton layoutX="445.0" layoutY="30.0" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #62677E;">
+      <JFXButton layoutX="569.0" layoutY="38.0" onAction="#onTwitterButton" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #62677E;">
          <graphic>
             <FontAwesomeIconView fill="WHITE" glyphName="TWITTER" size="60" />
          </graphic>
       </JFXButton>
-      <JFXButton layoutX="327.0" layoutY="155.0" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #62677E;">
+      <JFXButton layoutX="451.0" layoutY="163.0" onAction="#onGPlusButton" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #62677E;">
          <graphic>
             <FontAwesomeIconView fill="#f5f5f5" glyphName="GOOGLE_PLUS" size="55" />
          </graphic>
       </JFXButton>
-      <JFXButton layoutX="445.0" layoutY="155.0" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #62677E;">
+      <JFXButton layoutX="569.0" layoutY="163.0" onAction="#onEmailButton" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #62677E;">
          <graphic>
             <FontAwesomeIconView fill="WHITE" glyphName="ENVELOPE" size="60" />
          </graphic>
       </JFXButton>
-      <JFXButton layoutX="327.0" layoutY="278.0" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #62677E;">
+      <JFXButton layoutX="451.0" layoutY="286.0" onAction="#onLinkedInButton" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #62677E;">
          <graphic>
             <FontAwesomeIconView fill="#f5f5f5" glyphName="LINKEDIN" size="60" />
          </graphic>
       </JFXButton>
-      <JFXButton layoutX="445.0" layoutY="278.0" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #62677E;">
+      <JFXButton layoutX="569.0" layoutY="286.0" onAction="#onGithubButton" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #62677E;">
          <graphic>
             <FontAwesomeIconView fill="WHITE" glyphName="GITHUB" size="60" />
          </graphic>
       </JFXButton>
-      <Label layoutX="45.0" layoutY="320.0" prefHeight="17.0" prefWidth="238.0" text="A fast way to manage your documents." />
-      <JFXButton layoutX="487.0" layoutY="462.0" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: #62677E; -fx-text-fill: white;" text="Ok" />
+      <Label layoutX="45.0" layoutY="362.0" prefHeight="17.0" prefWidth="238.0" text="A fast way to manage your documents." />
+      <JFXButton layoutX="611.0" layoutY="470.0" onAction="#onOkButton" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: #62677E; -fx-text-fill: white;" text="Ok" />
    </children>
 </AnchorPane>

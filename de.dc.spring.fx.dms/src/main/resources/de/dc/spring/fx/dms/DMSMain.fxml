@@ -100,7 +100,7 @@
                   <Label fx:id="logOutLabel" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#onSwitchToLogOut" styleClass="left-panel-label" text="Log Out" />
                </children>
             </VBox>
-            <VBox styleClass="left-panel-item">
+            <VBox maxHeight="75.0" maxWidth="125.0" prefHeight="75.0" prefWidth="125.0" styleClass="left-panel-item">
                <children>
                   <FontAwesomeIconView fill="WHITE" onMouseClicked="#onSwitchToAbout" size="50" textAlignment="CENTER" wrappingWidth="123.0" />
                   <Label fx:id="logOutLabel1" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#onSwitchToAbout" styleClass="left-panel-label" text="About" />

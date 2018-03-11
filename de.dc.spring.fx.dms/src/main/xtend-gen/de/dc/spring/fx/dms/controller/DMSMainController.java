@@ -62,11 +62,7 @@ public class DMSMainController extends BaseDMSMainController {
   
   @Override
   public void onSwitchToAddDocument(final MouseEvent event) {
-    this.currentPaneLabel.setText("New Document");
-    this.addDocumentPanel.toFront();
-    AnimationUtils.createTransition(this.lastPanel, AnimationType.FADE_OUT_DOWN).play();
-    this.lastPanel = this.addDocumentPanel;
-    AnimationUtils.createTransition(this.addDocumentPanel, AnimationType.FADE_IN_LEFT).play();
+    this.changePanel("New Document", this.addDocumentPanel);
   }
   
   @Override
@@ -91,20 +87,12 @@ public class DMSMainController extends BaseDMSMainController {
   
   @Override
   public void onSwitchToViewDocuments(final MouseEvent event) {
-    this.currentPaneLabel.setText("Documents View");
-    this.viewDocumentsPanel.toFront();
-    AnimationUtils.createTransition(this.lastPanel, AnimationType.FADE_OUT_DOWN).play();
-    this.lastPanel = this.viewDocumentsPanel;
-    AnimationUtils.createTransition(this.viewDocumentsPanel, AnimationType.FADE_IN_LEFT).play();
+    this.changePanel("Documents View", this.viewDocumentsPanel);
   }
   
   @Override
   public void onSwitchToCalendar(final MouseEvent event) {
-    this.currentPaneLabel.setText("Calendar");
-    this.calendarPane.toFront();
-    AnimationUtils.createTransition(this.lastPanel, AnimationType.FADE_OUT_DOWN).play();
-    this.lastPanel = this.calendarPane;
-    AnimationUtils.createTransition(this.calendarPane, AnimationType.FADE_IN_LEFT).play();
+    this.changePanel("Calendar", this.calendarPane);
   }
   
   @FXML
@@ -121,13 +109,8 @@ public class DMSMainController extends BaseDMSMainController {
   }
   
   public void showTicket(final Ticket ticket) {
-    this.currentPaneLabel.setText("Document Details");
-    this.dmsDetailPane.toFront();
-    AnimationUtils.createTransition(this.lastPanel, AnimationType.FADE_OUT_DOWN).play();
-    this.lastPanel = this.dmsDetailPane;
     this.dmsDetailController.setDetails(ticket);
-    AnimationUtils.createTransition(this.dmsDetailPane, AnimationType.FADE_IN_LEFT).play();
-    this.dmsDetailPane.toFront();
+    this.changePanel("Document Details", this.dmsDetailPane);
   }
   
   @Override

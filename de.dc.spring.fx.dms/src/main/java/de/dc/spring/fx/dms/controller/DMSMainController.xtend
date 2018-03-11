@@ -42,11 +42,7 @@ class DMSMainController extends BaseDMSMainController {
 	}
 
 	override onSwitchToAddDocument(MouseEvent event) {
-		currentPaneLabel.text = "New Document"
-		addDocumentPanel.toFront
-		AnimationUtils.createTransition(lastPanel, FADE_OUT_DOWN).play
-		lastPanel = addDocumentPanel
-		AnimationUtils.createTransition(addDocumentPanel, FADE_IN_LEFT).play
+		changePanel("New Document", addDocumentPanel)
 	}
 
 	override onSwitchToExit(MouseEvent event) {
@@ -54,11 +50,6 @@ class DMSMainController extends BaseDMSMainController {
 	}
 
 	override onSwitchToHome(MouseEvent event) {
-//		currentPaneLabel.text = "Dashboard"
-//		homePanel.toFront
-//		AnimationUtils.createTransition(lastPanel, FADE_OUT_DOWN).play
-//		lastPanel = homePanel
-//		AnimationUtils.createTransition(homePanel, FADE_IN_LEFT).play
 		changePanel("Dashboard", homePanel)
 	}
 
@@ -71,19 +62,11 @@ class DMSMainController extends BaseDMSMainController {
 	}
 
 	override onSwitchToViewDocuments(MouseEvent event) {
-		currentPaneLabel.text = "Documents View"
-		viewDocumentsPanel.toFront
-		AnimationUtils.createTransition(lastPanel, FADE_OUT_DOWN).play
-		lastPanel = viewDocumentsPanel
-		AnimationUtils.createTransition(viewDocumentsPanel, FADE_IN_LEFT).play
+		changePanel("Documents View", viewDocumentsPanel)
 	}
 
 	override onSwitchToCalendar(MouseEvent event) {
-		currentPaneLabel.text = "Calendar"
-		calendarPane.toFront
-		AnimationUtils.createTransition(lastPanel, FADE_OUT_DOWN).play
-		lastPanel = calendarPane
-		AnimationUtils.createTransition(calendarPane, FADE_IN_LEFT).play
+		changePanel("Calendar", calendarPane)
 	}
 
 	@FXML def onSearchTextKeyReleased(KeyEvent event) {
@@ -98,13 +81,16 @@ class DMSMainController extends BaseDMSMainController {
 	}
 
 	def showTicket(Ticket ticket) {
-		currentPaneLabel.text = "Document Details"
-		dmsDetailPane.toFront
-		AnimationUtils.createTransition(lastPanel, FADE_OUT_DOWN).play
-		lastPanel = dmsDetailPane
+//		currentPaneLabel.text = "Document Details"
+//		dmsDetailPane.toFront
+//		AnimationUtils.createTransition(lastPanel, FADE_OUT_DOWN).play
+//		lastPanel = dmsDetailPane
+//		dmsDetailController.details = ticket
+//		AnimationUtils.createTransition(dmsDetailPane, FADE_IN_LEFT).play
+//		dmsDetailPane.toFront
+
 		dmsDetailController.details = ticket
-		AnimationUtils.createTransition(dmsDetailPane, FADE_IN_LEFT).play
-		dmsDetailPane.toFront
+		changePanel("Document Details", dmsDetailPane)
 	}
 
 	override onSwitchToHelp(MouseEvent event) {
