@@ -64,6 +64,8 @@ class FileViewController extends BaseFileViewController {
 			new FileChooser.ExtensionFilter("JPG", "*.jpg"), 
 			new FileChooser.ExtensionFilter("PNG", "*.png")
 		]
+		
+		root.fullAnchor(0,0,0,0)	
 	}
 
 	def setInput(String ticketFolderPath) {

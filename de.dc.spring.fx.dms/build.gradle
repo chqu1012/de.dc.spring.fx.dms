@@ -41,8 +41,6 @@ dependencies {
 	compile group: 'com.calendarfx', name: 'calendar', version: '8.4.2', ext: 'pom'
 	compile group: 'com.calendarfx', name: 'view', version: '8.4.2'
 	compile group: 'com.calendarfx', name: 'recurrence', version: '8.4.2'
-	compile 'de.jensd:fontawesomefx-commons:8.13'
-	compile 'de.jensd:fontawesomefx-fontawesome-4.7.0-1'
 	runtime('com.h2database:h2')
 	
 	compile group: 'org.jfxtras', name: 'jfxtras-labs', version: '8.0-r5'

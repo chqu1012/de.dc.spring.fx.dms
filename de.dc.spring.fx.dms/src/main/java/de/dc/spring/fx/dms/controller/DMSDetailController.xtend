@@ -1,16 +1,14 @@
 package de.dc.spring.fx.dms.controller
 
-import java.io.IOException
-import java.text.DecimalFormat
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.stereotype.Controller
 import de.dc.spring.fx.dms.control.controller.FileViewController
 import de.dc.spring.fx.dms.model.Ticket
 import de.dc.spring.fx.dms.util.FolderUtil
+import java.text.DecimalFormat
 import javafx.application.HostServices
 import javafx.event.ActionEvent
 import javafx.fxml.FXMLLoader
-import javafx.scene.control.SplitPane
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.stereotype.Controller
 
 @Controller class DMSDetailController extends BaseDMSDetailController {
 	
@@ -22,14 +20,14 @@ import javafx.scene.control.SplitPane
 	
 	FileViewController fileViewController
 
-	def initialize() throws IOException {
+	def initialize(){
 		var loader = new FXMLLoader(class.getResource("/de/dc/spring/fx/dms/control/FileView.fxml"))
-		var p = loader.load
+		var fileView = loader.load
 		fileViewController = loader.controller
 		fileViewController.hostServices = hostServices
-		root.fullAnchor
-		p.fullAnchor
-		splitPaneRoot.children+=p
+		root.fullAnchor(0,0,0,0)
+		fileView.fullAnchor(0,0,0,0)
+		splitPaneRoot.children+=fileView
 	}
 
 	def setDetails(Ticket ticket) {
