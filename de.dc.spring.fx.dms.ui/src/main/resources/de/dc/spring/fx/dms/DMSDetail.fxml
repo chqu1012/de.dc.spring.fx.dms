@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="root" maxHeight="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8.0.151" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.dc.spring.fx.dms.controller.DMSDetailController">
+   <top>
+      <AnchorPane prefHeight="94.0" prefWidth="600.0" style="-fx-background-color: #544C4B;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="22.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+               <image>
+                  <Image url="@image/icons8_Microsoft_Project_96px.png" />
+               </image>
+            </ImageView>
+            <HBox layoutX="80.0" layoutY="-3.0" prefHeight="23.0" prefWidth="291.0" AnchorPane.leftAnchor="90.0" AnchorPane.topAnchor="20.0">
+               <children>
+                  <Hyperlink maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Document Managment System" />
+                  <Label maxHeight="1.7976931348623157E308" text="/" />
+                  <Hyperlink fx:id="documentIdLabel" alignment="CENTER_RIGHT" text="DMS-00000" />
+               </children>
+            </HBox>
+            <Label fx:id="descriptionLabel" layoutX="90.0" layoutY="47.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Description for this project" textFill="WHITE" AnchorPane.leftAnchor="90.0" AnchorPane.topAnchor="45.0">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </top>
+   <center>
+      <ScrollPane fitToWidth="true" maxWidth="1.7976931348623157E308" prefHeight="600.0" BorderPane.alignment="CENTER">
+        <content>
+          <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" style="-fx-background-color: white;">
+               <children>
+                  <HBox maxWidth="1.7976931348623157E308" prefHeight="41.0" prefWidth="973.0" spacing="5.0">
+                     <children>
+                        <Button maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#onSaveButton" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #62677E; -fx-text-fill: white;" text="Save">
+                           <graphic>
+                              <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/icons8_Save_96px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#onCommentButton" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #62677E; -fx-text-fill: white;" text="Comment">
+                           <graphic>
+                              <ImageView fitHeight="16.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/icons8_Comments_100px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
+                        <Button maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#onCloneButton" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #62677E; -fx-text-fill: white;" text="Clone">
+                           <graphic>
+                              <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/icons8_Copy_100px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#onFilesButton" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #62677E; -fx-text-fill: white;" text="Files">
+                           <graphic>
+                              <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/icons8_File_96px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
+                        <Button maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#onClipboardButton" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #62677E; -fx-text-fill: white;" text="Clipboard">
+                           <graphic>
+                              <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/icons8_Copy_to_Clipboard_100px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
+                        <Button maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#onLinkButton" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #62677E; -fx-text-fill: white;" text="Link">
+                           <graphic>
+                              <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/icons8_Link_104px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
+                        <Button maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#onExplorerButton" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #62677E; -fx-text-fill: white;" text="Explorer">
+                           <graphic>
+                              <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/icons8_Open_96px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
+                        <Button maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#onExportButton" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #62677E; -fx-text-fill: white;" text="Export">
+                           <graphic>
+                              <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/icons8_Export_100px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
+                        <Button maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#onCloseButton" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #62677E; -fx-text-fill: white;" text="Close">
+                           <graphic>
+                              <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/icons8_Export_100px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                     <padding>
+                        <Insets left="20.0" top="5.0" />
+                     </padding>
+                  </HBox>
+                  <HBox layoutY="60.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="17.0" prefWidth="605.0" spacing="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="280.0" AnchorPane.topAnchor="60.0">
+                     <children>
+                        <Label maxHeight="1.7976931348623157E308" text="Description">
+                           <padding>
+                              <Insets left="20.0" />
+                           </padding>
+                        </Label>
+                        <Separator maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+                  <HBox layoutX="600.0" layoutY="60.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="17.0" prefWidth="265.0" spacing="10.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="60.0">
+                     <children>
+                        <Label maxHeight="1.7976931348623157E308" text="Details">
+                           <padding>
+                              <Insets left="20.0" />
+                           </padding>
+                        </Label>
+                        <Separator maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="17.0" prefWidth="116.0" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+                  <TabPane layoutY="308.0" maxWidth="1.7976931348623157E308" prefHeight="600.0" prefWidth="885.0" stylesheets="@css/TabPane.css" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="308.0">
+                    <tabs>
+                      <Tab text="Generell">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                        </content>
+                      </Tab>
+                      <Tab text="History">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                        </content>
+                      </Tab>
+                        <Tab text="Status">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                           </content>
+                        </Tab>
+                        <Tab text="Files">
+                           <content>
+                              <AnchorPane fx:id="splitPaneRoot" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" />
+                           </content>
+                        </Tab>
+                    </tabs>
+                  </TabPane>
+                  <VBox layoutX="641.0" layoutY="82.0" prefHeight="200.0" prefWidth="194.0" spacing="10.0" AnchorPane.rightAnchor="40.0">
+                     <children>
+                        <HBox prefWidth="200.0" spacing="10.0">
+                           <children>
+                              <Label prefHeight="25.0" prefWidth="80.0" text="Author:" />
+                              <TextField fx:id="authorText" />
+                           </children>
+                        </HBox>
+                        <HBox prefWidth="200.0" spacing="10.0">
+                           <children>
+                              <Label prefHeight="25.0" prefWidth="80.0" text="Status:" />
+                              <ComboBox fx:id="statusCombo" prefWidth="150.0" />
+                           </children>
+                        </HBox>
+                        <HBox prefWidth="200.0" spacing="10.0">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="Catetgory:" />
+                              <ComboBox fx:id="categoryCombo" prefWidth="150.0" />
+                           </children>
+                        </HBox>
+                        <HBox prefWidth="200.0" spacing="10.0">
+                           <children>
+                              <Label prefHeight="25.0" prefWidth="68.0" text="Created On:" />
+                              <Label fx:id="createdOnLabel" alignment="CENTER" prefHeight="24.0" prefWidth="119.0" text="01.01.2001" />
+                           </children>
+                        </HBox>
+                        <HBox prefWidth="200.0" spacing="10.0">
+                           <children>
+                              <Label prefHeight="25.0" prefWidth="68.0" text="Last Update:" />
+                              <Label fx:id="lastUpdateÖabel" alignment="CENTER" prefHeight="24.0" prefWidth="119.0" text="31.01.2001" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <TextArea fx:id="descriptionText" layoutX="26.0" layoutY="82.0" prefHeight="200.0" prefWidth="573.0" AnchorPane.leftAnchor="26.0" AnchorPane.rightAnchor="286.0" AnchorPane.topAnchor="82.0" />
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+   </center>
+</BorderPane>

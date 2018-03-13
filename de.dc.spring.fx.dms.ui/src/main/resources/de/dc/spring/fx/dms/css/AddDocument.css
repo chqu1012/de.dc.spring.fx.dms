@@ -1,0 +1,38 @@
+.main-content{
+	-fx-background-color: white;
+}
+
+.create-title-label{
+	-fx-background-color: #62677E;
+	-fx-text-fill: white;
+	-fx-font-weight: bold;
+}
+
+.create-title-panel{
+	-fx-background-color: white;
+}
+
+.combo-box{
+-fx-background-color: transparent;
+}
+.combo-box .arrow,
+
+.combo-box .arrow-button{
+-fx-background-color: transparent;
+}
+
+.combo-box:hover{
+-fx-background-color: -fx-outer-border;
+-fx-background-radius: 0,0,0,0;
+}
+
+.combo-box:showing > .arrow-button {
+-fx-color: -fx-pressed-base;
+}
+
+.combo-box:hover > .arrow-button > .arrow{
+-fx-background-insets: 1 0 -1 0, 0;
+-fx-background-color: -fx-mark-highlight-color;
+-fx-padding: 0.166667em 0.333333em 0.166667em 0.333333em; /* 2 4 2 4 */
+-fx-shape: "M 0 0 h 7 l -3.5 4 z";
+}

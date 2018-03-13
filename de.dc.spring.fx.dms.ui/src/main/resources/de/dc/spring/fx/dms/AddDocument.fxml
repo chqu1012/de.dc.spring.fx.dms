@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTimePicker?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane fx:id="root" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" styleClass="main-content" stylesheets="@css/AddDocument.css" xmlns="http://javafx.com/javafx/8.0.151" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.dc.spring.fx.dms.controller.AddDocumentController">
+   <children>
+      <HBox layoutX="97.0" layoutY="97.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="40.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="100.0">
+         <children>
+            <VBox prefWidth="382.0" spacing="20.0" styleClass="create-title-panel">
+               <children>
+                  <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="44.0" prefWidth="382.0" styleClass="create-title-label" text="DOCUMENT DETAILS" />
+                  <HBox prefHeight="27.0">
+                     <children>
+                        <Label prefHeight="26.0" prefWidth="93.0" text="Id:" />
+                        <JFXTextField fx:id="idText" disable="true" editable="false" focusColor="#5d6278" prefHeight="25.0" prefWidth="161.0" />
+                     </children>
+                     <padding>
+                        <Insets left="40.0" />
+                     </padding>
+                  </HBox>
+                  <HBox prefHeight="27.0">
+                     <children>
+                        <Label prefHeight="26.0" prefWidth="93.0" text="Name*:" />
+                        <JFXTextField fx:id="nameText" focusColor="#5d6278" prefHeight="25.0" prefWidth="161.0" />
+                     </children>
+                     <padding>
+                        <Insets left="40.0" />
+                     </padding>
+                  </HBox>
+                  <HBox prefHeight="27.0">
+                     <children>
+                        <Label prefHeight="26.0" prefWidth="93.0" text="Category:" />
+                        <JFXComboBox fx:id="categoryComboView" focusColor="#5d6278" labelFloat="true" prefHeight="25.0" prefWidth="161.0" />
+                        <JFXButton onAction="#onAddButton" style="-fx-background-color: #5D6278;">
+                           <graphic>
+                              <FontAwesomeIconView fill="WHITE" glyphName="PLUS" size="20" />
+                           </graphic>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </JFXButton>
+                     </children>
+                     <padding>
+                        <Insets left="40.0" />
+                     </padding>
+                  </HBox>
+                  <HBox prefHeight="116.0" prefWidth="600.0">
+                     <children>
+                        <Label prefHeight="26.0" prefWidth="93.0" text="Description:" />
+                        <TextArea fx:id="descriptionTextArea" prefHeight="116.0" prefWidth="225.0" />
+                     </children>
+                     <padding>
+                        <Insets left="40.0" />
+                     </padding>
+                  </HBox>
+                  <HBox prefHeight="27.0">
+                     <children>
+                        <Label prefHeight="32.0" prefWidth="93.0" text="Create Date:" />
+                        <JFXDatePicker fx:id="createdOnDatePicker" defaultColor="#5d6278" prefHeight="27.0" prefWidth="169.0" />
+                     </children>
+                     <padding>
+                        <Insets left="40.0" />
+                     </padding>
+                  </HBox>
+                  <HBox prefHeight="27.0">
+                     <children>
+                        <Label prefHeight="32.0" prefWidth="93.0" text="Create Time:" />
+                        <JFXTimePicker fx:id="createdTimePicker" defaultColor="#5d6278" editable="true" prefHeight="27.0" prefWidth="167.0" />
+                     </children>
+                     <padding>
+                        <Insets left="40.0" />
+                     </padding>
+                  </HBox>
+                  <HBox prefHeight="25.0" prefWidth="379.0" spacing="5.0">
+                     <children>
+                        <JFXButton onAction="#onCreate" prefWidth="100.0" style="-fx-background-color: #5D6278;" text="Create" textFill="WHITE" />
+                        <JFXButton onAction="#onCancel" prefHeight="35.0" prefWidth="100.0" style="-fx-background-color: #5D6278;" text="Cancel" textFill="WHITE" />
+                     </children>
+                     <padding>
+                        <Insets bottom="20.0" left="130.0" />
+                     </padding>
+                  </HBox>
+               </children>
+               <effect>
+                  <DropShadow blurType="ONE_PASS_BOX" height="18.03" radius="9.2575" />
+               </effect>
+            </VBox>
+            <VBox maxWidth="1.7976931348623157E308" prefWidth="372.0" spacing="20.0" styleClass="create-title-panel">
+               <children>
+                  <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="39.0" styleClass="create-title-label" text="ATTACHMENTS" />
+                  <VBox spacing="10.0">
+                     <children>
+                        <HBox spacing="10.0">
+                           <children>
+                              <Label maxHeight="1.7976931348623157E308" prefWidth="36.0" text="Folder:" />
+                              <JFXComboBox fx:id="folderComboView" editable="true" prefHeight="25.0" prefWidth="137.0" />
+                              <JFXButton onAction="#onNewFolder" prefHeight="30.0" prefWidth="65.0" style="-fx-background-color: #5D6278; -fx-text-fill: white;" text="New" />
+                           </children>
+                        </HBox>
+                        <ListView fx:id="folderListView" prefHeight="125.0" prefWidth="372.0" />
+                     </children>
+                     <VBox.margin>
+                        <Insets left="30.0" right="30.0" />
+                     </VBox.margin>
+                  </VBox>
+                  <VBox spacing="10.0">
+                     <children>
+                        <HBox spacing="10.0">
+                           <children>
+                              <Label maxHeight="1.7976931348623157E308" text="Import Files to:" />
+                              <JFXTextField fx:id="selectedFolder" editable="false" />
+                              <JFXButton onAction="#onImportFiles" prefHeight="30.0" prefWidth="65.0" style="-fx-background-color: #5D6278; -fx-text-fill: white;" text="Import" />
+                           </children>
+                        </HBox>
+                        <ListView fx:id="filesListView" prefHeight="125.0" prefWidth="372.0" />
+                     </children>
+                     <VBox.margin>
+                        <Insets left="30.0" right="30.0" />
+                     </VBox.margin>
+                  </VBox>
+               </children>
+               <effect>
+                  <DropShadow blurType="ONE_PASS_BOX" height="18.03" radius="9.2575" />
+               </effect>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

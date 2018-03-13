@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="250.0" spacing="5.0" styleClass="home-profil" stylesheets="@css/HomeProfil.css" xmlns="http://javafx.com/javafx/8.0.151" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox prefHeight="130.0" prefWidth="250.0" spacing="10.0">
+         <children>
+            <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+               <HBox.margin>
+                  <Insets left="20.0" top="15.0" />
+               </HBox.margin>
+               <image>
+                  <Image url="@image/icons8_Female_Profile_100px.png" />
+               </image>
+            </ImageView>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label styleClass="home-profil-name" text="Max Muster" />
+                  <Label styleClass="home-profil-label" text="Logged User" />
+               </children>
+               <HBox.margin>
+                  <Insets top="35.0" />
+               </HBox.margin>
+            </VBox>
+         </children>
+      </HBox>
+      <VBox prefHeight="266.0" prefWidth="250.0" spacing="15.0" styleClass="home-profil-content-panel">
+         <children>
+            <HBox maxHeight="1.7976931348623157E308" prefWidth="200.0" spacing="10.0">
+               <children>
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/icons8_Admin_Settings_Male_64px.png" />
+                     </image>
+                  </ImageView>
+                  <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="default user" />
+               </children>
+            </HBox>
+            <HBox maxHeight="1.7976931348623157E308" prefWidth="200.0" spacing="10.0">
+               <children>
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/icons8_User_48px.png" />
+                     </image>
+                  </ImageView>
+                  <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Max Muster" />
+               </children>
+            </HBox>
+            <HBox maxHeight="1.7976931348623157E308" prefWidth="200.0" spacing="10.0">
+               <children>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/icons8_Envelope_48px.png" />
+                     </image>
+                  </ImageView>
+                  <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="max.muster@gmail.com" />
+               </children>
+            </HBox>
+            <HBox maxHeight="1.7976931348623157E308" prefWidth="200.0" spacing="10.0">
+               <children>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/icons8_Phone_52px.png" />
+                     </image>
+                  </ImageView>
+                  <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="+49176 - 1234 5678" />
+               </children>
+            </HBox>
+            <HBox maxHeight="1.7976931348623157E308" prefWidth="200.0" spacing="10.0">
+               <children>
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/icons8_Note_52px.png" />
+                     </image>
+                  </ImageView>
+                  <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Created on 17. Feb. 2011" />
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </VBox>
+   </children>
+   <effect>
+      <DropShadow blurType="ONE_PASS_BOX" height="12.1" radius="5.55" width="12.1" />
+   </effect>
+</VBox>

@@ -24,4 +24,13 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter")
     compile("org.springframework:spring-web")
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.4'
+    
+    compile group: 'com.jfoenix', name: 'jfoenix', version: '8.0.2'
+	compile group: 'org.controlsfx', name: 'controlsfx', version: '8.40.13'
+	compile group: 'com.calendarfx', name: 'calendar', version: '8.4.2', ext: 'pom'
+	compile group: 'com.calendarfx', name: 'view', version: '8.4.2'
+	compile group: 'com.calendarfx', name: 'recurrence', version: '8.4.2'
+	
+	compile group: 'org.jfxtras', name: 'jfxtras-labs', version: '8.0-r5'
+    compile group: 'commons-io', name: 'commons-io', version: '2.6'
 }
