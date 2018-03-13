@@ -4,12 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 
 import de.dc.spring.fx.dms.server.repository.TicketRepository;
 
 @SpringBootApplication
-@ComponentScan(basePackages="de.dc.spring.fx.dms.server")
+@ComponentScan(basePackages= "de.dc.spring.fx.dms")
+@EntityScan(value = "de.dc.spring.fx.dms.shared.model")
 public class DmsServer implements CommandLineRunner{
 
 	@Autowired TicketRepository ticketRepository;
@@ -28,7 +30,7 @@ public class DmsServer implements CommandLineRunner{
 //			int userId =i*r.nextInt();
 //			LocalDateTime createdOn = LocalDateTime.now();
 //			Ticket createTicket = new Ticket(name, description, categoryId, userId, createdOn);
-//			System.out.println("CREATE TICKET: "+createTicket);
+////			System.out.println("CREATE TICKET: "+createTicket);
 //			ticketRepository.save(createTicket);
 //		}
 	}
