@@ -1,5 +1,6 @@
 package de.dc.spring.fx.dms.controller
 
+import de.dc.spring.fx.dms.service.DtoService
 import de.dc.spring.fx.dms.shared.model.Ticket
 import de.dc.spring.fx.dms.util.FolderUtil
 import javafx.collections.FXCollections
@@ -12,12 +13,16 @@ import javafx.scene.control.ButtonType
 import javafx.scene.control.cell.PropertyValueFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
+import java.nio.file.Paths
+import java.nio.file.Files
 
 @Controller 
 class ViewDocumentsController extends BaseViewDocumentsController {
 	
 	@Autowired DMSMainController dmsMainController
 	@Autowired FolderUtil folderUtil
+	
+	@Autowired DtoService dtoService
 	
 	public ObservableList<Ticket> ticketData = FXCollections::observableArrayList
 
@@ -42,15 +47,16 @@ class ViewDocumentsController extends BaseViewDocumentsController {
 				return false // Does not match.
 			]
 		]
-//		ticketData+=ticketRepository.findAll
+		
+		ticketData+=dtoService.tickets
 		ticketDocument.items = filteredData
 		ticketDocument.setOnMouseClicked[e |
 			var ticket = ticketDocument.selectionModel.selectedItem
 			descriptionText.text = if(ticket.description === null) "" else ticket.description
 			countOfTicketsLabel.text = '''«ticketData.size»'''
-//			var path = Paths::get(folderUtil.getFolderByTicket(ticket).absolutePath)
-//			var long countOfFiles = Files::walk(path).parallel().filter([p|!p.toFile().isDirectory()]).count()
-//			countOfAttachmentsLabel.text = '''«countOfFiles»'''
+			var path = Paths::get(folderUtil.getFolderByTicket(ticket).absolutePath)
+			var countOfFiles = Files::walk(path).parallel().filter([p|!p.toFile.isDirectory]).count
+			countOfAttachmentsLabel.text = '''«countOfFiles»'''
 		]
 		root.fullAnchor
 	}

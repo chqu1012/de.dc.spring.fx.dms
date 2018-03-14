@@ -1,10 +1,15 @@
 package de.dc.spring.fx.dms.controller;
 
 import com.google.common.base.Objects;
+import com.google.common.collect.Iterables;
 import de.dc.spring.fx.dms.controller.BaseViewDocumentsController;
 import de.dc.spring.fx.dms.controller.DMSMainController;
+import de.dc.spring.fx.dms.service.DtoService;
 import de.dc.spring.fx.dms.shared.model.Ticket;
 import de.dc.spring.fx.dms.util.FolderUtil;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Optional;
 import java.util.function.Predicate;
 import javafx.beans.value.ChangeListener;
@@ -19,6 +24,8 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.xbase.lib.Conversions;
+import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +39,9 @@ public class ViewDocumentsController extends BaseViewDocumentsController {
   
   @Autowired
   private FolderUtil folderUtil;
+  
+  @Autowired
+  private DtoService dtoService;
   
   public ObservableList<Ticket> ticketData = FXCollections.<Ticket>observableArrayList();
   
@@ -71,22 +81,37 @@ public class ViewDocumentsController extends BaseViewDocumentsController {
       filteredData.setPredicate(_function_2);
     };
     this.searchText.textProperty().addListener(_function_1);
+    Ticket[] _tickets = this.dtoService.getTickets();
+    Iterables.<Ticket>addAll(this.ticketData, ((Iterable<? extends Ticket>)Conversions.doWrapArray(_tickets)));
     this.ticketDocument.setItems(filteredData);
     final EventHandler<MouseEvent> _function_2 = (MouseEvent e) -> {
-      Ticket ticket = this.ticketDocument.getSelectionModel().getSelectedItem();
-      String _xifexpression = null;
-      String _description = ticket.getDescription();
-      boolean _tripleEquals = (_description == null);
-      if (_tripleEquals) {
-        _xifexpression = "";
-      } else {
-        _xifexpression = ticket.getDescription();
+      try {
+        Ticket ticket = this.ticketDocument.getSelectionModel().getSelectedItem();
+        String _xifexpression = null;
+        String _description = ticket.getDescription();
+        boolean _tripleEquals = (_description == null);
+        if (_tripleEquals) {
+          _xifexpression = "";
+        } else {
+          _xifexpression = ticket.getDescription();
+        }
+        this.descriptionText.setText(_xifexpression);
+        StringConcatenation _builder = new StringConcatenation();
+        int _size = this.ticketData.size();
+        _builder.append(_size);
+        this.countOfTicketsLabel.setText(_builder.toString());
+        Path path = Paths.get(this.folderUtil.getFolderByTicket(ticket).getAbsolutePath());
+        final Predicate<Path> _function_3 = (Path p) -> {
+          boolean _isDirectory = p.toFile().isDirectory();
+          return (!_isDirectory);
+        };
+        long countOfFiles = Files.walk(path).parallel().filter(_function_3).count();
+        StringConcatenation _builder_1 = new StringConcatenation();
+        _builder_1.append(countOfFiles);
+        this.countOfAttachmentsLabel.setText(_builder_1.toString());
+      } catch (Throwable _e) {
+        throw Exceptions.sneakyThrow(_e);
       }
-      this.descriptionText.setText(_xifexpression);
-      StringConcatenation _builder = new StringConcatenation();
-      int _size = this.ticketData.size();
-      _builder.append(_size);
-      this.countOfTicketsLabel.setText(_builder.toString());
     };
     this.ticketDocument.setOnMouseClicked(_function_2);
     this.fullAnchor(this.root);
