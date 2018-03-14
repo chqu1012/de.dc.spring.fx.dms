@@ -132,6 +132,7 @@ public class ViewDocumentsController extends BaseViewDocumentsController {
     if (_equals) {
       Ticket selectedItem = this.ticketDocument.getSelectionModel().getSelectedItem();
       this.ticketData.remove(selectedItem);
+      this.dtoService.deleteTicketById((selectedItem.getId()).longValue());
     }
   }
   

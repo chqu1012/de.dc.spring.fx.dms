@@ -71,6 +71,7 @@ class ViewDocumentsController extends BaseViewDocumentsController {
 		if(result.get==ButtonType::OK){
 			var selectedItem = ticketDocument.selectionModel.selectedItem
 			ticketData-=selectedItem
+			dtoService.deleteTicketById(selectedItem.id)
 //			ticketRepository.delete(selectedItem)
 //			folderUtil.deleteFolderWithContent(selectedItem)
 		}
