@@ -18,6 +18,10 @@ An application for managing documents and files. It saves all your data in a dat
 - [ ] Communication with Android Client
 - [ ] Batch creation of tickets
 - [ ] About Dialog
+- [x] Restful WebService
+- [x] Client & Server Architecture
+- [x] Standalone Application
+- [ ] Web Client
 
 ![SwtFormDesigner screenshot](https://github.com/chqu1012/de.dc.spring.fx.dms/blob/master/de.dc.spring.fx.dms.res/images/01%20Dashboard.PNG)
 
