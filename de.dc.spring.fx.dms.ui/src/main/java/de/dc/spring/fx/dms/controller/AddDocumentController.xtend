@@ -14,6 +14,7 @@ import javafx.event.ActionEvent
 import javafx.scene.control.TextInputDialog
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
+import de.dc.spring.fx.dms.service.DtoService
 
 @Controller 
 class AddDocumentController extends BaseAddDocumentController {
@@ -21,6 +22,8 @@ class AddDocumentController extends BaseAddDocumentController {
 	@Autowired ViewDocumentsController viewDocumentController
 	@Autowired DMSMainController dmsMainController
 	@Autowired FolderUtil folderUtil
+
+	@Autowired DtoService dtoService
 
 	ObservableList<Category> categoryData = FXCollections.observableArrayList
 	ObservableList<String> folderTemplates = FXCollections.observableArrayList(#['Attachments', 'Images', 'Documents', 'Pdfs', 'Templates'])
@@ -57,6 +60,10 @@ class AddDocumentController extends BaseAddDocumentController {
 		var ticket = new Ticket(nameText.text, descriptionTextArea.text,
 			categoryComboView.selectionModel.selectedIndex, 0, currentDateTime)
 		ticket.updatedOn = currentDateTime
+		
+		// TODO: should be replaced
+		dtoService.create(ticket)
+		
 //		ticketService.create = ticket
 //		viewDocumentController.ticketData+=ticket
 //		folderUtil.createFolder=ticket
