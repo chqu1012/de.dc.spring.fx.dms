@@ -9,16 +9,22 @@ import javafx.event.ActionEvent
 import javafx.fxml.FXMLLoader
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
+import de.dc.spring.fx.dms.service.DtoService
 
-@Controller class DMSDetailController extends BaseDMSDetailController {
+@Controller 
+class DMSDetailController extends BaseDMSDetailController {
 	
+	public static final DecimalFormat format = new DecimalFormat("00000")
+
 	@Autowired FolderUtil folderUtil
 	@Autowired HostServices hostServices
 	@Autowired DMSMainController dmsMainController
 	
-	public static final DecimalFormat format = new DecimalFormat("00000")
+	@Autowired DtoService dtoService
 	
 	FileViewController fileViewController
+	
+	Ticket ticket
 
 	def initialize(){
 		var loader = new FXMLLoader(class.getResource("/de/dc/spring/fx/dms/control/FileView.fxml"))
@@ -31,6 +37,7 @@ import org.springframework.stereotype.Controller
 	}
 
 	def setDetails(Ticket ticket) {
+		this.ticket=ticket
 		documentIdLabel.text = '''DMS-«format.format(ticket.id)»'''
 		descriptionLabel.text = ticket.name
 		descriptionText.text = if(ticket.description === null) "" else ticket.description
@@ -61,6 +68,8 @@ import org.springframework.stereotype.Controller
 	}
 
 	override onSaveButton(ActionEvent event) { // TODO Auto-generated method stub
+		ticket.name = 'Good Morning DMS'
+		dtoService.update(ticket)
 	}
 
 	override onCloseButton(ActionEvent event) {

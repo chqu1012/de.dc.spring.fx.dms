@@ -3,6 +3,7 @@ package de.dc.spring.fx.dms.controller;
 import de.dc.spring.fx.dms.control.controller.FileViewController;
 import de.dc.spring.fx.dms.controller.BaseDMSDetailController;
 import de.dc.spring.fx.dms.controller.DMSMainController;
+import de.dc.spring.fx.dms.service.DtoService;
 import de.dc.spring.fx.dms.shared.model.Ticket;
 import de.dc.spring.fx.dms.util.FolderUtil;
 import java.net.URL;
@@ -20,6 +21,8 @@ import org.springframework.stereotype.Controller;
 @Controller
 @SuppressWarnings("all")
 public class DMSDetailController extends BaseDMSDetailController {
+  public final static DecimalFormat format = new DecimalFormat("00000");
+  
   @Autowired
   private FolderUtil folderUtil;
   
@@ -29,9 +32,12 @@ public class DMSDetailController extends BaseDMSDetailController {
   @Autowired
   private DMSMainController dmsMainController;
   
-  public final static DecimalFormat format = new DecimalFormat("00000");
+  @Autowired
+  private DtoService dtoService;
   
   private FileViewController fileViewController;
+  
+  private Ticket ticket;
   
   public boolean initialize() {
     try {
@@ -54,6 +60,7 @@ public class DMSDetailController extends BaseDMSDetailController {
   }
   
   public void setDetails(final Ticket ticket) {
+    this.ticket = ticket;
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("DMS-");
     String _format = DMSDetailController.format.format(ticket.getId());
@@ -103,6 +110,8 @@ public class DMSDetailController extends BaseDMSDetailController {
   
   @Override
   public void onSaveButton(final ActionEvent event) {
+    this.ticket.setName("Good Morning DMS");
+    this.dtoService.update(this.ticket);
   }
   
   @Override
