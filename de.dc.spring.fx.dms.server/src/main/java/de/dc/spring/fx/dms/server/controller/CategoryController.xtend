@@ -12,44 +12,46 @@ import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder
+import de.dc.spring.fx.dms.shared.model.Category
+import de.dc.spring.fx.dms.server.repository.CategoryRepository
 
 @RestController 
-class TicketController implements IRestController<Ticket> {
+class CategoryController implements IRestController<Category> {
 	
-	@Autowired TicketRepository ticketRepository
+	@Autowired CategoryRepository categoryRepository
 
-	@GetMapping("/tickets") 
+	@GetMapping("/categories") 
 	override getAll() {
-		ticketRepository.findAll
+		categoryRepository.findAll
 	}
 
-	@GetMapping("/tickets/{id}") 
+	@GetMapping("/categories/{id}") 
 	override findById(@PathVariable long id) {
-		ticketRepository.findById(id).get
+		categoryRepository.findById(id).get
 	}
 
-	@DeleteMapping("/tickets/{id}") 
+	@DeleteMapping("/categories/{id}") 
 	override deleteById(@PathVariable long id) {
-		ticketRepository.deleteById(id)
+		categoryRepository.deleteById(id)
 	}
 
-	@PutMapping("/tickets/{id}") 
-	override update(@RequestBody Ticket ticket, @PathVariable long id) {
-		var ticketOptional = ticketRepository.findById(id)
+	@PutMapping("/categories/{id}") 
+	override update(@RequestBody Category category, @PathVariable long id) {
+		var categoryOptional = categoryRepository.findById(id)
 		
-		if(!ticketOptional.isPresent) 
+		if(!categoryOptional.isPresent) 
 			return ResponseEntity.notFound.build
 		
-		ticket.setId(id)
-		ticketRepository.save(ticket)
+		category.setId(id)
+		categoryRepository.save(category)
 		ResponseEntity.noContent.build
 	}
 
-	@PostMapping("/tickets") 
-	override create(@RequestBody Ticket ticket) {
-		var saveTicket = ticketRepository.save(ticket)
+	@PostMapping("/categories") 
+	override create(@RequestBody Category category) {
+		var saveCategory = categoryRepository.save(category)
 		var location = ServletUriComponentsBuilder.fromCurrentRequest.path("/{id}").buildAndExpand(
-			saveTicket.id).toUri
+			saveCategory.id).toUri
 		return ResponseEntity.created(location).build
 	}
 }

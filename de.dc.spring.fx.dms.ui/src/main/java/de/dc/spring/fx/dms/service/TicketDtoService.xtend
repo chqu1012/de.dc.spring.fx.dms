@@ -8,7 +8,8 @@ import org.springframework.http.MediaType
 import org.springframework.stereotype.Service
 import org.springframework.web.client.RestTemplate
 
-@Service class DtoService {
+@Service 
+class TicketDtoService {
 	
 	public static String PORT = "8090"
 	public static String TICKETS = "tickets"
@@ -20,7 +21,11 @@ import org.springframework.web.client.RestTemplate
 		restTemplate.getForObject(REQUEST, typeof(Ticket[]))
 	}
 
-	def void deleteTicketById(long id) {
+	def getTicketById(long id) {
+		restTemplate.getForObject('''«REQUEST»/«id»''', Ticket)
+	}
+	
+	def deleteTicketById(long id) {
 		restTemplate.delete('''«REQUEST»/«id»'''.toString)
 	}
 
@@ -33,7 +38,12 @@ import org.springframework.web.client.RestTemplate
 	}
 	
 	def create(Ticket ticket){
-        val requestBody = new HttpEntity(ticket)
-       	restTemplate.postForEntity(REQUEST, requestBody, Ticket);
+		var headers = new HttpHeaders
+		headers.add("Accept", MediaType::APPLICATION_JSON_VALUE)
+      	headers.setContentType(MediaType.APPLICATION_JSON)
+		
+        val requestBody = new HttpEntity(ticket, headers)
+       	val result = restTemplate.postForEntity(REQUEST, requestBody, Ticket)
+       	result.body
 	}
 }

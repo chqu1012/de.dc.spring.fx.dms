@@ -9,7 +9,7 @@ import javafx.event.ActionEvent
 import javafx.fxml.FXMLLoader
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
-import de.dc.spring.fx.dms.service.DtoService
+import de.dc.spring.fx.dms.service.TicketDtoService
 
 @Controller 
 class DMSDetailController extends BaseDMSDetailController {
@@ -20,7 +20,7 @@ class DMSDetailController extends BaseDMSDetailController {
 	@Autowired HostServices hostServices
 	@Autowired DMSMainController dmsMainController
 	
-	@Autowired DtoService dtoService
+	@Autowired TicketDtoService dtoService
 	
 	FileViewController fileViewController
 	

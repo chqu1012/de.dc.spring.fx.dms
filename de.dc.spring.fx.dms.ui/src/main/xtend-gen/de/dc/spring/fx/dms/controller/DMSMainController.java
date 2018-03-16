@@ -5,6 +5,7 @@ import de.dc.fx.animation.other.AnimationUtils;
 import de.dc.spring.fx.dms.controller.BaseDMSMainController;
 import de.dc.spring.fx.dms.controller.DMSDetailController;
 import de.dc.spring.fx.dms.controller.HomeTileController;
+import de.dc.spring.fx.dms.service.TicketDtoService;
 import de.dc.spring.fx.dms.shared.model.Ticket;
 import de.dc.spring.fx.dms.util.FolderUtil;
 import javafx.fxml.FXML;
@@ -13,6 +14,9 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import org.controlsfx.control.textfield.AutoCompletionBinding;
+import org.controlsfx.control.textfield.TextFields;
+import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -39,15 +43,30 @@ public class DMSMainController extends BaseDMSMainController {
   @Autowired
   private FolderUtil folderUtil;
   
-  public boolean initialize() {
-    boolean _xblockexpression = false;
+  @Autowired
+  private TicketDtoService dtoService;
+  
+  public AutoCompletionBinding<Ticket> initialize() {
+    AutoCompletionBinding<Ticket> _xblockexpression = null;
     {
       this.invoiceAnchorPaneController.setImageBackground("#0F62C6");
       this.howtoAnchorPaneController.setImageBackground("#009AD2");
       this.formularAnchorPaneController.setImageBackground("#00A0A3");
       this.receiptAnchorPaneController.setImageBackground("#FF8350");
       this.lastPanel = this.homePanel;
-      _xblockexpression = this.folderUtil.createIfNotExist();
+      this.folderUtil.createIfNotExist();
+      AutoCompletionBinding<Ticket> _xtrycatchfinallyexpression = null;
+      try {
+        _xtrycatchfinallyexpression = TextFields.<Ticket>bindAutoCompletion(this.searchText, this.dtoService.getTickets());
+      } catch (final Throwable _t) {
+        if (_t instanceof Exception) {
+          final Exception e = (Exception)_t;
+          e.printStackTrace();
+        } else {
+          throw Exceptions.sneakyThrow(_t);
+        }
+      }
+      _xblockexpression = _xtrycatchfinallyexpression;
     }
     return _xblockexpression;
   }
@@ -94,6 +113,8 @@ public class DMSMainController extends BaseDMSMainController {
       String[] searchFields = this.searchText.getText().split(":");
       String splittedId = searchFields[0].split("-")[1];
       Long id = Long.valueOf(splittedId);
+      Ticket ticket = this.dtoService.getTicketById((id).longValue());
+      this.showTicket(ticket);
       this.searchText.setText("");
     }
   }

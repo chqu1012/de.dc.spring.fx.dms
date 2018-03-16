@@ -3,7 +3,7 @@ package de.dc.spring.fx.dms.controller;
 import de.dc.spring.fx.dms.control.controller.FileViewController;
 import de.dc.spring.fx.dms.controller.BaseDMSDetailController;
 import de.dc.spring.fx.dms.controller.DMSMainController;
-import de.dc.spring.fx.dms.service.DtoService;
+import de.dc.spring.fx.dms.service.TicketDtoService;
 import de.dc.spring.fx.dms.shared.model.Ticket;
 import de.dc.spring.fx.dms.util.FolderUtil;
 import java.net.URL;
@@ -33,7 +33,7 @@ public class DMSDetailController extends BaseDMSDetailController {
   private DMSMainController dmsMainController;
   
   @Autowired
-  private DtoService dtoService;
+  private TicketDtoService dtoService;
   
   private FileViewController fileViewController;
   

@@ -18,7 +18,7 @@ import org.springframework.stereotype.Controller
 import java.io.File
 
 @Controller 
-class AddDocumentController extends BaseAddDocumentController {
+class ticketDtoService extends BaseAddDocumentController {
 	
 	@Autowired ViewDocumentsController viewDocumentController
 	@Autowired DMSMainController dmsMainController

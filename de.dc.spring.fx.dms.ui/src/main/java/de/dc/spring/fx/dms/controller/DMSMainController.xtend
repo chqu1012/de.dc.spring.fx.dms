@@ -12,6 +12,8 @@ import javafx.scene.input.MouseEvent
 import javafx.scene.layout.Pane
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
+import org.controlsfx.control.textfield.TextFields
+import de.dc.spring.fx.dms.service.TicketDtoService
 
 @Controller 
 class DMSMainController extends BaseDMSMainController {
@@ -25,6 +27,7 @@ class DMSMainController extends BaseDMSMainController {
 	
 	@Autowired DMSDetailController dmsDetailController
 	@Autowired FolderUtil folderUtil
+	@Autowired TicketDtoService dtoService
 
 	def initialize() {
 		invoiceAnchorPaneController.imageBackground = "#0F62C6"
@@ -34,7 +37,12 @@ class DMSMainController extends BaseDMSMainController {
 		lastPanel = homePanel
 		folderUtil.createIfNotExist
 
-//		TextFields.bindAutoCompletion(searchText, ticketService.all)
+		try{
+			TextFields.bindAutoCompletion(searchText, dtoService.tickets)
+		}catch(Exception e){
+			// TODO: Server Connection Log
+			e.printStackTrace
+		}
 	}
 
 	override onSwitchToAddDocument(MouseEvent event) {
@@ -70,8 +78,8 @@ class DMSMainController extends BaseDMSMainController {
 			var searchFields = searchText.text.split(":")
 			var splittedId = searchFields.get(0).split("-").get(1)
 			var id = Long.valueOf(splittedId)
-//			var tickets = ticketService.findById(id)
-//			tickets.get.showTicket
+			var ticket = dtoService.getTicketById(id)
+			ticket.showTicket
 			searchText.text = ""
 		}
 	}

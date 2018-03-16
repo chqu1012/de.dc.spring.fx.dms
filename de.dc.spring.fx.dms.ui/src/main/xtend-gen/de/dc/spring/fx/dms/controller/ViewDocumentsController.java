@@ -4,7 +4,7 @@ import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import de.dc.spring.fx.dms.controller.BaseViewDocumentsController;
 import de.dc.spring.fx.dms.controller.DMSMainController;
-import de.dc.spring.fx.dms.service.DtoService;
+import de.dc.spring.fx.dms.service.TicketDtoService;
 import de.dc.spring.fx.dms.shared.model.Ticket;
 import de.dc.spring.fx.dms.util.FolderUtil;
 import java.nio.file.Files;
@@ -41,7 +41,7 @@ public class ViewDocumentsController extends BaseViewDocumentsController {
   private FolderUtil folderUtil;
   
   @Autowired
-  private DtoService dtoService;
+  private TicketDtoService dtoService;
   
   public ObservableList<Ticket> ticketData = FXCollections.<Ticket>observableArrayList();
   
@@ -81,8 +81,17 @@ public class ViewDocumentsController extends BaseViewDocumentsController {
       filteredData.setPredicate(_function_2);
     };
     this.searchText.textProperty().addListener(_function_1);
-    Ticket[] _tickets = this.dtoService.getTickets();
-    Iterables.<Ticket>addAll(this.ticketData, ((Iterable<? extends Ticket>)Conversions.doWrapArray(_tickets)));
+    try {
+      Ticket[] _tickets = this.dtoService.getTickets();
+      Iterables.<Ticket>addAll(this.ticketData, ((Iterable<? extends Ticket>)Conversions.doWrapArray(_tickets)));
+    } catch (final Throwable _t) {
+      if (_t instanceof Exception) {
+        final Exception exception = (Exception)_t;
+        exception.printStackTrace();
+      } else {
+        throw Exceptions.sneakyThrow(_t);
+      }
+    }
     this.ticketDocument.setItems(filteredData);
     final EventHandler<MouseEvent> _function_2 = (MouseEvent e) -> {
       try {

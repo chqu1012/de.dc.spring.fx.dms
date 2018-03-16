@@ -1,6 +1,5 @@
 package de.dc.spring.fx.dms.controller
 
-import de.dc.spring.fx.dms.service.DtoService
 import de.dc.spring.fx.dms.shared.model.Ticket
 import de.dc.spring.fx.dms.util.FolderUtil
 import javafx.collections.FXCollections
@@ -15,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
 import java.nio.file.Paths
 import java.nio.file.Files
+import de.dc.spring.fx.dms.service.TicketDtoService
 
 @Controller 
 class ViewDocumentsController extends BaseViewDocumentsController {
@@ -22,7 +22,7 @@ class ViewDocumentsController extends BaseViewDocumentsController {
 	@Autowired DMSMainController dmsMainController
 	@Autowired FolderUtil folderUtil
 	
-	@Autowired DtoService dtoService
+	@Autowired TicketDtoService dtoService
 	
 	public ObservableList<Ticket> ticketData = FXCollections::observableArrayList
 
@@ -48,7 +48,11 @@ class ViewDocumentsController extends BaseViewDocumentsController {
 			]
 		]
 		
-		ticketData+=dtoService.tickets
+		try {
+			ticketData+=dtoService.tickets
+		} catch (Exception exception) {
+			exception.printStackTrace		
+		}
 		ticketDocument.items = filteredData
 		ticketDocument.setOnMouseClicked[e |
 			var ticket = ticketDocument.selectionModel.selectedItem
@@ -72,7 +76,7 @@ class ViewDocumentsController extends BaseViewDocumentsController {
 			var selectedItem = ticketDocument.selectionModel.selectedItem
 			ticketData-=selectedItem
 			dtoService.deleteTicketById(selectedItem.id)
-//			ticketRepository.delete(selectedItem)
+			// TODO: FolderUtil Implementation
 //			folderUtil.deleteFolderWithContent(selectedItem)
 		}
 	}

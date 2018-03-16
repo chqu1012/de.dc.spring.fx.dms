@@ -1,10 +1,13 @@
 package de.dc.spring.fx.dms.controller;
 
+import com.google.common.collect.Iterables;
 import com.jfoenix.validation.RequiredFieldValidator;
 import com.jfoenix.validation.base.ValidatorBase;
 import de.dc.spring.fx.dms.controller.BaseAddDocumentController;
 import de.dc.spring.fx.dms.controller.DMSMainController;
 import de.dc.spring.fx.dms.controller.ViewDocumentsController;
+import de.dc.spring.fx.dms.service.CategoryDtoService;
+import de.dc.spring.fx.dms.service.TicketDtoService;
 import de.dc.spring.fx.dms.shared.model.Category;
 import de.dc.spring.fx.dms.shared.model.Ticket;
 import de.dc.spring.fx.dms.util.FolderUtil;
@@ -12,6 +15,7 @@ import java.io.File;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.List;
 import java.util.function.Consumer;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -19,6 +23,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.TextInputDialog;
+import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +41,12 @@ public class AddDocumentController extends BaseAddDocumentController {
   @Autowired
   private FolderUtil folderUtil;
   
+  @Autowired
+  private TicketDtoService ticketDtoService;
+  
+  @Autowired
+  private CategoryDtoService categoryDtoService;
+  
   private ObservableList<Category> categoryData = FXCollections.<Category>observableArrayList();
   
   private ObservableList<String> folderTemplates = FXCollections.<String>observableArrayList(new String[] { "Attachments", "Images", "Documents", "Pdfs", "Templates" });
@@ -45,6 +56,17 @@ public class AddDocumentController extends BaseAddDocumentController {
   private ObservableList<File> importedFiles = FXCollections.<File>observableArrayList();
   
   public void initialize() {
+    try {
+      List<Category> _all = this.categoryDtoService.getAll();
+      Iterables.<Category>addAll(this.categoryData, _all);
+    } catch (final Throwable _t) {
+      if (_t instanceof Exception) {
+        final Exception e = (Exception)_t;
+        e.printStackTrace();
+      } else {
+        throw Exceptions.sneakyThrow(_t);
+      }
+    }
     this.categoryComboView.setItems(this.categoryData);
     this.categoryComboView.getSelectionModel().select(0);
     this.createdOnDatePicker.setValue(LocalDate.now());
@@ -78,6 +100,9 @@ public class AddDocumentController extends BaseAddDocumentController {
     int _selectedIndex = this.categoryComboView.getSelectionModel().getSelectedIndex();
     Ticket ticket = new Ticket(_text, _text_1, _selectedIndex, 0, currentDateTime);
     ticket.setUpdatedOn(currentDateTime);
+    ticket = this.ticketDtoService.create(ticket);
+    this.viewDocumentController.ticketData.add(ticket);
+    this.dmsMainController.showTicket(ticket);
     this.clearFields();
   }
   
@@ -97,6 +122,11 @@ public class AddDocumentController extends BaseAddDocumentController {
     };
     TextInputDialog dialog = ObjectExtensions.<TextInputDialog>operator_doubleArrow(_textInputDialog, _function);
     final Consumer<String> _function_1 = (String name) -> {
+      LocalDate _now = LocalDate.now();
+      Category c = new Category(name, _now);
+      this.categoryDtoService.create(c);
+      this.categoryData.add(c);
+      this.categoryComboView.getSelectionModel().select(c);
     };
     dialog.showAndWait().ifPresent(_function_1);
   }

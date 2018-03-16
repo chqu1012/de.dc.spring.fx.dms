@@ -1,6 +1,8 @@
 package de.dc.spring.fx.dms.controller
 
 import com.jfoenix.validation.RequiredFieldValidator
+import de.dc.spring.fx.dms.service.CategoryDtoService
+import de.dc.spring.fx.dms.service.TicketDtoService
 import de.dc.spring.fx.dms.shared.model.Category
 import de.dc.spring.fx.dms.shared.model.Ticket
 import de.dc.spring.fx.dms.util.FolderUtil
@@ -14,7 +16,6 @@ import javafx.event.ActionEvent
 import javafx.scene.control.TextInputDialog
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
-import de.dc.spring.fx.dms.service.DtoService
 
 @Controller 
 class AddDocumentController extends BaseAddDocumentController {
@@ -23,7 +24,8 @@ class AddDocumentController extends BaseAddDocumentController {
 	@Autowired DMSMainController dmsMainController
 	@Autowired FolderUtil folderUtil
 
-	@Autowired DtoService dtoService
+	@Autowired TicketDtoService ticketDtoService
+	@Autowired CategoryDtoService categoryDtoService
 
 	ObservableList<Category> categoryData = FXCollections.observableArrayList
 	ObservableList<String> folderTemplates = FXCollections.observableArrayList(#['Attachments', 'Images', 'Documents', 'Pdfs', 'Templates'])
@@ -31,7 +33,12 @@ class AddDocumentController extends BaseAddDocumentController {
 	ObservableList<File> importedFiles = FXCollections.observableArrayList
 	
 	def initialize() {
-//		categoryData+=categoryRepository.findAll
+		try{
+			categoryData+=categoryDtoService.all
+		}catch(Exception e){
+			// TODO: Server Connection Log
+			e.printStackTrace
+		}
 		categoryComboView.items=categoryData
 		categoryComboView.selectionModel.select(0)
 		
@@ -61,13 +68,11 @@ class AddDocumentController extends BaseAddDocumentController {
 			categoryComboView.selectionModel.selectedIndex, 0, currentDateTime)
 		ticket.updatedOn = currentDateTime
 		
+		ticket = ticketDtoService.create(ticket)
+		viewDocumentController.ticketData+=ticket
 		// TODO: should be replaced
-		dtoService.create(ticket)
-		
-//		ticketService.create = ticket
-//		viewDocumentController.ticketData+=ticket
 //		folderUtil.createFolder=ticket
-//		dmsMainController.showTicket = ticket
+		dmsMainController.showTicket = ticket
 		clearFields
 	}
 
@@ -84,9 +89,10 @@ class AddDocumentController extends BaseAddDocumentController {
 			contentText = "Please enter a new name for the category:"
 		]
 		dialog.showAndWait.ifPresent[name |
-//			var c = categoryRepository.save(new Category(name, LocalDate.now))
-//			categoryData += c
-//			categoryComboView.selectionModel.select(c)
+			var c = new Category(name, LocalDate.now)
+			categoryDtoService.create(c)	
+			categoryData += c
+			categoryComboView.selectionModel.select(c)
 		]
 	}
 	
