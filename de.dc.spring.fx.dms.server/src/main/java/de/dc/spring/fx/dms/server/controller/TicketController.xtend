@@ -50,6 +50,6 @@ class TicketController implements IRestController<Ticket> {
 		var saveTicket = ticketRepository.save(ticket)
 		var location = ServletUriComponentsBuilder.fromCurrentRequest.path("/{id}").buildAndExpand(
 			saveTicket.id).toUri
-		return ResponseEntity.created(location).build
+		return ResponseEntity.created(location).body(saveTicket)
 	}
 }
