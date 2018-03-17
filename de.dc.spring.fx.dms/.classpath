@@ -10,5 +10,6 @@
 	<classpathentry kind="con" path="org.eclipse.buildship.core.gradleclasspathcontainer"/>
 	<classpathentry kind="lib" path="libs/fontawesomefx-commons-8.13.jar"/>
 	<classpathentry kind="lib" path="libs/fontawesomefx-fontawesome-4.7.0-1.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/de.dc.spring.fx.dms.shared"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
