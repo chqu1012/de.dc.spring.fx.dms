@@ -4,7 +4,7 @@ import com.jfoenix.controls.JFXComboBox
 import com.jfoenix.controls.JFXDatePicker
 import com.jfoenix.controls.JFXTextField
 import com.jfoenix.controls.JFXTimePicker
-import de.dc.spring.fx.dms.model.Category
+import de.dc.spring.fx.dms.shared.model.Category
 import java.io.File
 import javafx.event.ActionEvent
 import javafx.fxml.FXML

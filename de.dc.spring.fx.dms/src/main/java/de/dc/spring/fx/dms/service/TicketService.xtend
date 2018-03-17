@@ -1,6 +1,6 @@
 package de.dc.spring.fx.dms.service
 
-import de.dc.spring.fx.dms.model.Ticket
+import de.dc.spring.fx.dms.shared.model.Ticket
 import de.dc.spring.fx.dms.repository.TicketRepository
 import java.util.List
 import java.util.stream.Collectors

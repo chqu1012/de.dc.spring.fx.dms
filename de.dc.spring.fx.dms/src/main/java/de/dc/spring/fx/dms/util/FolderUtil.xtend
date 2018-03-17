@@ -1,7 +1,7 @@
 package de.dc.spring.fx.dms.util
 
 import de.dc.spring.fx.dms.controller.DMSDetailController
-import de.dc.spring.fx.dms.model.Ticket
+import de.dc.spring.fx.dms.shared.model.Ticket
 import java.io.File
 import org.apache.commons.io.FileUtils
 import org.springframework.stereotype.Component

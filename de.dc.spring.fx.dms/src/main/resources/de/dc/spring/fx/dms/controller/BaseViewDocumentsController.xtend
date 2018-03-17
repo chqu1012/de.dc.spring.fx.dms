@@ -1,7 +1,7 @@
 package de.dc.spring.fx.dms.controller
 
 import com.jfoenix.controls.JFXTextField
-import de.dc.spring.fx.dms.model.Ticket
+import de.dc.spring.fx.dms.shared.model.Ticket
 import javafx.event.ActionEvent
 import javafx.fxml.FXML
 import javafx.scene.control.Label

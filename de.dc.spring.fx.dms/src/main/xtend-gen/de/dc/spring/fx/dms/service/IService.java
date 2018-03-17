@@ -1,6 +1,6 @@
 package de.dc.spring.fx.dms.service;
 
-import de.dc.spring.fx.dms.model.Ticket;
+import de.dc.spring.fx.dms.shared.model.Ticket;
 import java.util.List;
 import java.util.Optional;
 

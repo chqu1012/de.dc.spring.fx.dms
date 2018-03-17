@@ -1,7 +1,7 @@
 package de.dc.spring.fx.dms.controller
 
 import com.jfoenix.validation.RequiredFieldValidator
-import de.dc.spring.fx.dms.model.Category
+import de.dc.spring.fx.dms.shared.model.Category
 import de.dc.spring.fx.dms.repository.CategoryRepository
 import de.dc.spring.fx.dms.service.TicketService
 import de.dc.spring.fx.dms.util.FolderUtil
@@ -15,7 +15,7 @@ import javafx.event.ActionEvent
 import javafx.scene.control.TextInputDialog
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
-import de.dc.spring.fx.dms.model.Ticket
+import de.dc.spring.fx.dms.shared.model.Ticket
 
 @Controller 
 class AddDocumentController extends BaseAddDocumentController {

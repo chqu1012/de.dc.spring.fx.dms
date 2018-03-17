@@ -1,7 +1,7 @@
 package de.dc.spring.fx.dms.controller
 
 import de.dc.fx.animation.other.AnimationUtils
-import de.dc.spring.fx.dms.model.Ticket
+import de.dc.spring.fx.dms.shared.model.Ticket
 import de.dc.spring.fx.dms.service.TicketService
 import de.dc.spring.fx.dms.util.FolderUtil
 import javafx.fxml.FXML
