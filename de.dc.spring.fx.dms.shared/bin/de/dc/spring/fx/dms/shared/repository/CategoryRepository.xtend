@@ -1,4 +1,4 @@
-package de.dc.spring.fx.dms.repository
+package de.dc.spring.fx.dms.shared.repository
 
 import java.util.List
 import org.springframework.data.jpa.repository.JpaRepository

@@ -1,7 +1,7 @@
 package de.dc.spring.fx.dms.controller
 
 import de.dc.spring.fx.dms.shared.model.Ticket
-import de.dc.spring.fx.dms.repository.TicketRepository
+import de.dc.spring.fx.dms.shared.repository.TicketRepository
 import de.dc.spring.fx.dms.util.FolderUtil
 import java.nio.file.Files
 import java.nio.file.Paths

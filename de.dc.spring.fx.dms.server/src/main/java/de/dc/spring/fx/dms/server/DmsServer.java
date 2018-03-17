@@ -1,21 +1,18 @@
 package de.dc.spring.fx.dms.server;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
-
-import de.dc.spring.fx.dms.server.repository.TicketRepository;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@ComponentScan(basePackages= "de.dc.spring.fx.dms")
-@EntityScan(value = "de.dc.spring.fx.dms.shared.model")
+@ComponentScan(basePackages= {"de.dc.spring.fx.dms"})
+@EnableJpaRepositories("de.dc.spring.fx.dms.shared.repository")
+@EntityScan(value = {"de.dc.spring.fx.dms.shared.model"})
 public class DmsServer implements CommandLineRunner{
 
-	@Autowired TicketRepository ticketRepository;
-	
 	public static void main(String[] args) {
 		SpringApplication.run(DmsServer.class, args);
 	}

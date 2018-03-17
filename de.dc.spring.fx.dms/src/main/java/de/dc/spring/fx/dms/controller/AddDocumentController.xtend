@@ -2,7 +2,7 @@ package de.dc.spring.fx.dms.controller
 
 import com.jfoenix.validation.RequiredFieldValidator
 import de.dc.spring.fx.dms.shared.model.Category
-import de.dc.spring.fx.dms.repository.CategoryRepository
+import de.dc.spring.fx.dms.shared.repository.CategoryRepository
 import de.dc.spring.fx.dms.service.TicketService
 import de.dc.spring.fx.dms.util.FolderUtil
 import java.io.File

@@ -1,7 +1,7 @@
 package de.dc.spring.fx.dms.server.controller
 
-import de.dc.spring.fx.dms.server.repository.TicketRepository
-import de.dc.spring.fx.dms.shared.model.Ticket
+import de.dc.spring.fx.dms.shared.model.Category
+import de.dc.spring.fx.dms.shared.repository.CategoryRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.DeleteMapping
@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder
-import de.dc.spring.fx.dms.shared.model.Category
-import de.dc.spring.fx.dms.server.repository.CategoryRepository
 
 @RestController 
 class CategoryController implements IRestController<Category> {

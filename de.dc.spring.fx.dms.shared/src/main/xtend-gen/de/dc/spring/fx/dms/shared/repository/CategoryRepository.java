@@ -1,4 +1,4 @@
-package de.dc.spring.fx.dms.repository;
+package de.dc.spring.fx.dms.shared.repository;
 
 import de.dc.spring.fx.dms.shared.model.Category;
 import java.util.List;

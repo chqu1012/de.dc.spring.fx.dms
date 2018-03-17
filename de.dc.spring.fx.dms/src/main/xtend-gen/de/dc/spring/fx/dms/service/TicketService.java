@@ -1,9 +1,9 @@
 package de.dc.spring.fx.dms.service;
 
 import com.google.common.base.Objects;
-import de.dc.spring.fx.dms.repository.TicketRepository;
 import de.dc.spring.fx.dms.service.IService;
 import de.dc.spring.fx.dms.shared.model.Ticket;
+import de.dc.spring.fx.dms.shared.repository.TicketRepository;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;

@@ -1,6 +1,6 @@
 package de.dc.spring.fx.dms.server.controller
 
-import de.dc.spring.fx.dms.server.repository.TicketRepository
+import de.dc.spring.fx.dms.shared.repository.TicketRepository
 import de.dc.spring.fx.dms.shared.model.Ticket
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity

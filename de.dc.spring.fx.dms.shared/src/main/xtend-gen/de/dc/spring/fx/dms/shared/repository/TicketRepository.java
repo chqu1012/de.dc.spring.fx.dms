@@ -1,4 +1,4 @@
-package de.dc.spring.fx.dms.server.repository;
+package de.dc.spring.fx.dms.shared.repository;
 
 import de.dc.spring.fx.dms.shared.model.Ticket;
 import java.util.List;
